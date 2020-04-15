@@ -9,7 +9,7 @@ The following prerequisites are necessary for the test bench to function properl
 
 - Installation of Firefox
 - The VIVO-1.11.1 Instance is currently running and available at http://localhost:8080/vivo.
-- The knowledge graph src/test/resource/kg/sample-data.n3 loaded into the vivo instance
+- Vivo must be clean of sample data
 
 ### RUN
 

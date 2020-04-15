@@ -36,10 +36,14 @@ public class AddResearchOverviewToPersonTest {
     private static String userName;
     private static String password;
     private static String textToVerify = "Add new research overview";
+    private static SampleGraphUtil sgu;
 
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
+        sgu = new SampleGraphUtil();
+        // Loading all sample-data
+        sgu.load();
         System.setProperty("webdriver.gecko.driver", "./lib/geckodriver-v0.26.0-win64/geckodriver.exe");
         driver = new FirefoxDriver();
         js = (JavascriptExecutor) driver;
@@ -60,6 +64,8 @@ public class AddResearchOverviewToPersonTest {
     @After
     public void tearDown() throws Exception {
         driver.quit();
+        // Cleaning all sample-data
+        sgu.delete();
     }
 
     @Test
@@ -76,6 +82,9 @@ public class AddResearchOverviewToPersonTest {
          * Validate the text creation in the triplestore
          */
         phase3();
+        /*
+         * Deleting text and logout
+         */
         phase4();
     }
 
@@ -94,7 +103,7 @@ public class AddResearchOverviewToPersonTest {
     }
 
     private void phase3() {
-        String usrURI = "http://vivo.mydomain.edu/individual/n733";
+        String usrURI = "http://localhost:8080/vivo/individual/n733";
         String roURI = "http://vivoweb.org/ontology/core#researchOverview";
         String queryStr = "DESCRIBE"  + "<"+ usrURI +">";
         // la construction de la requête
