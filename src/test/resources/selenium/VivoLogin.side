@@ -1,0 +1,88 @@
+{
+  "id": "75a6cc54-552f-4c07-b2c9-9e0c67fe988e",
+  "version": "2.0",
+  "name": "VivoLogin",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "8ff7161e-29e8-450a-8cd4-f61c0a70ae07",
+    "name": "LoginTest",
+    "commands": [{
+      "id": "299ea985-164b-4558-8f8c-da33dc3bd4ea",
+      "comment": "",
+      "command": "open",
+      "target": "/vivo/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "43046e99-197b-49a5-9cc2-fe8cbe9e601d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x691",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7484d638-9025-4f28-8399-724b93a533eb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sub_menu > li:nth-child(2) > a",
+      "targets": [
+        ["css=.sub_menu > li:nth-child(2) > a", "css:finder"],
+        ["xpath=//li[@id='language-menu']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/vivo/selectLocale?selection=en_US')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c0a8f544-bb1f-4fbc-86b1-d23b75ccee4c",
+      "comment": "",
+      "command": "type",
+      "target": "id=loginPassword",
+      "targets": [
+        ["id=loginPassword", "id"],
+        ["name=loginPassword", "name"],
+        ["css=#loginPassword", "css:finder"],
+        ["xpath=//input[@id='loginPassword']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/input[2]", "xpath:idRelative"],
+        ["xpath=//section[2]/form/div/input[2]", "xpath:position"]
+      ],
+      "value": "Vivo2435...."
+    }, {
+      "id": "251432c2-96af-4fd7-ba18-8a26629b9f13",
+      "comment": "",
+      "command": "type",
+      "target": "id=loginName",
+      "targets": [
+        ["id=loginName", "id"],
+        ["name=loginName", "name"],
+        ["css=#loginName", "css:finder"],
+        ["xpath=//input[@id='loginName']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/input", "xpath:idRelative"],
+        ["xpath=//section[2]/form/div/input", "xpath:position"]
+      ],
+      "value": "vivo@uqam.ca"
+    }, {
+      "id": "68513d3f-7f2a-4994-a337-c070970b7d1c",
+      "comment": "",
+      "command": "click",
+      "target": "name=loginForm",
+      "targets": [
+        ["name=loginForm", "name"],
+        ["css=.green", "css:finder"],
+        ["xpath=//input[@name='loginForm']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/p/input", "xpath:idRelative"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "b5c741bf-7051-4a42-b0d4-43711191e6a7",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["8ff7161e-29e8-450a-8cd4-f61c0a70ae07"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

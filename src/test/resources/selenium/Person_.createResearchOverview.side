@@ -1,0 +1,353 @@
+{
+  "id": "75a6cc54-552f-4c07-b2c9-9e0c67fe988e",
+  "version": "2.0",
+  "name": "VivoLogin",
+  "url": "http://localhost:8080/vivo",
+  "tests": [{
+    "id": "8ff7161e-29e8-450a-8cd4-f61c0a70ae07",
+    "name": "LoginTest",
+    "commands": [{
+      "id": "299ea985-164b-4558-8f8c-da33dc3bd4ea",
+      "comment": "",
+      "command": "open",
+      "target": "/vivo/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "43046e99-197b-49a5-9cc2-fe8cbe9e601d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x691",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7484d638-9025-4f28-8399-724b93a533eb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sub_menu > li:nth-child(2) > a",
+      "targets": [
+        ["css=.sub_menu > li:nth-child(2) > a", "css:finder"],
+        ["xpath=//li[@id='language-menu']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/vivo/selectLocale?selection=en_US')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c0a8f544-bb1f-4fbc-86b1-d23b75ccee4c",
+      "comment": "",
+      "command": "type",
+      "target": "id=loginPassword",
+      "targets": [
+        ["id=loginPassword", "id"],
+        ["name=loginPassword", "name"],
+        ["css=#loginPassword", "css:finder"],
+        ["xpath=//input[@id='loginPassword']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/input[2]", "xpath:idRelative"],
+        ["xpath=//section[2]/form/div/input[2]", "xpath:position"]
+      ],
+      "value": "Vivo2435...."
+    }, {
+      "id": "251432c2-96af-4fd7-ba18-8a26629b9f13",
+      "comment": "",
+      "command": "type",
+      "target": "id=loginName",
+      "targets": [
+        ["id=loginName", "id"],
+        ["name=loginName", "name"],
+        ["css=#loginName", "css:finder"],
+        ["xpath=//input[@id='loginName']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/input", "xpath:idRelative"],
+        ["xpath=//section[2]/form/div/input", "xpath:position"]
+      ],
+      "value": "vivo@uqam.ca"
+    }, {
+      "id": "68513d3f-7f2a-4994-a337-c070970b7d1c",
+      "comment": "",
+      "command": "click",
+      "target": "name=loginForm",
+      "targets": [
+        ["name=loginForm", "name"],
+        ["css=.green", "css:finder"],
+        ["xpath=//input[@name='loginForm']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/p/input", "xpath:idRelative"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "66e38ae8-32a9-4652-b477-4cbcfb153859",
+    "name": "People_editResearchOverview",
+    "commands": [{
+      "id": "9ac036e4-6108-420b-a7ec-28ee4b3cdd15",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/vivo/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9362cd85-bce7-4e7f-90a6-8fd04bab7cff",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1669x1208",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cb118b35-3f8d-412c-98f8-8183dc8b30dc",
+      "comment": "",
+      "command": "click",
+      "target": "id=loginName",
+      "targets": [
+        ["id=loginName", "id"],
+        ["name=loginName", "name"],
+        ["css=#loginName", "css:finder"],
+        ["xpath=//input[@id='loginName']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/input", "xpath:idRelative"],
+        ["xpath=//section[2]/form/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7dcc3791-8e64-4e41-abf1-cc74187f11a5",
+      "comment": "",
+      "command": "type",
+      "target": "id=loginPassword",
+      "targets": [
+        ["id=loginPassword", "id"],
+        ["name=loginPassword", "name"],
+        ["css=#loginPassword", "css:finder"],
+        ["xpath=//input[@id='loginPassword']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/input[2]", "xpath:idRelative"],
+        ["xpath=//section[2]/form/div/input[2]", "xpath:position"]
+      ],
+      "value": "Vivo2435...."
+    }, {
+      "id": "3d248385-9434-46e6-8e19-a505c22fe22c",
+      "comment": "",
+      "command": "type",
+      "target": "id=loginName",
+      "targets": [
+        ["id=loginName", "id"],
+        ["name=loginName", "name"],
+        ["css=#loginName", "css:finder"],
+        ["xpath=//input[@id='loginName']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/input", "xpath:idRelative"],
+        ["xpath=//section[2]/form/div/input", "xpath:position"]
+      ],
+      "value": "vivo@uqam.ca"
+    }, {
+      "id": "d09badc5-b193-4a39-9391-0ee768b067c1",
+      "comment": "",
+      "command": "click",
+      "target": "name=loginForm",
+      "targets": [
+        ["name=loginForm", "name"],
+        ["css=.green", "css:finder"],
+        ["xpath=//input[@name='loginForm']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/p/input", "xpath:idRelative"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "df2b79e6-d488-447e-be3f-0566ecc8d2e8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=People",
+      "targets": [
+        ["linkText=People", "linkText"],
+        ["css=#main-nav > li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'People')]", "xpath:link"],
+        ["xpath=//ul[@id='main-nav']/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/vivo/people')]", "xpath:href"],
+        ["xpath=//body/nav/ul/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'People')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "709ae336-0a5a-4c01-abd3-4a69c1ff7f54",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=A",
+      "targets": [
+        ["linkText=A", "linkText"],
+        ["css=#alpha-browse-individuals > li:nth-child(2) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'A')])[3]", "xpath:link"],
+        ["xpath=//ul[@id='alpha-browse-individuals']/li[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[11]", "xpath:href"],
+        ["xpath=//nav/nav/ul/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a5ecb6ba-16fc-496d-885f-af8775591b24",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "linkText=A",
+      "targets": [
+        ["linkText=A", "linkText"],
+        ["css=#alpha-browse-individuals > li:nth-child(2) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'A')])[3]", "xpath:link"],
+        ["xpath=//ul[@id='alpha-browse-individuals']/li[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[11]", "xpath:href"],
+        ["xpath=//nav/nav/ul/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ded24af7-005b-44e1-a17b-d890b5d54f4a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=B",
+      "targets": [
+        ["linkText=B", "linkText"],
+        ["css=#alpha-browse-individuals > li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'B')]", "xpath:link"],
+        ["xpath=//ul[@id='alpha-browse-individuals']/li[3]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[12]", "xpath:href"],
+        ["xpath=//nav/nav/ul/li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'B')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8b76541b-acde-4686-b6c3-652e1e0eabf0",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Bogart, Andrew",
+      "targets": [
+        ["linkText=Bogart, Andrew", "linkText"],
+        ["css=.individual a", "css:finder"],
+        ["xpath=//a[contains(text(),'Bogart, Andrew')]", "xpath:link"],
+        ["xpath=//section[@id='individuals-in-class']/ul/li/h1/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/vivo/display/n733')]", "xpath:href"],
+        ["xpath=//li/h1/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Bogart, Andrew')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "870b0b35-f6dc-410d-bb38-24c7197cf89f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nonSelectedGroupTab:nth-child(20)",
+      "targets": [
+        ["css=.nonSelectedGroupTab:nth-child(20)", "css:finder"],
+        ["xpath=//div[@id='wrapper-content']/ul/li[20]", "xpath:idRelative"],
+        ["xpath=//li[20]", "xpath:position"],
+        ["xpath=//li[contains(.,'View All')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f3c152a9-2d34-4f4c-85f3-29a53c09f960",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nonSelectedGroupTab:nth-child(4)",
+      "targets": [
+        ["css=.nonSelectedGroupTab:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='wrapper-content']/ul/li[4]", "xpath:idRelative"],
+        ["xpath=//div[2]/ul/li[4]", "xpath:position"],
+        ["xpath=//li[contains(.,'Publications')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "50d19597-bed0-498c-854c-80681abc395e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nonSelectedGroupTab:nth-child(6)",
+      "targets": [
+        ["css=.nonSelectedGroupTab:nth-child(6)", "css:finder"],
+        ["xpath=//div[@id='wrapper-content']/ul/li[6]", "xpath:idRelative"],
+        ["xpath=//div[2]/ul/li[6]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6196f81b-84e4-4348-9ec5-36e0f3faed07",
+      "comment": "",
+      "command": "click",
+      "target": "css=.add-researchOverview > .add-individual",
+      "targets": [
+        ["css=.add-researchOverview > .add-individual", "css:finder"],
+        ["xpath=(//img[@alt='add'])[20]", "xpath:img"],
+        ["xpath=//h3[@id='researchOverview']/a/img", "xpath:idRelative"],
+        ["xpath=//section[4]/div/article/h3/a/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "498dd0c8-7793-420f-a9d1-117afe2f39a8",
+      "comment": "",
+      "command": "selectFrame",
+      "target": "index=0",
+      "targets": [
+        ["index=0"]
+      ],
+      "value": ""
+    }, {
+      "id": "26ec6030-fb20-467b-a378-2014aa01cff4",
+      "comment": "",
+      "command": "click",
+      "target": "css=html",
+      "targets": [
+        ["css=html", "css:finder"],
+        ["xpath=//html", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "17a96517-76fa-42bd-b163-3e2c0b205a5b",
+      "comment": "",
+      "command": "editContent",
+      "target": "id=tinymce",
+      "targets": [
+        ["id=tinymce", "id"],
+        ["css=#tinymce", "css:finder"],
+        ["xpath=//body[@id='tinymce']", "xpath:attributes"],
+        ["xpath=//body", "xpath:position"]
+      ],
+      "value": "Add new research overview<br data-mce-bogus=\"1\">"
+    }, {
+      "id": "20358927-edad-4d80-b6dd-943c17610465",
+      "comment": "",
+      "command": "selectFrame",
+      "target": "relative=parent",
+      "targets": [
+        ["relative=parent"]
+      ],
+      "value": ""
+    }, {
+      "id": "74cd0eb9-ac9f-4564-9657-f5b45cea8967",
+      "comment": "",
+      "command": "click",
+      "target": "css=.editForm",
+      "targets": [
+        ["css=.editForm", "css:finder"],
+        ["xpath=//form[@action='/vivo/edit/process']", "xpath:attributes"],
+        ["xpath=//div[@id='wrapper-content']/form", "xpath:idRelative"],
+        ["xpath=//div[2]/form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0236bb40-2fb5-48ef-a031-440db8a27255",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit",
+      "targets": [
+        ["id=submit", "id"],
+        ["css=#submit", "css:finder"],
+        ["xpath=//input[@id='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='wrapper-content']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "547109f2-aadb-460a-a0e7-02c70a5fb3f1",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,803)",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "b5c741bf-7051-4a42-b0d4-43711191e6a7",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["8ff7161e-29e8-450a-8cd4-f61c0a70ae07"]
+  }],
+  "urls": ["http://localhost:8080/", "http://localhost:8080/vivo"],
+  "plugins": []
+}
