@@ -1,4 +1,4 @@
-package ca.uqam.vivo.testbench;
+package ca.uqam.vivo.testbench.util;
 
 import java.net.URL;
 

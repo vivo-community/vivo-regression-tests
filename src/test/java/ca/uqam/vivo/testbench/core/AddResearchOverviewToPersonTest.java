@@ -1,4 +1,4 @@
-package ca.uqam.vivo.testbench;
+package ca.uqam.vivo.testbench.core;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,8 +26,30 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+
+import ca.uqam.vivo.testbench.util.SampleGraphUtil;
+
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * 
+ * @author Michel Heon
+ * AddResearchOverviewToPersonTest.java
+ * 
+ * 2020-04-16
+ *
+ * This test case validates the edition of the addition of a Research Overview for a person.
+ * The triplestore is populated before the start of the script and then deleted at the end of the script execution with the
+ * file kb/sample-data_orig_localhost.ttl
+ * 
+ * The test is divided into four phases:
+ * 1- Login phase to connect to the Vivo server.
+ * 2- Navigate in the edition of reserach overview and add the text described by the textToVerify variable
+ * 3- Verify by a SPARQL query if the text is correctly integrated in the vivo triplestore
+ * 4- erase the text and validate in the triplestore
+ * 5- logout
+ * 
+ */
 public class AddResearchOverviewToPersonTest {
     private static WebDriver driver;
     private static JavascriptExecutor js;
@@ -73,7 +95,7 @@ public class AddResearchOverviewToPersonTest {
         /*
          * Login
          */
-         phase1();
+        phase1();
         /*
          * add text in research overview
          */
@@ -83,9 +105,19 @@ public class AddResearchOverviewToPersonTest {
          */
         phase3();
         /*
-         * Deleting text and logout
+         * Deleting text and check that the text is deleted
          */
         phase4();
+        /*
+         * logout
+         */
+        phase5();
+    }
+
+    private void phase5() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(1);
+        driver.get("http://localhost:8080/vivo/logout");
+        System.out.println("Phase 5 logout");
     }
 
     private void phase4() throws InterruptedException {
@@ -94,18 +126,15 @@ public class AddResearchOverviewToPersonTest {
         // 4 | click | id=submit | 
         TimeUnit.SECONDS.sleep(1);
         driver.findElement(By.id("submit")).click();
-        // 5 | click | linkText=Log out | 
-        TimeUnit.SECONDS.sleep(1);
-        driver.get("http://localhost:8080/vivo/logout");
-//        driver.findElement(By.linkText("root")).click();
-//        driver.findElement(By.linkText("Log out")).click();
-        System.out.println("Phase 4 clear and logout");
+        String roValue = getResearchOverviewTest();
+        assertNull(roValue);
+        System.out.println("Phase 5 Check delete done");
     }
-
-    private void phase3() {
+    private String getResearchOverviewTest(){
         String usrURI = "http://localhost:8080/vivo/individual/n733";
         String roURI = "http://vivoweb.org/ontology/core#researchOverview";
         String queryStr = "DESCRIBE"  + "<"+ usrURI +">";
+        String roValue = null;
         // la construction de la requête
         Query query = QueryFactory.create(queryStr);
         // Construction de l'exécuteur
@@ -119,12 +148,21 @@ public class AddResearchOverviewToPersonTest {
             model.write(System.out, "TTL") ;
             List<RDFNode> objs = model.listObjectsOfProperty(ResourceFactory.createResource(usrURI), ResourceFactory.createProperty(roURI)).toList();
             assertNotNull(objs);
-            String roValue = objs.get(0).asLiteral().getLexicalForm();
-            assertTrue(textToVerify.equals(roValue));
+            try {
+                roValue = objs.get(0).asLiteral().getLexicalForm();
+            } catch (Exception e) {
+                // TODO: nothing
+            }
             System.out.println("Phase 3 Content validation done");
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return roValue;
+    }
+    private void phase3() {
+        String roValue = getResearchOverviewTest();
+        assertTrue(textToVerify.equals(roValue));
+        System.out.println("Phase 3 Content validation done");
     }
 
     private void phase2() throws InterruptedException {

@@ -1,1 +1,0 @@
-update=LOAD <file:///c:/VIVO-Trad-ecosysteme/GIT/vivo-regression-tests/src/test/resources/kg/sample-data_orig_localhost.ttl> into graph <http://vitro.mannlib.cornell.edu/individual>

@@ -1,0 +1,1 @@
+Contains test cases for VIVO 1.11.2 i18n for fr_A
