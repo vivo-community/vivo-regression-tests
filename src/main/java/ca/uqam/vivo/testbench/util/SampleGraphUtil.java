@@ -4,19 +4,25 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.commons.text.StringEscapeUtils;
 import org.apache.jena.atlas.web.HttpException;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
+import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.ResourceFactory;
+import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
 import org.apache.jena.sparql.modify.UpdateProcessRemoteBase;
 import org.apache.jena.update.Update;
@@ -28,7 +34,7 @@ import org.apache.jena.update.UpdateRequest;
 public class SampleGraphUtil {
     public static String SAMPLE_DATA="sample.sampleFileName";
     public static String SAMPLE_DATA_I18N="sample.sampleFileName.i18n";
-    public static String SAMPLE_LOAD_I18N="sample.load.i18n";
+    public static boolean SAMPLE_LOAD_I18N=false;
     public static String SAMPLE_GRAPH_IRI="sample.graphURI";
     private static final Log log = LogFactory.getLog(SampleGraphUtil.class);
     private static String userName;
@@ -64,12 +70,13 @@ public class SampleGraphUtil {
         sparqlUpdateEndpointUrl=systemProp.getProperty("vivo.sparqlUpdateEndpointUrl");
         sparqlQueryEndpointUrl=systemProp.getProperty("vivo.sparqlQueryEndpointUrl");
         graphURI = "<"+systemProp.getProperty(SAMPLE_GRAPH_IRI)+">";
-        if (systemProp.getProperty(SAMPLE_LOAD_I18N).equals("true")){
+        if (SAMPLE_LOAD_I18N){
             sampleFileName=systemProp.getProperty(SAMPLE_DATA_I18N);
         } else {
             sampleFileName=systemProp.getProperty(SAMPLE_DATA);
         }
         resUrl = getClass().getClassLoader().getResource(sampleFileName);
+        if (resUrl==null || resUrl.toString().isEmpty()) throw new FileNotFoundException(sampleFileName);
     }
 
     public void load() {
@@ -135,7 +142,11 @@ public class SampleGraphUtil {
             if (log.isDebugEnabled()) model.write(System.out, "TTL") ;
             List<RDFNode> objs = model.listObjectsOfProperty(ResourceFactory.createResource(usrURI), ResourceFactory.createProperty(predicatToTestURI)).toList();
             try {
-                roValue = objs.get(0).asLiteral().getLexicalForm();
+                /*
+                 * Unescape HTML 4 from the value before converted to UTF-8 (Usefull for latin languages)
+                 */
+                roValue = new String(StringEscapeUtils.unescapeHtml4(                     
+                        objs.get(0).asLiteral().getLexicalForm()).getBytes(), StandardCharsets.UTF_8);
                 log.info("return value is: "+roValue);
             } catch (Exception e) {
                 log.debug("NULL return value");
@@ -147,6 +158,46 @@ public class SampleGraphUtil {
         return roValue;
     }
     
+    public static List<Literal> getValuesFromTripleStore( String queryStr, String usrURI, String predicatToTestURI ){
+        List<Literal> stringList = new ArrayList<>();
+        // la construction de la requête
+        Query query = QueryFactory.create(queryStr);
+        // Construction de l'exécuteur
+        try ( QueryExecution qexec = QueryExecutionFactory.sparqlService(sparqlQueryEndpointUrl, query) ) {
+            // L'authentification administrateur de vivo
+            ((QueryEngineHTTP)qexec).addParam("email", userName) ;
+            ((QueryEngineHTTP)qexec).addParam("password", password) ;
+            // Lancer l'exécution
+            Model model =null;
+            try {
+                model = qexec.execDescribe();
+            } catch (Exception e) {
+                log.error(queryStr);
+                throw e;
+            }
+            //Imprimer le résultat de la requête
+            if (log.isDebugEnabled()) model.write(System.out, "TTL") ;
+            List<Statement> stmts = model.listStatements(ResourceFactory.createResource(usrURI), ResourceFactory.createProperty(predicatToTestURI), (RDFNode) null).toList();
+            try {
+                for (Iterator iterator = stmts.iterator(); iterator.hasNext();) {
+                    Statement stmt = (Statement) iterator.next();
+                    /*
+                     * Unescape HTML 4 from the value before converted to UTF-8 (Usefull for latin languages)
+                     */
+//                    String value = new String(StringEscapeUtils.unescapeHtml4(                     
+//                            stmt.getObject().asLiteral().getLexicalForm()).getBytes(), StandardCharsets.UTF_8);
+                    stringList.add(stmt.getObject().asLiteral());                   
+                }
+                log.info("return value is: "+stringList);
+            } catch (Exception e) {
+                log.debug("NULL return value");
+            }
+            log.debug("Content validation done");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return stringList;
+    }
     /**
      * 
      * @return List of useful prefixes to build a SPARQL query

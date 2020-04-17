@@ -1,4 +1,9 @@
 # 2020-04-27
+
+- Revision of the sample_fr ontology (addition of missing links on expertises)
+- Replacement of Hard Timeout by Implicit Timeout
+- Creation of fr_CA_EmailAddressUnitTest, fr_CA_HeadOfFacultyUnitTest, fr_CA_ResearchOverviewToPersonUnitTest
+- DataProvider Implementation in the appropriated classes
 - Using Selenium with TestNG
 - Implemented for both Classical VIVO-1.11.1 & VIVO-1.11.2 (i18n)
 - Same UnitTest working for both VIVO's installation

@@ -6,7 +6,6 @@ import static org.testng.AssertJUnit.assertNull;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -16,8 +15,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import ca.uqam.vivo.testbench.util.SampleGraphUtil;
@@ -33,51 +35,35 @@ public class HeadOfFacultyUnitTest {
     private String usrURI = "http://localhost:8080/vivo/individual/n733";
     private String predicatToTestURI = "http://www.w3.org/2000/01/rdf-schema#label";
 
-    @BeforeMethod
-    public void setUp() {
-        sh = SeleniumHelper.getInstance();
-        sh.seleniumSetupTestCase();
-        driver = sh.getDriver();
-        js = (JavascriptExecutor) driver;
-        vars = new HashMap<String, Object>();
+    @BeforeClass
+    public void setUpBeforeClass() {
+        try {
+            log.info("Setup before Class");
+            sh = SeleniumHelper.getInstance();
+            sh.seleniumSetupTestCase();
+            driver = sh.getDriver();
+            js = (JavascriptExecutor) driver;
+            vars = new HashMap<String, Object>();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
-    @AfterMethod
-    public void tearDown() {
+    @AfterClass
+    public void tearDownAfterClass() throws Exception {
+        log.info("Teardown after Class");
         driver.quit();
+        sh.quit();
     }
-    public void edit() throws InterruptedException {
-        /*
-         * Phase 1 login
-         */
-        phase1();
-        /*
-         * Phase 2 Add college administrator
-         */
-        phase2();
-
-        /*
-         * Phase 3 replace Administrator by Faculty Dean
-         */
-        phase3();
-
-        /*
-         * Phase 4 Delete role
-         */
-        phase4();
-        /*
-         * logout
-         */
-        phase5();
-    }
-
+    @Test(dependsOnMethods={"phase4"})
     private void phase5() throws InterruptedException {
         log.info("Phase 5 login out");
-        TimeUnit.SECONDS.sleep(1);
         sh.logout();
         log.info("Phase 5 logout");
     }
 
-        private void phase4() {
+    @Test(dependsOnMethods={"phase3"})
+    private void phase4() {
         log.info("Phase 4 Role deletion validation");
         // 12 | click | css=#primary-email .delete-individual | 
         log.info("deleting role ");
@@ -91,6 +77,7 @@ public class HeadOfFacultyUnitTest {
     /**
      * Phase 3 replace Administrator by Faculty Dean
      */
+    @Test(dependsOnMethods={"phase2"})
     private void phase3() {
         log.info("Phase 3 Replacing entry");
         String expectedValue = "Faculty Dean";
@@ -111,45 +98,41 @@ public class HeadOfFacultyUnitTest {
         log.info("Phase 3 Replacing entry Done");
 
     }
+    @DataProvider
+    public Object[][] dp() {
+        return new Object[][] {
+            new Object[] { "College", "College of Arts and Humanities", "#affiliationGroup" },
+        };
+    }
     /**
      * Phase 2 Add college administrator
+     * @param orgName 
+     * @param orgType 
      */
-    private void phase2() throws InterruptedException {
+    @Test(dependsOnMethods={"phase1"}, dataProvider = "dp")
+    private void phase2(String orgType, String orgName, String groupName) throws InterruptedException {
         log.info("Phase 2 New entry");
         String expectedValue = "Administrator";
         String expectedCoreEndValue = "2020";
         String expectedCoreStartValue = "2010";
 
         driver.get(usrURI);
-        TimeUnit.SECONDS.sleep(1);
         driver.manage().window().setSize(new Dimension(1024, 1208));
-        TimeUnit.SECONDS.sleep(1);
-        //        driver.findElement(By.cssSelector(".nonSelectedGroupTab:nth-child(2)")).click();
-        //        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.cssSelector("#affiliationGroup > .property:nth-child(1) > #RO_0000053 .add-individual")).click();
-        TimeUnit.SECONDS.sleep(1);
+        driver.findElement(By.cssSelector(groupName+" > .property:nth-child(1) > #RO_0000053 .add-individual")).click();
         driver.findElement(By.id("typeSelector")).click();
         {
             WebElement dropdown = driver.findElement(By.id("typeSelector"));
-            dropdown.findElement(By.xpath("//option[. = 'College']")).click();
+            dropdown.findElement(By.xpath("//option[. = '"+orgType+"']")).click();
         }
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.cssSelector("option:nth-child(6)")).click();
         driver.findElement(By.id("activity")).click();
-        driver.findElement(By.id("activity")).sendKeys("Colle");
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("activity")).sendKeys(Keys.DOWN);
-        driver.findElement(By.id("activity")).sendKeys(Keys.DOWN);
-        driver.findElement(By.id("activity")).sendKeys(Keys.ENTER);
+        driver.findElement(By.id("activity")).sendKeys(orgName);
         driver.findElement(By.id("roleLabel")).click();
         driver.findElement(By.id("roleLabel")).sendKeys(expectedValue);
-        TimeUnit.SECONDS.sleep(1);
         driver.findElement(By.id("startField-year")).click();
         driver.findElement(By.id("startField-year")).sendKeys(expectedCoreStartValue);
         driver.findElement(By.id("endField-year")).click();
         driver.findElement(By.id("endField-year")).sendKeys(expectedCoreEndValue);
         driver.findElement(By.id("submit")).click();
-        TimeUnit.SECONDS.sleep(1);
 
         /*
          * Search title
@@ -174,10 +157,10 @@ public class HeadOfFacultyUnitTest {
         log.info("Phase 2 New entry Done");
 
     }
+    @Test()
     private void phase1() throws InterruptedException {
         log.info("Phase 1 Login");
         sh.login();
-        TimeUnit.SECONDS.sleep(2);
         log.info("Phase 1 Login Done");
     }
     private String queryRole() {

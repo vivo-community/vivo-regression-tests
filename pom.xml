@@ -9,6 +9,21 @@
 The construction of the POM file is inspired by:
 https://www.baeldung.com/maven-integration-test
 </description>
+    <licenses>
+        <license>
+            <name>BSD 3-Clause License</name>
+            <url>https://raw.github.com/vivo-project/Vitro/develop/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Michel Héon</name>
+            <email>heon.michel@uqam.ca</email>
+            <organization>Université du Québec à Montréal ()UQAM)</organization>
+            <organizationUrl>https://uqam.ca</organizationUrl>
+        </developer>
+    </developers>
     <properties>
         <vitro-version>${project.version}</vitro-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -151,7 +166,7 @@ https://www.baeldung.com/maven-integration-test
     <profiles>
         <profile>
             <!-- The default profile is used for unit test cases of VIVO 
-                1.11.1 without i18n. it is identical to the  core_Test profile -->
+                1.11.1 without i18n. it is identical to the core_Test profile -->
             <id>default</id>
             <build>
                 <plugins>
@@ -159,13 +174,15 @@ https://www.baeldung.com/maven-integration-test
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>${maven.surefire.version}</version>
                         <configuration>
-                            <excludes>
-                                <!-- <exclude>YourClassTest.java</exclude> -->
-                            </excludes>
-                            <includes>
-                                <include>**/CoreRegressionTest</include>
-                            </includes>
-                            <testFailureIgnore>true</testFailureIgnore>
+                            <suiteXmlFiles>
+                                <file>testng.xml</file>
+                            </suiteXmlFiles>
+                            <properties>
+                                <property>
+                                    <name>suitenames</name>
+                                    <value>VIVO-1.11.2 (i18n Suite)</value>
+                                </property>
+                            </properties>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -173,26 +190,24 @@ https://www.baeldung.com/maven-integration-test
         </profile>
         <profile>
             <!-- The core_Test profile is used for unit test cases of VIVO 
-                1.11.1 without i18n.  -->
-            <id>core_Test</id>
+                1.11.1 without i18n. -->
+            <id>core_Test</id>         
             <build>
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <version>${maven.failsafe.version}</version>
                         <configuration>
-                            <includes>
-                                <include>**/core/*RegressionTest</include>
-                            </includes>
+                            <suiteXmlFiles>
+                                <file>vivo-1.11.1-Non-i18n-testSuite.xml</file>
+                            </suiteXmlFiles>
+                            <properties>
+                                <property>
+                                    <name>suitenames</name>
+                                    <value>VIVO-1.11.1 (Non-i18n)</value>
+                                </property>
+                            </properties>
                         </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
                     </plugin>
                 </plugins>
             </build>
@@ -200,51 +215,71 @@ https://www.baeldung.com/maven-integration-test
         <profile>
             <id>fr_CA_Test</id>
             <!-- The fr_CA_Test profile is used for unit test cases of VIVO 
-                1.11.2 (i18n release) for Canadian French.  -->
+                1.11.2 (i18n release) for Canadian French. -->
             <build>
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <version>${maven.failsafe.version}</version>
                         <configuration>
-                            <includes>
-                                <include>**/fr_CA/*RegressionTest</include>
-                            </includes>
+                            <suiteXmlFiles>
+                                <file>testng.xml</file>
+                            </suiteXmlFiles>
+                            <properties>
+                                <property>
+                                    <name>testnames</name>
+                                    <value>fr_CA</value>
+                                </property>
+                            </properties>
                         </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
                     </plugin>
                 </plugins>
             </build>
         </profile>
         <profile>
             <id>en_US_Test</id>
-                        <!-- The en_US_Test profile is used for unit test cases of VIVO 
-                1.11.2 (i18n release) for US English.  -->
+            <!-- The en_US_Test profile is used for unit test cases of VIVO 
+                1.11.2 (i18n release) for US English. -->
             <build>
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <version>${maven.failsafe.version}</version>
                         <configuration>
-                            <includes>
-                                <include>**/en_US/*RegressionTest</include>
-                            </includes>
+                            <suiteXmlFiles>
+                                <file>testng.xml</file>
+                            </suiteXmlFiles>
+                            <properties>
+                                <property>
+                                    <name>testnames</name>
+                                    <value>en_US</value>
+                                </property>
+                            </properties>
                         </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>i18n_Test</id>
+            <!-- The fr_CA_Test profile is used for unit test cases of VIVO 
+                1.11.2 (i18n release) for for cases involving an installation using multiple language contexts -->
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>${maven.failsafe.version}</version>
+                        <configuration>
+                            <suiteXmlFiles>
+                                <file>testng.xml</file>
+                            </suiteXmlFiles>
+                            <properties>
+                                <property>
+                                    <name>testnames</name>
+                                    <value>i18n</value>
+                                </property>
+                            </properties>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>

@@ -2,16 +2,15 @@ package ca.uqam.vivo.testbench.en_US;
 
 import java.util.List;
 
+import ca.uqam.vivo.testbench.en_US.test.EmailAddressUnitTest_en_US;
+import ca.uqam.vivo.testbench.en_US.test.HeadOfFacultyUnitTest_en_US;
+import ca.uqam.vivo.testbench.en_US.test.ResearchOverviewToPersonUnitTest_en_US;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
-
-import ca.uqam.vivo.testbench.en_US.test.en_US_EmailAddressUnitTest;
-import ca.uqam.vivo.testbench.en_US.test.en_US_HeadOfFacultyUnitTest;
-import ca.uqam.vivo.testbench.en_US.test.en_US_ResearchOverviewToPersonUnitTest;
 
 /**
  * @author Michel Heon
@@ -28,12 +27,12 @@ public class en_US_RegressionTest {
 
     public void test() {
         TestListenerAdapter tla = new TestListenerAdapter();
-        en_US_EmailAddressUnitTest thisTest = new en_US_EmailAddressUnitTest();
+        EmailAddressUnitTest_en_US thisTest = new EmailAddressUnitTest_en_US();
         TestNG testng = new TestNG();
         testng.setTestClasses(new Class[] {
-                en_US_EmailAddressUnitTest.class,
-                en_US_HeadOfFacultyUnitTest.class,
-                en_US_ResearchOverviewToPersonUnitTest.class
+                EmailAddressUnitTest_en_US.class,
+                HeadOfFacultyUnitTest_en_US.class,
+                ResearchOverviewToPersonUnitTest_en_US.class
                 });
         testng.run();
         tla.getPassedTests();

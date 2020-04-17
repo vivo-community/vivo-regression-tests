@@ -9,8 +9,6 @@ import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
 
-import ca.uqam.vivo.testbench.en_US.test.en_US_EmailAddressUnitTest;
-
 /**
  * @author Michel Heon
  * fr_CA_RegressionTest.java
@@ -25,7 +23,6 @@ public class fr_CA_RegressionTest {
     @Test
     public void test() {
         TestListenerAdapter tla = new TestListenerAdapter();
-        en_US_EmailAddressUnitTest thisTest = new en_US_EmailAddressUnitTest();
         TestNG testng = new TestNG();
         testng.setTestClasses(new Class[] {
 //                fr_CA_EmailAddressUnitTest.class,
