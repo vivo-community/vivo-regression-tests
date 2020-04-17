@@ -67,7 +67,7 @@ public class AddResearchOverviewToPersonTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        sgu = new SampleGraphUtil();
+        sgu = SampleGraphUtil.getInstance();
         // Cleaning all sample-data
         sgu.delete();
         // Loading all sample-data
