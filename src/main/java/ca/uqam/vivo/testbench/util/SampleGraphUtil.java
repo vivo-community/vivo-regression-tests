@@ -1,7 +1,11 @@
 package ca.uqam.vivo.testbench.util;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -26,23 +30,46 @@ public class SampleGraphUtil {
     private static String userName;
     private static String password;
     private Update udateStr;
-    private static String sparqlUpdateEndpointUrl = "http://localhost:8080/vivo/api/sparqlUpdate";
-    private static String sparqlQueryEndpointUrl = "http://localhost:8080/vivo/api/sparqlQuery";
+    private static String sparqlUpdateEndpointUrl;
+    private static String sparqlQueryEndpointUrl ;
+    private static String sampleFileName ;
+    private static SampleGraphUtil single_instance;
     private URL resUrl;
     private String graphURI;
-    public SampleGraphUtil(){
-        resUrl = getClass().getClassLoader().getResource("kg/sample-data_orig_localhost.ttl");
-        userName="vivo@uqam.ca";
-        password="Vivo2435....";
-        graphURI = "<http://localhost:8080/data-graph>";
+    private Properties systemProp;
+    public static SampleGraphUtil getInstance() 
+    { 
+        if (single_instance == null)
+            try {
+                single_instance = new SampleGraphUtil();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } 
+  
+        return single_instance; 
+    } 
+    private SampleGraphUtil() throws IOException{
+        FileInputStream propFile = new FileInputStream(getClass().getClassLoader().getResource("runtime.properties").getPath());
+        systemProp = new Properties(System.getProperties());
+        systemProp.load(propFile);
+        userName=systemProp.getProperty("vivo.rootlogin");
+        password=systemProp.getProperty("vivo.password");
+        sparqlUpdateEndpointUrl=systemProp.getProperty("vivo.sparqlUpdateEndpointUrl");
+        sparqlQueryEndpointUrl=systemProp.getProperty("vivo.sparqlQueryEndpointUrl");
+        sampleFileName=systemProp.getProperty("sample.sampleFileName");
+        graphURI = "<"+systemProp.getProperty("sample.graphURI")+">";
+        resUrl = getClass().getClassLoader().getResource(sampleFileName);
     }
 
     public void load() {
-        UpdateRequest request = UpdateFactory.create("LOAD <"+resUrl.toString()+"> into graph "+graphURI) ;
+        String query = "LOAD <"+resUrl.toString()+"> into graph "+graphURI;
+        UpdateRequest request = UpdateFactory.create(query) ;
+        log.debug("running SPARQL : "+query);
         UpdateProcessor processor = UpdateExecutionFactory.createRemoteForm(request, sparqlUpdateEndpointUrl);
         ((UpdateProcessRemoteBase)processor).addParam("email", userName);
         ((UpdateProcessRemoteBase)processor).addParam("password", password) ;
         processor.execute();
+        log.debug("load done ");
 
     }
     public void clear() {
@@ -53,7 +80,8 @@ public class SampleGraphUtil {
         processor.execute();
     }
     public void delete() {
-        String DELETE = "DELETE {  GRAPH ?g { ?s ?p ?o } }\n "
+        String DELETE = "\n"
+                + "DELETE {  GRAPH ?g { ?s ?p ?o } }\n "
                 + "    where {  GRAPH  ?g {\n"
                 + "        ?s ?p ?o . \n"
                 + "        FILTER(regex(str(?s), \"http://localhost:8080/vivo/individual/\") \n"
@@ -142,9 +170,12 @@ public class SampleGraphUtil {
                 + "PREFIX scires:   <http://vivoweb.org/ontology/scientific-research#> \n"
                 + "PREFIX vann:     <http://purl.org/vocab/vann/> \n";
                }
+/*
+ * Mostly used for testing the class
+ */
     public static void main(String[] args) {
-        SampleGraphUtil lg = new SampleGraphUtil();
-        lg.delete();
+        SampleGraphUtil lg = SampleGraphUtil.getInstance();
+        lg.load();
         System.out.println("Done!");
     }
 

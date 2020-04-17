@@ -44,7 +44,7 @@ public class EmailAddressTest {
 
     @Before
     public void setUp() {
-        sgu = new SampleGraphUtil();
+        sgu = SampleGraphUtil.getInstance();
         // Loading all sample-data
         sgu.delete();
         sgu.load();

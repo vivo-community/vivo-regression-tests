@@ -14,4 +14,4 @@ log4j.logger.org.apache.jena=WARN
 log4j.logger.org.apache.jena=WARN
 
 # Selenium testbech
-log4j.logger.ca.uqam.vivo.testbench=DEBUG
+log4j.logger.ca.uqam.vivo.testbench=INFO
