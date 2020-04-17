@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
@@ -51,6 +52,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * 
  */
 public class AddResearchOverviewToPersonTest {
+    private static final Log log = LogFactory.getLog(AddResearchOverviewToPersonTest.class);
     private static WebDriver driver;
     private static JavascriptExecutor js;
     private static Map<String, Object> vars;
@@ -59,11 +61,15 @@ public class AddResearchOverviewToPersonTest {
     private static String password;
     private static String textToVerify = "Add new research overview";
     private static SampleGraphUtil sgu;
+    private String usrURI = "http://localhost:8080/vivo/individual/n733";
+    private String roURI = "http://vivoweb.org/ontology/core#researchOverview";
 
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         sgu = new SampleGraphUtil();
+        // Cleaning all sample-data
+        sgu.delete();
         // Loading all sample-data
         sgu.load();
         System.setProperty("webdriver.gecko.driver", "./lib/geckodriver-v0.26.0-win64/geckodriver.exe");
@@ -86,8 +92,6 @@ public class AddResearchOverviewToPersonTest {
     @After
     public void tearDown() throws Exception {
         driver.quit();
-        // Cleaning all sample-data
-        sgu.delete();
     }
 
     @Test
@@ -117,7 +121,7 @@ public class AddResearchOverviewToPersonTest {
     private void phase5() throws InterruptedException {
         TimeUnit.SECONDS.sleep(1);
         driver.get("http://localhost:8080/vivo/logout");
-        System.out.println("Phase 5 logout");
+        log.info("Phase 5 logout");
     }
 
     private void phase4() throws InterruptedException {
@@ -126,62 +130,28 @@ public class AddResearchOverviewToPersonTest {
         // 4 | click | id=submit | 
         TimeUnit.SECONDS.sleep(1);
         driver.findElement(By.id("submit")).click();
-        String roValue = getResearchOverviewTest();
+        String roValue = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, roURI);
+
+//        String roValue = getResearchOverviewTest();
         assertNull(roValue);
-        System.out.println("Phase 5 Check delete done");
+        log.info("Phase 5 Check delete done");
     }
-    private String getResearchOverviewTest(){
-        String usrURI = "http://localhost:8080/vivo/individual/n733";
-        String roURI = "http://vivoweb.org/ontology/core#researchOverview";
+    private String query() {
         String queryStr = "DESCRIBE"  + "<"+ usrURI +">";
-        String roValue = null;
-        // la construction de la requête
-        Query query = QueryFactory.create(queryStr);
-        // Construction de l'exécuteur
-        try ( QueryExecution qexec = QueryExecutionFactory.sparqlService(sparqlEndpointUrl, query) ) {
-            // L'authentification administrateur de vivo
-            ((QueryEngineHTTP)qexec).addParam("email", userName) ;
-            ((QueryEngineHTTP)qexec).addParam("password", password) ;
-            // Lancer l'exécution
-            Model model = qexec.execDescribe();
-            //Imprimer le résultat de la requête
-            model.write(System.out, "TTL") ;
-            List<RDFNode> objs = model.listObjectsOfProperty(ResourceFactory.createResource(usrURI), ResourceFactory.createProperty(roURI)).toList();
-            assertNotNull(objs);
-            try {
-                roValue = objs.get(0).asLiteral().getLexicalForm();
-            } catch (Exception e) {
-                // TODO: nothing
-            }
-            System.out.println("Phase 3 Content validation done");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return roValue;
+        return queryStr;
     }
+
     private void phase3() {
-        String roValue = getResearchOverviewTest();
+        log.info("Phase 3 Content validation");
+        String roValue = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, roURI);
         assertTrue(textToVerify.equals(roValue));
-        System.out.println("Phase 3 Content validation done");
+        log.info("Phase 3 Content validation done");
     }
 
     private void phase2() throws InterruptedException {
-        driver.findElement(By.name("loginForm")).click();
-        driver.findElement(By.linkText("People")).click();
-        {
-            WebElement element = driver.findElement(By.linkText("A"));
-            Actions builder = new Actions(driver);
-            builder.moveToElement(element).perform();
-        }
-        {
-            WebElement element = driver.findElement(By.tagName("body"));
-            Actions builder = new Actions(driver);
-            builder.moveToElement(element, 0, 0).perform();
-        }
-        driver.findElement(By.linkText("B")).click();
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.linkText("Bogart, Andrew")).click();
-        TimeUnit.SECONDS.sleep(1);
+        log.info("Phase 2 New entry");
+        driver.get(usrURI);
+        TimeUnit.SECONDS.sleep(2);
         driver.findElement(By.cssSelector(".nonSelectedGroupTab:nth-child(20)")).click();
         TimeUnit.SECONDS.sleep(1);
         driver.findElement(By.cssSelector(".nonSelectedGroupTab:nth-child(4)")).click();
@@ -202,17 +172,21 @@ public class AddResearchOverviewToPersonTest {
         driver.findElement(By.id("submit")).click();
         js.executeScript("window.scrollTo(0,803)");       
         assertNotNull(driver);
-        System.out.println("Phase 2 Entry done");
+        log.info("Phase 2 New entry done");
     }
 
     private void phase1() throws InterruptedException {
+        log.info("Phase 1 Login");
         driver.get("http://localhost:8080/vivo/");
         driver.manage().window().setSize(new Dimension(1669, 1208));
         driver.findElement(By.id("loginName")).click();
         driver.findElement(By.id("loginPassword")).sendKeys(password);
         driver.findElement(By.id("loginName")).sendKeys(userName);
+        driver.findElement(By.name("loginForm")).click();
         assertNotNull(driver);
-        System.out.println("Phase 1 Login done");
+        log.info("Cleaning solr index");
+        driver.get( "http://localhost:8080/vivo/SearchIndex?rebuild=true");
+        log.info("Phase 1 Login done");
     }
 
 }
