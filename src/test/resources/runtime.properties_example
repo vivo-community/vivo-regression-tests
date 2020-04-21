@@ -1,0 +1,24 @@
+#
+# Credential for connecting to Vivo
+#
+vivo.rootlogin=YOUR LOGIN
+vivo.password=YOUR PASSWD
+#
+# Vivo sparqlEndpoint url
+#
+vivo.sparqlUpdateEndpointUrl=http://localhost:8080/vivo/api/sparqlUpdate
+vivo.sparqlQueryEndpointUrl=http://localhost:8080/vivo/api/sparqlQuery
+#
+# Properties about sample data
+#
+sample.sampleFileName=kg/sample-data_orig_localhost.ttl
+#
+# Graph URI where data are store
+#
+sample.graphURI=http://localhost:8080/data-graph
+
+#
+# Selenium properties
+#
+selenium.driver=webdriver.gecko.driver
+selenium.driver.location=./lib/geckodriver-v0.26.0-win64/geckodriver.exe
