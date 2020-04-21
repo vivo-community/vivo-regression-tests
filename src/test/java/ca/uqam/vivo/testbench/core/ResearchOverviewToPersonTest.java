@@ -29,6 +29,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import ca.uqam.vivo.testbench.util.SampleGraphUtil;
+import ca.uqam.vivo.testbench.util.SeleniumHelper;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -51,34 +52,28 @@ import static org.junit.jupiter.api.Assertions.*;
  * 5- logout
  * 
  */
-public class AddResearchOverviewToPersonTest {
-    private static final Log log = LogFactory.getLog(AddResearchOverviewToPersonTest.class);
+public class ResearchOverviewToPersonTest {
+    private static final Log log = LogFactory.getLog(ResearchOverviewToPersonTest.class);
     private static WebDriver driver;
     private static JavascriptExecutor js;
     private static Map<String, Object> vars;
     private static String sparqlEndpointUrl;
-    private static String userName;
-    private static String password;
     private static String textToVerify = "Add new research overview";
     private static SampleGraphUtil sgu;
+    private static SeleniumHelper sh;
     private String usrURI = "http://localhost:8080/vivo/individual/n733";
     private String roURI = "http://vivoweb.org/ontology/core#researchOverview";
 
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        sgu = SampleGraphUtil.getInstance();
-        // Cleaning all sample-data
-        sgu.delete();
-        // Loading all sample-data
-        sgu.load();
-        System.setProperty("webdriver.gecko.driver", "./lib/geckodriver-v0.26.0-win64/geckodriver.exe");
-        driver = new FirefoxDriver();
+        sh = SeleniumHelper.getInstance();
+        sh.seleniumSetupTestCase();
+        sgu = sh.sgu;
+        driver = sh.getDriver();
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
-        sparqlEndpointUrl = "http://localhost:8080/vivo/api/sparqlQuery";
-        userName="vivo@uqam.ca";
-        password="Vivo2435....";
+        sparqlEndpointUrl = SeleniumHelper.sparqlQueryEndpointUrl;
     }
 
     @AfterClass
@@ -177,15 +172,7 @@ public class AddResearchOverviewToPersonTest {
 
     private void phase1() throws InterruptedException {
         log.info("Phase 1 Login");
-        driver.get("http://localhost:8080/vivo/");
-        driver.manage().window().setSize(new Dimension(1669, 1208));
-        driver.findElement(By.id("loginName")).click();
-        driver.findElement(By.id("loginPassword")).sendKeys(password);
-        driver.findElement(By.id("loginName")).sendKeys(userName);
-        driver.findElement(By.name("loginForm")).click();
-        assertNotNull(driver);
-        log.info("Cleaning solr index");
-        driver.get( "http://localhost:8080/vivo/SearchIndex?rebuild=true");
+        sh.login();
         log.info("Phase 1 Login done");
     }
 

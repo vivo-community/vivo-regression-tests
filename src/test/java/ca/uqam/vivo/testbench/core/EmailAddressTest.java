@@ -22,6 +22,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import ca.uqam.vivo.testbench.util.SampleGraphUtil;
+import ca.uqam.vivo.testbench.util.SeleniumHelper;
 /**
  * 
  * @author Michel Heon
@@ -33,28 +34,17 @@ import ca.uqam.vivo.testbench.util.SampleGraphUtil;
 public class EmailAddressTest {
     private static final Log log = LogFactory.getLog(EmailAddressTest.class);
     private WebDriver driver;
-    private Map<String, Object> vars;
     JavascriptExecutor js;
-    private String sparqlEndpointUrl;
-    private String userName;
-    private String password;
-    private SampleGraphUtil sgu;
     private String usrURI = "http://localhost:8080/vivo/individual/n6870";
     private String predicatToTestURI = "http://www.w3.org/2006/vcard/ns#email";
+    private SeleniumHelper sh;
 
     @Before
     public void setUp() {
-        sgu = SampleGraphUtil.getInstance();
-        // Loading all sample-data
-        sgu.delete();
-        sgu.load();
-        System.setProperty("webdriver.gecko.driver", "./lib/geckodriver-v0.26.0-win64/geckodriver.exe");
-        driver = new FirefoxDriver();
+        sh = SeleniumHelper.getInstance();
+        sh.seleniumSetupTestCase();
+        driver = sh.getDriver();
         js = (JavascriptExecutor) driver;
-        vars = new HashMap<String, Object>();
-        sparqlEndpointUrl = "http://localhost:8080/vivo/api/sparqlQuery";
-        userName="vivo@uqam.ca";
-        password="Vivo2435....";
     }
     @After
     public void tearDown() {
@@ -71,7 +61,7 @@ public class EmailAddressTest {
         /*
          * add email to Peter Japer
          */
-        driver.manage().window().setSize(new Dimension(1248, 979));
+        driver.manage().window().setSize(new Dimension(1024, 1208));
         // 3 | click | linkText=Peters, Jasper I | 
         TimeUnit.SECONDS.sleep(5);
         phase2();
@@ -139,15 +129,7 @@ public class EmailAddressTest {
     }
     private void phase1() throws InterruptedException {
         log.info("Phase 1 Login");
-        driver.get("http://localhost:8080/vivo/");
-        driver.manage().window().setSize(new Dimension(1669, 1208));
-        driver.findElement(By.id("loginName")).click();
-        driver.findElement(By.id("loginPassword")).sendKeys(password);
-        driver.findElement(By.id("loginName")).sendKeys(userName);
-        driver.findElement(By.name("loginForm")).click();
-        assertNotNull(driver);
-        log.info("Cleaning solr index");
-        driver.get( "http://localhost:8080/vivo/SearchIndex?rebuild=true");
+        sh.login();
         log.info("Phase 1 Login done");
 
     }

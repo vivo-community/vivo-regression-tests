@@ -37,6 +37,9 @@ public class SampleGraphUtil {
     private URL resUrl;
     private String graphURI;
     private Properties systemProp;
+    public Properties getSystemProp() {
+        return systemProp;
+    }
     public static SampleGraphUtil getInstance() 
     { 
         if (single_instance == null)
@@ -126,7 +129,7 @@ public class SampleGraphUtil {
                 roValue = objs.get(0).asLiteral().getLexicalForm();
                 log.info("return value is: "+roValue);
             } catch (Exception e) {
-                log.debug("NON return value");
+                log.debug("NULL return value");
             }
             log.debug("Content validation done");
         } catch (Exception e) {
@@ -167,6 +170,7 @@ public class SampleGraphUtil {
                 + "PREFIX vcard:    <http://www.w3.org/2006/vcard/ns#> \n"
                 + "PREFIX vitro-public: <http://vitro.mannlib.cornell.edu/ns/vitro/public#> \n"
                 + "PREFIX vivo:     <http://vivoweb.org/ontology/core#> \n"
+                + "PREFIX core:     <http://vivoweb.org/ontology/core#> \n"
                 + "PREFIX scires:   <http://vivoweb.org/ontology/scientific-research#> \n"
                 + "PREFIX vann:     <http://purl.org/vocab/vann/> \n";
                }
