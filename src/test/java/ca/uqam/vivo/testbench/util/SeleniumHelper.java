@@ -42,7 +42,11 @@ public class SeleniumHelper {
         sgu.delete();
         // Loading all sample-data
         sgu.load();
-        System.setProperty(systemProp.getProperty("selenium.driver"), systemProp.getProperty("selenium.driver.location"));
+        try {
+            System.setProperty(systemProp.getProperty("selenium.driver"), systemProp.getProperty("selenium.driver.location"));            
+        } catch (Exception e) {
+            throw e;
+        }
         driver = new FirefoxDriver();
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();

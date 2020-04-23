@@ -7,6 +7,7 @@
     <name>VIVO Test bench</name>
     <description>VIVO Integrity Test Bench</description>
     <properties>
+        <vivo.langeages>core</vivo.langeages>
         <vitro-version>${project.version}</vitro-version>
         <maven-site-plugin.skip>true</maven-site-plugin.skip>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -39,10 +40,7 @@
                 <version>2.19.1</version>
                 <configuration>
                     <includes>
-                        <include>**/Test*.java</include>
-                        <include>**/*Test.java</include>
-                        <include>**/*Tests.java</include>
-                        <include>**/*TestCase.java</include>
+                        <include>**/${vivo.langeages}/CoreRegressionTest.java</include>
                     </includes>
                     <properties>
                         <!-- <includeTags>fast</includeTags> -->
@@ -71,6 +69,12 @@
     </build>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.solr/solr-solrj -->
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+            <version>8.3.0</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.jena</groupId>
             <artifactId>jena-arq</artifactId>
@@ -102,7 +106,6 @@
             <artifactId>jena-tdb</artifactId>
             <version>3.11.0</version>
         </dependency>
-
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -123,7 +126,6 @@
             <artifactId>selenium-server</artifactId>
             <version>${selenium.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>

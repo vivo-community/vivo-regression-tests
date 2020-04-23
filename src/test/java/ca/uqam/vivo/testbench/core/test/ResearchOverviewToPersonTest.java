@@ -1,4 +1,4 @@
-package ca.uqam.vivo.testbench.core;
+package ca.uqam.vivo.testbench.core.test;
 
 import java.util.HashMap;
 import java.util.List;
