@@ -52,8 +52,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * 5- logout
  * 
  */
-public class ResearchOverviewToPersonTest {
-    private static final Log log = LogFactory.getLog(ResearchOverviewToPersonTest.class);
+public class ResearchOverviewToPersonUnitTest {
+    private static final Log log = LogFactory.getLog(ResearchOverviewToPersonUnitTest.class);
     private static WebDriver driver;
     private static JavascriptExecutor js;
     private static Map<String, Object> vars;
@@ -114,22 +114,22 @@ public class ResearchOverviewToPersonTest {
     }
 
     private void phase5() throws InterruptedException {
+        log.info("Phase 5 login out");
         TimeUnit.SECONDS.sleep(1);
-        driver.get("http://localhost:8080/vivo/logout");
+        sh.logout();
         log.info("Phase 5 logout");
     }
 
     private void phase4() throws InterruptedException {
+        log.info("Phase 4 check delete");
         // 3 | click | css=.delete-researchOverview > .delete-individual | 
         driver.findElement(By.cssSelector(".delete-researchOverview > .delete-individual")).click();
         // 4 | click | id=submit | 
         TimeUnit.SECONDS.sleep(1);
         driver.findElement(By.id("submit")).click();
         String roValue = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, roURI);
-
-//        String roValue = getResearchOverviewTest();
         assertNull(roValue);
-        log.info("Phase 5 Check delete done");
+        log.info("Phase 4 Check delete done");
     }
     private String query() {
         String queryStr = "DESCRIBE"  + "<"+ usrURI +">";

@@ -26,6 +26,10 @@ import org.apache.jena.update.UpdateProcessor;
 import org.apache.jena.update.UpdateRequest;
 
 public class SampleGraphUtil {
+    public static String SAMPLE_DATA="sample.sampleFileName";
+    public static String SAMPLE_DATA_I18N="sample.sampleFileName.i18n";
+    public static String SAMPLE_LOAD_I18N="sample.load.i18n";
+    public static String SAMPLE_GRAPH_IRI="sample.graphURI";
     private static final Log log = LogFactory.getLog(SampleGraphUtil.class);
     private static String userName;
     private static String password;
@@ -59,8 +63,12 @@ public class SampleGraphUtil {
         password=systemProp.getProperty("vivo.password");
         sparqlUpdateEndpointUrl=systemProp.getProperty("vivo.sparqlUpdateEndpointUrl");
         sparqlQueryEndpointUrl=systemProp.getProperty("vivo.sparqlQueryEndpointUrl");
-        sampleFileName=systemProp.getProperty("sample.sampleFileName");
-        graphURI = "<"+systemProp.getProperty("sample.graphURI")+">";
+        graphURI = "<"+systemProp.getProperty(SAMPLE_GRAPH_IRI)+">";
+        if (systemProp.getProperty(SAMPLE_LOAD_I18N).equals("true")){
+            sampleFileName=systemProp.getProperty(SAMPLE_DATA_I18N);
+        } else {
+            sampleFileName=systemProp.getProperty(SAMPLE_DATA);
+        }
         resUrl = getClass().getClassLoader().getResource(sampleFileName);
     }
 
@@ -71,6 +79,7 @@ public class SampleGraphUtil {
         UpdateProcessor processor = UpdateExecutionFactory.createRemoteForm(request, sparqlUpdateEndpointUrl);
         ((UpdateProcessRemoteBase)processor).addParam("email", userName);
         ((UpdateProcessRemoteBase)processor).addParam("password", password) ;
+        log.info("Loading : "+sampleFileName);
         processor.execute();
         log.debug("load done ");
 
