@@ -1,4 +1,4 @@
-package ca.uqam.vivo.testbench.core;
+package ca.uqam.vivo.testbench.fr_CA;
 
 import static org.junit.Assert.*;
 
@@ -21,8 +21,8 @@ import ca.uqam.vivo.testbench.util.test.SolrPingUnitTest;
  * 2020-04-23
  *
  */
-public class CoreRegressionTest {
-    private static final Log log = LogFactory.getLog(CoreRegressionTest.class);
+public class fr_CA_RegressionTest {
+    private static final Log log = LogFactory.getLog(fr_CA_RegressionTest.class);
 
     @Test
     public void test() {
@@ -30,15 +30,15 @@ public class CoreRegressionTest {
         for (Failure failure : result.getFailures()) {
             fail(SolrPingUnitTest.class.getName()+" "+failure.toString());
         }
-        result = JUnitCore.runClasses(
-                EmailAddressUnitTest.class,
-                HeadOfFacultyUnitTest.class,
-                ResearchOverviewToPersonUnitTest.class);
-        for (Failure failure : result.getFailures()) {
-            fail(CoreRegressionTest.class.getName()+" "+failure.toString());
-        }
-        log.info(CoreRegressionTest.class.getName()+" "+result.wasSuccessful());
-        log.info(CoreRegressionTest.class.getName()+" "+"Done");
+//        result = JUnitCore.runClasses(
+//                EmailAddressTest.class,
+//                HeadOfFacultyTest.class,
+//                ResearchOverviewToPersonTest.class);
+//        for (Failure failure : result.getFailures()) {
+//            fail(CoreRegressionTest.class.getName()+" "+failure.toString());
+//        }
+        log.info(fr_CA_RegressionTest.class.getName()+" "+result.wasSuccessful());
+        log.info(fr_CA_RegressionTest.class.getName()+" "+"Done");
     }
 
 }

@@ -34,8 +34,8 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.net.MalformedURLException;
 import java.net.URL;
-public class HeadOfFacultyTest {
-    private static final Log log = LogFactory.getLog(HeadOfFacultyTest.class);
+public class HeadOfFacultyUnitTest {
+    private static final Log log = LogFactory.getLog(HeadOfFacultyUnitTest.class);
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
@@ -76,11 +76,23 @@ public class HeadOfFacultyTest {
          * Phase 4 Delete role
          */
         phase4();
+        /*
+         * logout
+         */
+        phase5();
     }
-    private void phase4() {
+
+    private void phase5() throws InterruptedException {
+        log.info("Phase 5 login out");
+        TimeUnit.SECONDS.sleep(1);
+        sh.logout();
+        log.info("Phase 5 logout");
+    }
+
+        private void phase4() {
         log.info("Phase 4 Role deletion validation");
         // 12 | click | css=#primary-email .delete-individual | 
-        log.info("deleting email address ");
+        log.info("deleting role ");
         driver.findElement(By.cssSelector(".delete-RO_0000053:nth-child(4) > .delete-individual")).click();
         driver.findElement(By.id("submit")).click();
         String returnEmail = SampleGraphUtil.getValueFromTripleStore(queryRole(), usrURI, predicatToTestURI);

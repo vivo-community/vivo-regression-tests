@@ -21,8 +21,8 @@ import ca.uqam.vivo.testbench.util.SampleGraphUtil;
  * 2020-04-23
  *
  */
-public class SolrPingTest {
-    private static final Log log = LogFactory.getLog(SolrPingTest.class);
+public class SolrPingUnitTest {
+    private static final Log log = LogFactory.getLog(SolrPingUnitTest.class);
 
     @Test
     public void test() throws SolrServerException, IOException {

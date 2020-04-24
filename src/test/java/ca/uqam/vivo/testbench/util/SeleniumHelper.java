@@ -32,7 +32,9 @@ public class SeleniumHelper {
     public static String userName;
     public static String password;
     public static SampleGraphUtil sgu;
+    public static String selectedLangage = null;
     private  FirefoxDriver driver;
+    private String vivoUrl;
     public static JavascriptExecutor js;
     public static HashMap<String, Object> vars;
     public void seleniumSetupTestCase(){
@@ -52,6 +54,7 @@ public class SeleniumHelper {
         vars = new HashMap<String, Object>();
         userName=systemProp.getProperty("vivo.rootlogin");
         password=systemProp.getProperty("vivo.password");
+        vivoUrl = systemProp.getProperty("url.vivo");
         sparqlUpdateEndpointUrl=systemProp.getProperty("vivo.sparqlUpdateEndpointUrl");
         sparqlQueryEndpointUrl=systemProp.getProperty("vivo.sparqlQueryEndpointUrl");
     }
@@ -73,19 +76,36 @@ public class SeleniumHelper {
     }
 
     public void login() {
-        driver.get("http://localhost:8080/vivo/");
+        driver.get(vivoUrl);
         driver.manage().window().setSize(new Dimension(1024, 1208));
         driver.findElement(By.id("loginName")).click();
         driver.findElement(By.id("loginPassword")).sendKeys(password);
         driver.findElement(By.id("loginName")).sendKeys(userName);
         driver.findElement(By.name("loginForm")).click();
         assertNotNull(driver);
+        selectLanguage();
         log.info("Cleaning solr index");
-        driver.get( "http://localhost:8080/vivo/SearchIndex?rebuild=true");
+        driver.get( vivoUrl+"/SearchIndex?rebuild=true");
+        
         
     }
-
+    public void selectLanguage(){
+        if (selectedLangage!=null && !selectedLangage.isEmpty())
+        driver.get( vivoUrl+"/selectLocale?selection="+selectedLangage);
+    }
     public FirefoxDriver getDriver() {
         return driver;
+    }
+
+    public void logout() {
+        driver.get(vivoUrl+"/logout");
+    }
+
+    public String getSelectedLangage() {
+        return selectedLangage;
+    }
+
+    public void setSelectedLangage(String selectedLangage) {
+        SeleniumHelper.selectedLangage = selectedLangage;
     } 
 }
