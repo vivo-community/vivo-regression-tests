@@ -20,3 +20,4 @@ utilities/rdbmigration/.work
 **/.classpath
 **/.project
 **/bin/
+/test-output/

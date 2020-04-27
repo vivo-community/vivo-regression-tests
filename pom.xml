@@ -80,20 +80,20 @@ https://www.baeldung.com/maven-integration-test
                     </execution>
                 </executions>
             </plugin>
-<!--             <plugin> -->
-<!--                 <artifactId>maven-verifier-plugin</artifactId> -->
-<!--                 <version>${maven.verifier.version}</version> -->
-<!--                 <configuration> -->
-<!--                     <verificationFile>input-resources/verifications.xml</verificationFile> -->
-<!--                 </configuration> -->
-<!--                 <executions> -->
-<!--                     <execution> -->
-<!--                         <goals> -->
-<!--                             <goal>verify</goal> -->
-<!--                         </goals> -->
-<!--                     </execution> -->
-<!--                 </executions> -->
-<!--             </plugin> -->
+            <!-- <plugin> -->
+            <!-- <artifactId>maven-verifier-plugin</artifactId> -->
+            <!-- <version>${maven.verifier.version}</version> -->
+            <!-- <configuration> -->
+            <!-- <verificationFile>input-resources/verifications.xml</verificationFile> -->
+            <!-- </configuration> -->
+            <!-- <executions> -->
+            <!-- <execution> -->
+            <!-- <goals> -->
+            <!-- <goal>verify</goal> -->
+            <!-- </goals> -->
+            <!-- </execution> -->
+            <!-- </executions> -->
+            <!-- </plugin> -->
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>${maven.clean.version}</version>
@@ -162,7 +162,7 @@ https://www.baeldung.com/maven-integration-test
                         <version>${maven.surefire.version}</version>
                         <configuration>
                             <excludes>
-<!--                                 <exclude>DataTest.java</exclude> -->
+                                <!-- <exclude>DataTest.java</exclude> -->
                             </excludes>
                             <includes>
                                 <include>**/CoreRegressionTest</include>
@@ -317,5 +317,13 @@ https://www.baeldung.com/maven-integration-test
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.1.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 </project>
