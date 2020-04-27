@@ -231,7 +231,7 @@ https://www.baeldung.com/maven-integration-test
                         <version>${maven.failsafe.version}</version>
                         <configuration>
                             <includes>
-                                <include>**/en_US/RegressionTest</include>
+                                <include>**/en_US/*RegressionTest</include>
                             </includes>
                         </configuration>
                         <executions>
