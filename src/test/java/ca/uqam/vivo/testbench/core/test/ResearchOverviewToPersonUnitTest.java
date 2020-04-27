@@ -1,37 +1,26 @@
 package ca.uqam.vivo.testbench.core.test;
 
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.jena.query.Query;
-import org.apache.jena.query.QueryExecution;
-import org.apache.jena.query.QueryExecutionFactory;
-import org.apache.jena.query.QueryFactory;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.RDFNode;
-import org.apache.jena.rdf.model.ResourceFactory;
-import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.sparql.engine.http.QueryEngineHTTP ;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
+import org.testng.AssertJUnit;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import ca.uqam.vivo.testbench.util.SampleGraphUtil;
 import ca.uqam.vivo.testbench.util.SeleniumHelper;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 
@@ -80,11 +69,11 @@ public class ResearchOverviewToPersonUnitTest {
     public static void tearDownAfterClass() throws Exception {
     }
 
-    @Before
+    @BeforeMethod
     public void setUp() throws Exception {
     }
 
-    @After
+    @AfterMethod
     public void tearDown() throws Exception {
         driver.quit();
     }
@@ -139,7 +128,7 @@ public class ResearchOverviewToPersonUnitTest {
     private void phase3() {
         log.info("Phase 3 Content validation");
         String roValue = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, roURI);
-        assertTrue(textToVerify.equals(roValue));
+        AssertJUnit.assertTrue(textToVerify.equals(roValue));
         log.info("Phase 3 Content validation done");
     }
 
@@ -166,7 +155,7 @@ public class ResearchOverviewToPersonUnitTest {
         driver.findElement(By.cssSelector(".editForm")).click();
         driver.findElement(By.id("submit")).click();
         js.executeScript("window.scrollTo(0,803)");       
-        assertNotNull(driver);
+        AssertJUnit.assertNotNull(driver);
         log.info("Phase 2 New entry done");
     }
 
