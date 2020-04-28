@@ -1,3 +1,9 @@
+# 2020-04-27
+- Using Selenium with TestNG
+- Implemented for both Classical VIVO-1.11.1 & VIVO-1.11.2 (i18n)
+- Same UnitTest working for both VIVO's installation
+- Choice of the test case by options passed to Maven
+
 # 2020-04-21
 
 ## Adding Selenium testcase (add/modify/delete): 
