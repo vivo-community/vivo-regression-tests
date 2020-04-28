@@ -10,22 +10,18 @@ The construction of the POM file is inspired by:
 https://www.baeldung.com/maven-integration-test
 </description>
     <properties>
-        <!-- <vivo.languages>core</vivo.languages> -->
         <vitro-version>${project.version}</vitro-version>
-        <maven-site-plugin.skip>true</maven-site-plugin.skip>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
         <junit.version>4.12</junit.version>
         <selenium.version>3.141.59</selenium.version>
         <selenium.htmlunit.version>2.33.2</selenium.htmlunit.version>
-        <!-- <junit.jupiter.version>5.6.2</junit.jupiter.version> -->
-        <!-- <junit.platform.version>1.6.2</junit.platform.version> -->
-        <!-- <junit.vintage.version>${junit.version}</junit.vintage.version> -->
         <junit.jupiter.version>5.0.0-M4</junit.jupiter.version>
         <junit.vintage.version>${junit.version}.0-M4</junit.vintage.version>
         <junit.platform.version>1.0.0-M4</junit.platform.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven-site-plugin.skip>true</maven-site-plugin.skip>
         <maven.resources.version>3.0.2</maven.resources.version>
         <maven.compiler.version>3.8.0</maven.compiler.version>
         <maven.surefire.version>2.22.0</maven.surefire.version>
@@ -154,6 +150,8 @@ https://www.baeldung.com/maven-integration-test
 
     <profiles>
         <profile>
+            <!-- The default profile is used for unit test cases of VIVO 
+                1.11.1 without i18n. it is identical to the  core_Test profile -->
             <id>default</id>
             <build>
                 <plugins>
@@ -162,11 +160,10 @@ https://www.baeldung.com/maven-integration-test
                         <version>${maven.surefire.version}</version>
                         <configuration>
                             <excludes>
-                                <!-- <exclude>DataTest.java</exclude> -->
+                                <!-- <exclude>YourClassTest.java</exclude> -->
                             </excludes>
                             <includes>
                                 <include>**/CoreRegressionTest</include>
-                                <include>**/fr_CA_RegressionTest</include>
                             </includes>
                             <testFailureIgnore>true</testFailureIgnore>
                         </configuration>
@@ -175,6 +172,8 @@ https://www.baeldung.com/maven-integration-test
             </build>
         </profile>
         <profile>
+            <!-- The core_Test profile is used for unit test cases of VIVO 
+                1.11.1 without i18n.  -->
             <id>core_Test</id>
             <build>
                 <plugins>
@@ -183,7 +182,7 @@ https://www.baeldung.com/maven-integration-test
                         <version>${maven.failsafe.version}</version>
                         <configuration>
                             <includes>
-                                <include>**/CoreRegressionTest</include>
+                                <include>**/core/*RegressionTest</include>
                             </includes>
                         </configuration>
                         <executions>
@@ -200,6 +199,8 @@ https://www.baeldung.com/maven-integration-test
         </profile>
         <profile>
             <id>fr_CA_Test</id>
+            <!-- The fr_CA_Test profile is used for unit test cases of VIVO 
+                1.11.2 (i18n release) for Canadian French.  -->
             <build>
                 <plugins>
                     <plugin>
@@ -207,7 +208,7 @@ https://www.baeldung.com/maven-integration-test
                         <version>${maven.failsafe.version}</version>
                         <configuration>
                             <includes>
-                                <include>**/fr_CA/RegressionTest</include>
+                                <include>**/fr_CA/*RegressionTest</include>
                             </includes>
                         </configuration>
                         <executions>
@@ -224,6 +225,8 @@ https://www.baeldung.com/maven-integration-test
         </profile>
         <profile>
             <id>en_US_Test</id>
+                        <!-- The en_US_Test profile is used for unit test cases of VIVO 
+                1.11.2 (i18n release) for US English.  -->
             <build>
                 <plugins>
                     <plugin>
@@ -324,6 +327,5 @@ https://www.baeldung.com/maven-integration-test
             <version>7.1.0</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 </project>
