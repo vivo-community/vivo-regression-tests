@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="VIVO-1.11.1 (Non-i18n)" verbose="1" thread-count="3"
+    parallel="false" preserve-order="true">
+    <test name="core" thread-count="3" parallel="false"
+        preserve-order="true">
+        <classes>
+            <class
+                name="ca.uqam.vivo.testbench.core.test.HeadOfFacultyUnitTest" />
+            <class
+                name="ca.uqam.vivo.testbench.core.test.ResearchOverviewToPersonUnitTest" />
+            <class
+                name="ca.uqam.vivo.testbench.core.test.EmailAddressUnitTest" />
+        </classes>
+    </test>
+</suite>
+

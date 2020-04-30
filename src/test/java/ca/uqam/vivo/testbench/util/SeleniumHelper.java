@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -39,7 +40,16 @@ public class SeleniumHelper {
     public static HashMap<String, Object> vars;
     public void seleniumSetupTestCase(){
         SeleniumHelper.getInstance();
+    }
+    /*
+     * required to reset the Helper between each unit test.
+     */
+    public void quit(){
+        single_instance=null;
+    }
+    private SeleniumHelper() throws IOException{
         sgu = SampleGraphUtil.getInstance();
+        systemProp = sgu.getSystemProp();
         // Cleaning all sample-data
         sgu.delete();
         // Loading all sample-data
@@ -50,6 +60,7 @@ public class SeleniumHelper {
             throw e;
         }
         driver = new FirefoxDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
         userName=systemProp.getProperty("vivo.rootlogin");
@@ -57,11 +68,6 @@ public class SeleniumHelper {
         vivoUrl = systemProp.getProperty("url.vivo");
         sparqlUpdateEndpointUrl=systemProp.getProperty("vivo.sparqlUpdateEndpointUrl");
         sparqlQueryEndpointUrl=systemProp.getProperty("vivo.sparqlQueryEndpointUrl");
-    }
-    
-    private SeleniumHelper() throws IOException{
-        sgu = SampleGraphUtil.getInstance();
-        systemProp = sgu.getSystemProp();
     }
     public static SeleniumHelper getInstance() 
     { 
@@ -86,10 +92,13 @@ public class SeleniumHelper {
         selectLanguage();
         log.info("Cleaning solr index");
         driver.get( vivoUrl+"/SearchIndex?rebuild=true");
-        
-        
     }
     public void selectLanguage(){
+        if (selectedLangage!=null && !selectedLangage.isEmpty())
+        driver.get( vivoUrl+"/selectLocale?selection="+selectedLangage);
+    }
+    public void selectLanguage(String lang){
+        setSelectedLangage(lang);
         if (selectedLangage!=null && !selectedLangage.isEmpty())
         driver.get( vivoUrl+"/selectLocale?selection="+selectedLangage);
     }

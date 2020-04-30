@@ -1,22 +1,26 @@
 package ca.uqam.vivo.testbench.core.test;
 
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.testng.Assert.assertEquals;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.commons.text.StringEscapeUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import ca.uqam.vivo.testbench.util.SampleGraphUtil;
@@ -43,109 +47,92 @@ import ca.uqam.vivo.testbench.util.SeleniumHelper;
  */
 public class ResearchOverviewToPersonUnitTest {
     private static final Log log = LogFactory.getLog(ResearchOverviewToPersonUnitTest.class);
-    private static WebDriver driver;
+    public static WebDriver driver;
     private static JavascriptExecutor js;
     private static Map<String, Object> vars;
     private static String sparqlEndpointUrl;
-    private static String textToVerify = "Add new research overview";
+    protected static String textToVerify = "NO-TEXT";
     private static SampleGraphUtil sgu;
-    private static SeleniumHelper sh;
-    private String usrURI = "http://localhost:8080/vivo/individual/n733";
-    private String roURI = "http://vivoweb.org/ontology/core#researchOverview";
+    protected static SeleniumHelper sh;
+    protected String usrURI = "http://localhost:8080/vivo/individual/n733";
+    protected String roURI = "http://vivoweb.org/ontology/core#researchOverview";
 
 
     @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-        sh = SeleniumHelper.getInstance();
-        sh.seleniumSetupTestCase();
-        sgu = sh.sgu;
-        driver = sh.getDriver();
-        js = (JavascriptExecutor) driver;
-        vars = new HashMap<String, Object>();
-        sparqlEndpointUrl = SeleniumHelper.sparqlQueryEndpointUrl;
+    public void setUpBeforeClass() throws Exception {
+        try {
+            log.info("Setup before Class");
+            sh = SeleniumHelper.getInstance();
+            sh.seleniumSetupTestCase();
+            driver = sh.getDriver();
+            js = (JavascriptExecutor) driver;            
+            vars = new HashMap<String, Object>();
+            sparqlEndpointUrl = SeleniumHelper.sparqlQueryEndpointUrl;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-    }
-
-    @BeforeMethod
-    public void setUp() throws Exception {
-    }
-
-    @AfterMethod
-    public void tearDown() throws Exception {
+    public void tearDownAfterClass() throws Exception {
+        log.info("Teardown after Class");
         driver.quit();
+        sh.quit();
     }
-
-    @Test
-    public void test() throws InterruptedException {
-        /*
-         * Login
-         */
-        phase1();
-        /*
-         * add text in research overview
-         */
-        phase2();
-        /*
-         * Validate the text creation in the triplestore
-         */
-        phase3();
-        /*
-         * Deleting text and check that the text is deleted
-         */
-        phase4();
-        /*
-         * logout
-         */
-        phase5();
-    }
-
-    private void phase5() throws InterruptedException {
+    @Test(dependsOnMethods={"phase4"})
+    protected void phase5() throws InterruptedException {
         log.info("Phase 5 login out");
-        TimeUnit.SECONDS.sleep(1);
         sh.logout();
         log.info("Phase 5 logout");
     }
-
-    private void phase4() throws InterruptedException {
-        log.info("Phase 4 check delete");
-        // 3 | click | css=.delete-researchOverview > .delete-individual | 
-        driver.findElement(By.cssSelector(".delete-researchOverview > .delete-individual")).click();
-        // 4 | click | id=submit | 
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(By.id("submit")).click();
-        String roValue = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, roURI);
-        assertNull(roValue);
-        log.info("Phase 4 Check delete done");
+    /*
+     * The signature guarantees compatibility with the successors of the class.
+     */
+    @Test(dataProvider = "dp",dependsOnMethods={"phase3"})
+    protected void phase4(String lang, String textToVerify) throws InterruptedException {
+          log.info("Phase 4 check delete");
+          // 3 | click | css=.delete-researchOverview > .delete-individual | 
+          driver.findElement(By.cssSelector(".delete-researchOverview > .delete-individual")).click();
+          // 4 | click | id=submit | 
+          driver.findElement(By.id("submit")).click();
+          String roValue = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, roURI);
+          assertNull(roValue);
+          log.info("Phase 4 Check delete done");
     }
-    private String query() {
+    protected String query() {
         String queryStr = "DESCRIBE"  + "<"+ usrURI +">";
         return queryStr;
     }
-
-    private void phase3() {
+    @Test(dependsOnMethods={"phase2"})
+    private void phase3() throws UnsupportedEncodingException {
         log.info("Phase 3 Content validation");
         String roValue = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, roURI);
-        AssertJUnit.assertTrue(textToVerify.equals(roValue));
+        log.info("Exected value = ["+textToVerify+"]; Actual value = ["+roValue+"]");
+        assertEquals(roValue, textToVerify);
         log.info("Phase 3 Content validation done");
     }
-
-    private void phase2() throws InterruptedException {
+    @DataProvider
+    public Object[][] dp() {
+      return new Object[][] {
+        new Object[] {"en_US", "Add new research overview" },
+      };
+    }
+    @Test(dataProvider = "dp", dependsOnMethods={"phase1"})
+    protected void phase2(String lang, String textToVerify) throws InterruptedException {      
         log.info("Phase 2 New entry");
+        this.textToVerify=textToVerify;
+        sh.selectLanguage(lang);
         driver.get(usrURI);
-        TimeUnit.SECONDS.sleep(2);
         driver.findElement(By.cssSelector(".nonSelectedGroupTab:nth-child(20)")).click();
-        TimeUnit.SECONDS.sleep(1);
         driver.findElement(By.cssSelector(".nonSelectedGroupTab:nth-child(4)")).click();
-        TimeUnit.SECONDS.sleep(1);
         driver.findElement(By.cssSelector(".nonSelectedGroupTab:nth-child(6)")).click();
-        TimeUnit.SECONDS.sleep(2);
-        driver.findElement(By.cssSelector(".add-researchOverview > .add-individual")).click();
-        TimeUnit.SECONDS.sleep(1);
+        try {
+            driver.findElement(By.cssSelector(".add-researchOverview > .add-individual")).click();
+        } catch (Exception e) {
+            driver.findElement(By.cssSelector(".edit-researchOverview > .edit-individual")).click();
+        }
         driver.switchTo().frame(0);
-        TimeUnit.SECONDS.sleep(1);
         driver.findElement(By.cssSelector("html")).click();
         {
             WebElement element = driver.findElement(By.id("tinymce"));
@@ -154,12 +141,13 @@ public class ResearchOverviewToPersonUnitTest {
         driver.switchTo().defaultContent();
         driver.findElement(By.cssSelector(".editForm")).click();
         driver.findElement(By.id("submit")).click();
-        js.executeScript("window.scrollTo(0,803)");       
+//        js.executeScript("window.scrollTo(0,803)");       
         AssertJUnit.assertNotNull(driver);
         log.info("Phase 2 New entry done");
     }
-
-    private void phase1() throws InterruptedException {
+    @Test()
+    protected void phase1() throws InterruptedException {
+        this.textToVerify=new String(textToVerify.getBytes(), StandardCharsets.UTF_8);
         log.info("Phase 1 Login");
         sh.login();
         log.info("Phase 1 Login done");

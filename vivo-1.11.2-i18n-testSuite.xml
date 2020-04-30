@@ -1,0 +1,31 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="VIVO-1.11.2 (i18n Suite)" verbose="1" thread-count="3"
+    parallel="false" preserve-order="true">
+    <test name="en_US" thread-count="3" parallel="false"
+        preserve-order="true">
+        <!-- First way to call unit tests -->
+        <classes>
+            <class
+                name="ca.uqam.vivo.testbench.en_US.test.HeadOfFacultyUnitTest_en_US" />
+            <class
+                name="ca.uqam.vivo.testbench.en_US.test.ResearchOverviewToPersonUnitTest_en_US" />
+            <class
+                name="ca.uqam.vivo.testbench.en_US.test.EmailAddressUnitTest_en_US" />
+        </classes>
+    </test>
+    <!-- Second way to call unit tests -->
+    <test name="fr_CA" thread-count="3" parallel="false"
+        preserve-order="true">
+        <packages>
+            <package name="ca.uqam.vivo.testbench.fr_CA.test"></package>
+        </packages>
+    </test>
+    <test name="i18n" thread-count="3" parallel="false"
+        preserve-order="true">
+        <packages>
+            <package name="ca.uqam.vivo.testbench.i18n.test"></package>
+        </packages>
+    </test>
+</suite>
+
