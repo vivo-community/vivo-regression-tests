@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<!--Rational Software Architect Designer 9.7.0.2-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<umlnotation:UMLDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xmi:id="_P778oKMlEeqSYOvrFd5BiQ" type="Class" name="Utility Class diagrap.dnx">
+  <eAnnotations xmi:id="_P778oaMlEeqSYOvrFd5BiQ" source="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+    <details xmi:id="_P778oqMlEeqSYOvrFd5BiQ" key="com.ibm.xtools.activities.javaVisualizerActivity" value="1"/>
+  </eAnnotations>
+  <children xmi:type="notation:Shape" xmi:id="_SpCcL6MlEeqSYOvrFd5BiQ" type="Note" fontName="Segoe UI" fontHeight="8" description="&lt;p>Useful utility classes :&lt;br>- define test execution constants;&lt;br>- manipulate data graphs&lt;br>- control Selenium's robot&lt;/p>" fillColor="13956346" transparency="0" lineColor="12632258" lineWidth="1">
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_SpCcMKMlEeqSYOvrFd5BiQ" type="DiagramName">
+      <element xsi:nil="true"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_SpCcMaMlEeqSYOvrFd5BiQ" type="Description">
+      <element xsi:nil="true"/>
+    </children>
+    <styles xmi:type="notation:TextStyle" xmi:id="_SpCcMqMlEeqSYOvrFd5BiQ"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_SpCcM6MlEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SpCcNKMlEeqSYOvrFd5BiQ" x="4369" y="7581" width="5391" height="2061"/>
+  </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_ZyrYQKMlEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showParent="QualifiedName" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_ZyrYQqMlEeqSYOvrFd5BiQ" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_ZyrYQ6MlEeqSYOvrFd5BiQ" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_ZyrYRKMlEeqSYOvrFd5BiQ" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_ZyrYRaMlEeqSYOvrFd5BiQ" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_ZyrYRqMlEeqSYOvrFd5BiQ" type="Parent"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_ZyrYR6MlEeqSYOvrFd5BiQ" visible="false" type="ANNOTATION_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_ZyrYSKMlEeqSYOvrFd5BiQ" visible="false" type="ANNOTATED_ATTRIBUTE_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_ZyrYSaMlEeqSYOvrFd5BiQ" visible="false" type="ANNOTATED_OPERATION_COMPARTMENT"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=SampleGraphUtil%5Bjcu%5Ename=SampleGraphUtil.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.util%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZyrYQaMlEeqSYOvrFd5BiQ" x="2515" y="11868" width="9601" height="1397"/>
+  </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_acZDoKMlEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showParent="QualifiedName" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_acZDoqMlEeqSYOvrFd5BiQ" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_acZDo6MlEeqSYOvrFd5BiQ" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_acZDpKMlEeqSYOvrFd5BiQ" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_acZDpaMlEeqSYOvrFd5BiQ" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_acZDpqMlEeqSYOvrFd5BiQ" type="Parent"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_acZDp6MlEeqSYOvrFd5BiQ" visible="false" type="ANNOTATION_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_acZDqKMlEeqSYOvrFd5BiQ" visible="false" type="ANNOTATED_ATTRIBUTE_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_acZDqaMlEeqSYOvrFd5BiQ" visible="false" type="ANNOTATED_OPERATION_COMPARTMENT"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=SeleniumHelper%5Bjcu%5Ename=SeleniumHelper.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.util%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_acZDoaMlEeqSYOvrFd5BiQ" x="11180" y="8826" width="9601" height="1397"/>
+  </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_bMgR8KMlEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showParent="QualifiedName" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_bMgR8qMlEeqSYOvrFd5BiQ" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_bMgR86MlEeqSYOvrFd5BiQ" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_bMgR9KMlEeqSYOvrFd5BiQ" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_bMgR9aMlEeqSYOvrFd5BiQ" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_bMgR9qMlEeqSYOvrFd5BiQ" type="Parent"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_bMgR96MlEeqSYOvrFd5BiQ" visible="false" type="ANNOTATION_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_bMgR-KMlEeqSYOvrFd5BiQ" visible="false" type="ANNOTATED_ATTRIBUTE_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_bMgR-aMlEeqSYOvrFd5BiQ" visible="false" type="ANNOTATED_OPERATION_COMPARTMENT"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=TestBenchConstant%5Bjcu%5Ename=TestBenchConstant.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.util%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bMgR8aMlEeqSYOvrFd5BiQ" x="2304" y="3278" width="9601" height="1397"/>
+  </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_dmMtMKMlEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showParent="QualifiedName" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_dmV3IKMlEeqSYOvrFd5BiQ" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_dmV3IaMlEeqSYOvrFd5BiQ" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_dmV3IqMlEeqSYOvrFd5BiQ" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_dmV3I6MlEeqSYOvrFd5BiQ" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_dmV3JKMlEeqSYOvrFd5BiQ" type="Parent"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_dmV3JaMlEeqSYOvrFd5BiQ" visible="false" type="ANNOTATION_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_dmV3JqMlEeqSYOvrFd5BiQ" visible="false" type="ANNOTATED_ATTRIBUTE_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_dmV3J6MlEeqSYOvrFd5BiQ" visible="false" type="ANNOTATED_OPERATION_COMPARTMENT"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=TestBenchModel%5Bjcu%5Ename=TestBenchModel.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.model%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dmMtMaMlEeqSYOvrFd5BiQ" x="12765" y="6290" width="9601" height="1397"/>
+  </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_sPow4KMnEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" fillColor="15594489" transparency="0" lineColor="3702727" lineWidth="1" showStereotype="Image">
+    <children xmi:type="notation:DecorationNode" xmi:id="_sPpX8KMnEeqSYOvrFd5BiQ" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_sPpX8aMnEeqSYOvrFd5BiQ" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_sPpX8qMnEeqSYOvrFd5BiQ" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_sPpX86MnEeqSYOvrFd5BiQ" type="Kind"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_sPpX9KMnEeqSYOvrFd5BiQ" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_sPpX9aMnEeqSYOvrFd5BiQ" type="Parent"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_sPp_AKMnEeqSYOvrFd5BiQ" visible="false" type="AttributeCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_sPp_AaMnEeqSYOvrFd5BiQ" visible="false" type="OperationCompartment"/>
+    <element xmi:type="uml:Artifact" href="mmi:///#file%5Eid=log4j.properties%5Bfolder%5Eid=resources%5Bfolder%5Eid=main%5Bfolder%5Eid=src%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D$uml.Artifact"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sPow4aMnEeqSYOvrFd5BiQ" x="13264" y="14320" width="6425" height="1081"/>
+  </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_xiNdwKMnEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" fillColor="15594489" transparency="0" lineColor="3702727" lineWidth="1" showStereotype="Image">
+    <children xmi:type="notation:DecorationNode" xmi:id="_xiNdwqMnEeqSYOvrFd5BiQ" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_xiNdw6MnEeqSYOvrFd5BiQ" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_xiNdxKMnEeqSYOvrFd5BiQ" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_xiNdxaMnEeqSYOvrFd5BiQ" type="Kind"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_xiNdxqMnEeqSYOvrFd5BiQ" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_xiNdx6MnEeqSYOvrFd5BiQ" type="Parent"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_xiNdyKMnEeqSYOvrFd5BiQ" visible="false" type="AttributeCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_xiNdyaMnEeqSYOvrFd5BiQ" visible="false" type="OperationCompartment"/>
+    <element xmi:type="uml:Artifact" href="mmi:///#file%5Eid=runtime.properties%5Bfolder%5Eid=resources%5Bfolder%5Eid=main%5Bfolder%5Eid=src%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D$uml.Artifact"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xiNdwaMnEeqSYOvrFd5BiQ" x="12950" y="3278" width="6425" height="1081"/>
+  </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_yUnLEKMnEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" fillColor="15594489" transparency="0" lineColor="3702727" lineWidth="1" showStereotype="Image">
+    <children xmi:type="notation:DecorationNode" xmi:id="_yUnLEqMnEeqSYOvrFd5BiQ" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_yUnLE6MnEeqSYOvrFd5BiQ" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_yUnLFKMnEeqSYOvrFd5BiQ" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_yUnLFaMnEeqSYOvrFd5BiQ" type="Kind"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_yUnLFqMnEeqSYOvrFd5BiQ" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_yUnLF6MnEeqSYOvrFd5BiQ" type="Parent"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_yUnLGKMnEeqSYOvrFd5BiQ" visible="false" type="AttributeCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_yUnLGaMnEeqSYOvrFd5BiQ" visible="false" type="OperationCompartment"/>
+    <element xmi:type="uml:Artifact" href="mmi:///#file%5Eid=TestRunner.properties%5Bfolder%5Eid=resources%5Bfolder%5Eid=main%5Bfolder%5Eid=src%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D$uml.Artifact"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yUnLEaMnEeqSYOvrFd5BiQ" x="13264" y="15588" width="6425" height="1081"/>
+  </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_z6otsKMnEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showParent="QualifiedName" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_z6otsqMnEeqSYOvrFd5BiQ" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_z6ots6MnEeqSYOvrFd5BiQ" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_z6ottKMnEeqSYOvrFd5BiQ" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_z6ottaMnEeqSYOvrFd5BiQ" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_z6ottqMnEeqSYOvrFd5BiQ" type="Parent"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_z6ott6MnEeqSYOvrFd5BiQ" visible="false" type="ANNOTATION_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_z6yesKMnEeqSYOvrFd5BiQ" visible="false" type="ANNOTATED_ATTRIBUTE_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_z6yesaMnEeqSYOvrFd5BiQ" visible="false" type="ANNOTATED_OPERATION_COMPARTMENT"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=MainTestRunner%5Bjcu%5Ename=MainTestRunner.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.testrunner%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z6otsaMnEeqSYOvrFd5BiQ" x="2515" y="14643" width="9601" height="1397"/>
+  </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_jOn8AKMqEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" fillColor="15594489" transparency="0" lineColor="3702727" lineWidth="1" showStereotype="Image">
+    <children xmi:type="notation:DecorationNode" xmi:id="_jOn8AqMqEeqSYOvrFd5BiQ" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_jOn8A6MqEeqSYOvrFd5BiQ" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_jOn8BKMqEeqSYOvrFd5BiQ" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_jOn8BaMqEeqSYOvrFd5BiQ" type="Kind"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_jOn8BqMqEeqSYOvrFd5BiQ" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_jOn8B6MqEeqSYOvrFd5BiQ" type="Parent"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_jOn8CKMqEeqSYOvrFd5BiQ" visible="false" type="AttributeCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_jOn8CaMqEeqSYOvrFd5BiQ" visible="false" type="OperationCompartment"/>
+    <element xmi:type="uml:Artifact" href="mmi:///#file%5Eid=sample-data_orig_localhost.ttl%5Bfolder%5Eid=kg%5Bfolder%5Eid=resources%5Bfolder%5Eid=main%5Bfolder%5Eid=src%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D%5D$uml.Artifact"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jOn8AaMqEeqSYOvrFd5BiQ" x="13264" y="12735" width="6425" height="1081"/>
+  </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_lW0XkKMqEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" fillColor="15594489" transparency="0" lineColor="3702727" lineWidth="1" showStereotype="Image">
+    <children xmi:type="notation:DecorationNode" xmi:id="_lW0XkqMqEeqSYOvrFd5BiQ" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_lW0Xk6MqEeqSYOvrFd5BiQ" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_lW0XlKMqEeqSYOvrFd5BiQ" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_lW0XlaMqEeqSYOvrFd5BiQ" type="Kind"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_lW0XlqMqEeqSYOvrFd5BiQ" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_lW0Xl6MqEeqSYOvrFd5BiQ" type="Parent"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_lW0XmKMqEeqSYOvrFd5BiQ" visible="false" type="AttributeCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_lW0XmaMqEeqSYOvrFd5BiQ" visible="false" type="OperationCompartment"/>
+    <element xmi:type="uml:Artifact" href="mmi:///#file%5Eid=sample-data-fr_CA_localhost-vivo.ttl%5Bfolder%5Eid=kg%5Bfolder%5Eid=resources%5Bfolder%5Eid=main%5Bfolder%5Eid=src%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D%5D$uml.Artifact"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lW0XkaMqEeqSYOvrFd5BiQ" x="13264" y="11467" width="6425" height="1081"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_l5ZY0KMtEeqSYOvrFd5BiQ" type="Note" fontName="Segoe UI" fontHeight="8" description="&lt;p>Properties list required for the test bench&lt;/p>" fillColor="13956346" transparency="0" lineColor="12632258" lineWidth="1">
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_l5ZY1KMtEeqSYOvrFd5BiQ" type="DiagramName">
+      <element xsi:nil="true"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_l5ZY1aMtEeqSYOvrFd5BiQ" type="Description">
+      <element xsi:nil="true"/>
+    </children>
+    <styles xmi:type="notation:TextStyle" xmi:id="_l5ZY0aMtEeqSYOvrFd5BiQ"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_l5ZY0qMtEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_l5ZY06MtEeqSYOvrFd5BiQ" x="20522" y="3145" width="5103" height="1242"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tjdhgKMtEeqSYOvrFd5BiQ" type="Note" fontName="Segoe UI" fontHeight="8" description="&lt;p>Sample data set for the test case&lt;/p>" fillColor="13956346" transparency="0" lineColor="12632258" lineWidth="1">
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_tjdhhKMtEeqSYOvrFd5BiQ" type="DiagramName">
+      <element xsi:nil="true"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_tjdhhaMtEeqSYOvrFd5BiQ" type="Description">
+      <element xsi:nil="true"/>
+    </children>
+    <styles xmi:type="notation:TextStyle" xmi:id="_tjdhgaMtEeqSYOvrFd5BiQ"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_tjdhgqMtEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tjdhg6MtEeqSYOvrFd5BiQ" x="20535" y="11362" height="1269"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_y5X2QKMtEeqSYOvrFd5BiQ" type="Note" fontName="Segoe UI" fontHeight="8" description="&lt;p>Log Property File&lt;/p>" fillColor="13956346" transparency="0" lineColor="12632258" lineWidth="1">
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_y5X2RKMtEeqSYOvrFd5BiQ" type="DiagramName">
+      <element xsi:nil="true"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_y5X2RaMtEeqSYOvrFd5BiQ" type="Description">
+      <element xsi:nil="true"/>
+    </children>
+    <styles xmi:type="notation:TextStyle" xmi:id="_y5X2QaMtEeqSYOvrFd5BiQ"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_y5X2QqMtEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y5X2Q6MtEeqSYOvrFd5BiQ" x="20535" y="14239" width="5077" height="1057"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_6ZxFkKMtEeqSYOvrFd5BiQ" type="Note" fontName="Segoe UI" fontHeight="8" description="&lt;p>List of testcase to run&lt;/p>" fillColor="13956346" transparency="0" lineColor="12632258" lineWidth="1">
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_6ZxFlKMtEeqSYOvrFd5BiQ" type="DiagramName">
+      <element xsi:nil="true"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_6ZxFlaMtEeqSYOvrFd5BiQ" type="Description">
+      <element xsi:nil="true"/>
+    </children>
+    <styles xmi:type="notation:TextStyle" xmi:id="_6ZxFkaMtEeqSYOvrFd5BiQ"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_6ZxFkqMtEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6ZxFk6MtEeqSYOvrFd5BiQ" x="20535" y="15586" width="5077" height="978"/>
+  </children>
+  <element xsi:nil="true"/>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_afok4KMlEeqSYOvrFd5BiQ" source="_acZDoKMlEeqSYOvrFd5BiQ" target="_ZyrYQKMlEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_afok4qMlEeqSYOvrFd5BiQ" type="KindLabel">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_afok5KMlEeqSYOvrFd5BiQ" type="Stereotype"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_afok5qMlEeqSYOvrFd5BiQ" type="Kind"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_afok5aMlEeqSYOvrFd5BiQ" type="Name"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_afok46MlEeqSYOvrFd5BiQ" y="-186"/>
+    </children>
+    <element xmi:type="uml:Usage" href="mmi:///#jdep%5Bjsrctype%5Ename=SeleniumHelper%5Bjcu%5Ename=SeleniumHelper.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.util%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D%5D%5Bjsrctype%5Ename=SampleGraphUtil%5Bjcu%5Ename=SampleGraphUtil.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.util%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D%5D$uml.Usage"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_afok4aMlEeqSYOvrFd5BiQ" points="[-1119, 646, 7546, -2396]$[-1119, 1622, 7546, -1420]$[-6337, 1622, 2328, -1420]$[-6337, 2396, 2328, -646]"/>
+  </edges>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_bQL4EKMlEeqSYOvrFd5BiQ" source="_ZyrYQKMlEeqSYOvrFd5BiQ" target="_bMgR8KMlEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_bQL4EqMlEeqSYOvrFd5BiQ" type="KindLabel">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_bQL4FKMlEeqSYOvrFd5BiQ" type="Stereotype"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_bQL4FqMlEeqSYOvrFd5BiQ" type="Kind"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_bQL4FaMlEeqSYOvrFd5BiQ" type="Name"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bQL4E6MlEeqSYOvrFd5BiQ" y="-186"/>
+    </children>
+    <element xmi:type="uml:Usage" href="mmi:///#jdep%5Bjsrctype%5Ename=SampleGraphUtil%5Bjcu%5Ename=SampleGraphUtil.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.util%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D%5D%5Bjsrctype%5Ename=TestBenchConstant%5Bjcu%5Ename=TestBenchConstant.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.util%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D%5D$uml.Usage"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_bQL4EaMlEeqSYOvrFd5BiQ" points="[-2769, -646, -4460, 6645]$[-2769, -6645, -4460, 646]"/>
+  </edges>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_bQL4F6MlEeqSYOvrFd5BiQ" source="_acZDoKMlEeqSYOvrFd5BiQ" target="_bMgR8KMlEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_bQL4GaMlEeqSYOvrFd5BiQ" type="KindLabel">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_bQL4G6MlEeqSYOvrFd5BiQ" type="Stereotype"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_bQL4HaMlEeqSYOvrFd5BiQ" type="Kind"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_bQL4HKMlEeqSYOvrFd5BiQ" type="Name"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bQL4GqMlEeqSYOvrFd5BiQ" y="-186"/>
+    </children>
+    <element xmi:type="uml:Usage" href="mmi:///#jdep%5Bjsrctype%5Ename=SeleniumHelper%5Bjcu%5Ename=SeleniumHelper.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.util%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D%5D%5Bjsrctype%5Ename=TestBenchConstant%5Bjcu%5Ename=TestBenchConstant.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.util%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D%5D$uml.Usage"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_bQL4GKMlEeqSYOvrFd5BiQ" points="[-4761, -424, 4115, 4648]$[-5411, -424, 3465, 4648]$[-5411, -4426, 3465, 646]"/>
+  </edges>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_dpOMAKMlEeqSYOvrFd5BiQ" source="_dmMtMKMlEeqSYOvrFd5BiQ" target="_acZDoKMlEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_dpOMAqMlEeqSYOvrFd5BiQ" type="KindLabel">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_dpOMBKMlEeqSYOvrFd5BiQ" type="Stereotype"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_dpOMBqMlEeqSYOvrFd5BiQ" type="Kind"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_dpOMBaMlEeqSYOvrFd5BiQ" type="Name"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dpOMA6MlEeqSYOvrFd5BiQ" y="-186"/>
+    </children>
+    <element xmi:type="uml:Usage" href="mmi:///#jdep%5Bjsrctype%5Ename=TestBenchModel%5Bjcu%5Ename=TestBenchModel.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.model%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D%5D%5Bjsrctype%5Ename=SeleniumHelper%5Bjcu%5Ename=SeleniumHelper.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.util%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D%5D$uml.Usage"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_dpOMAaMlEeqSYOvrFd5BiQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_dpOMB6MlEeqSYOvrFd5BiQ" source="_dmMtMKMlEeqSYOvrFd5BiQ" target="_bMgR8KMlEeqSYOvrFd5BiQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_dpOMCaMlEeqSYOvrFd5BiQ" type="KindLabel">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_dpOMC6MlEeqSYOvrFd5BiQ" type="Stereotype"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_dpOMDaMlEeqSYOvrFd5BiQ" type="Kind"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_dpOMDKMlEeqSYOvrFd5BiQ" type="Name"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dpOMCqMlEeqSYOvrFd5BiQ" y="-186"/>
+    </children>
+    <element xmi:type="uml:Usage" href="mmi:///#jdep%5Bjsrctype%5Ename=TestBenchModel%5Bjcu%5Ename=TestBenchModel.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.model%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D%5D%5Bjsrctype%5Ename=TestBenchConstant%5Bjcu%5Ename=TestBenchConstant.java%5Bjpack%5Ename=ca.uqam.vivo.testbench.util%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=vivo-regression-tests%5D%5D%5D%5D%5D$uml.Usage"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_dpOMCKMlEeqSYOvrFd5BiQ" points="[-1103, -646, 9239, 622]$[-1103, -1692, 9239, -424]$[-6268, -1692, 4074, -424]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_0PIo8KMlEeqSYOvrFd5BiQ" type="NoteAttachment" source="_bMgR8KMlEeqSYOvrFd5BiQ" target="_SpCcL6MlEeqSYOvrFd5BiQ" lineColor="0" lineWidth="1">
+    <styles xmi:type="notation:ArrowStyle" xmi:id="_0PIo8aMlEeqSYOvrFd5BiQ"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_0PIo8qMlEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_0PIo86MlEeqSYOvrFd5BiQ" points="[119, 24, 48, -71]$[72, 95, 1, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0PSZ8KMlEeqSYOvrFd5BiQ" id="(0.6931923576330922,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_1Juo8KMlEeqSYOvrFd5BiQ" type="NoteAttachment" source="_SpCcL6MlEeqSYOvrFd5BiQ" target="_acZDoKMlEeqSYOvrFd5BiQ" lineColor="0" lineWidth="1">
+    <styles xmi:type="notation:ArrowStyle" xmi:id="_1Juo8aMlEeqSYOvrFd5BiQ"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_1Juo8qMlEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_1Juo86MlEeqSYOvrFd5BiQ" points="[-1, -1, -1431, -1099]$[770, 1098, -660, 0]$[1420, 1098, -10, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1J3y4KMlEeqSYOvrFd5BiQ" id="(1.0,0.5157657657657657)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_UZ7b0KMuEeqSYOvrFd5BiQ" id="(0.001145713988126237,0.7086614173228346)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_16BdcKMlEeqSYOvrFd5BiQ" type="NoteAttachment" source="_SpCcL6MlEeqSYOvrFd5BiQ" target="_ZyrYQKMlEeqSYOvrFd5BiQ" lineColor="0" lineWidth="1">
+    <styles xmi:type="notation:ArrowStyle" xmi:id="_16BdcaMlEeqSYOvrFd5BiQ"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_16BdcqMlEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_16Bdc6MlEeqSYOvrFd5BiQ" points="[-44, 40, 78, -84]$[-123, 100, -1, -24]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_16BddKMlEeqSYOvrFd5BiQ" id="(0.6147282507883509,0.9927927927927928)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_GEZIYKMoEeqSYOvrFd5BiQ" type="line" source="_z6otsKMnEeqSYOvrFd5BiQ" target="_sPow4KMnEeqSYOvrFd5BiQ" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1">
+    <styles xmi:type="notation:ArrowStyle" xmi:id="_GEZIYaMoEeqSYOvrFd5BiQ" arrowTarget="OpenArrow"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_GEZIYqMoEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GEZIY6MoEeqSYOvrFd5BiQ" points="[-32, 25, 133, -87]$[-104, 116, 61, 4]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_ExW9wKMpEeqSYOvrFd5BiQ" type="line" source="_yUnLEKMnEeqSYOvrFd5BiQ" target="_z6otsKMnEeqSYOvrFd5BiQ" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1">
+    <styles xmi:type="notation:ArrowStyle" xmi:id="_ExW9waMpEeqSYOvrFd5BiQ" arrowSource="OpenArrow"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_ExW9wqMpEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ExW9w6MpEeqSYOvrFd5BiQ" points="[26, -19, -424, 194]$[291, -237, -159, -24]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_4clukKMqEeqSYOvrFd5BiQ" type="line" source="_ZyrYQKMlEeqSYOvrFd5BiQ" target="_lW0XkKMqEeqSYOvrFd5BiQ" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1">
+    <styles xmi:type="notation:ArrowStyle" xmi:id="_4clukaMqEeqSYOvrFd5BiQ" arrowTarget="OpenArrow"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_4clukqMqEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_4cluk6MqEeqSYOvrFd5BiQ" points="[154, -12, -362, 18]$[401, -32, -115, -2]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_49W5UKMqEeqSYOvrFd5BiQ" type="line" source="_ZyrYQKMlEeqSYOvrFd5BiQ" target="_jOn8AKMqEeqSYOvrFd5BiQ" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1">
+    <styles xmi:type="notation:ArrowStyle" xmi:id="_49W5UaMqEeqSYOvrFd5BiQ" arrowTarget="OpenArrow"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_49W5UqMqEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_49W5U6MqEeqSYOvrFd5BiQ" points="[154, 6, -346, -12]$[401, 17, -99, -1]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_-n5aQKMqEeqSYOvrFd5BiQ" type="line" source="_bMgR8KMlEeqSYOvrFd5BiQ" target="_xiNdwKMnEeqSYOvrFd5BiQ" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1">
+    <styles xmi:type="notation:ArrowStyle" xmi:id="_-n5aQaMqEeqSYOvrFd5BiQ" arrowTarget="OpenArrow"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_-n5aQqMqEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-n5aQ6MqEeqSYOvrFd5BiQ" points="[-154, -17, 111, 1]$[-266, -37, -1, -19]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_l5ZY1qMtEeqSYOvrFd5BiQ" type="NoteAttachment" source="_xiNdwKMnEeqSYOvrFd5BiQ" target="_l5ZY0KMtEeqSYOvrFd5BiQ" lineColor="0" lineWidth="1">
+    <styles xmi:type="notation:ArrowStyle" xmi:id="_l5ZY16MtEeqSYOvrFd5BiQ"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_l5ZY2KMtEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_l5ZY2aMtEeqSYOvrFd5BiQ" points="[-80, -19, 522, 119]$[-602, -138, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tjdhhqMtEeqSYOvrFd5BiQ" type="NoteAttachment" source="_lW0XkKMqEeqSYOvrFd5BiQ" target="_tjdhgKMtEeqSYOvrFd5BiQ" lineColor="0" lineWidth="1">
+    <styles xmi:type="notation:ArrowStyle" xmi:id="_tjdhh6MtEeqSYOvrFd5BiQ"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_tjdhiKMtEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tjdhiaMtEeqSYOvrFd5BiQ" points="[-25, -18, 589, 429]$[-614, -447, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_xeiP8KMtEeqSYOvrFd5BiQ" type="NoteAttachment" source="_jOn8AKMqEeqSYOvrFd5BiQ" target="_tjdhgKMtEeqSYOvrFd5BiQ" lineColor="0" lineWidth="1">
+    <styles xmi:type="notation:ArrowStyle" xmi:id="_xeiP8aMtEeqSYOvrFd5BiQ"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_xeiP8qMtEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_xeiP86MtEeqSYOvrFd5BiQ" points="[3173, -424, -1613, 757]$[3724, -497, -1062, 684]$[4098, -738, -688, 443]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xeiP9KMtEeqSYOvrFd5BiQ" id="(0.1355130982863896,0.5361242403781229)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_y5cuwKMtEeqSYOvrFd5BiQ" type="NoteAttachment" source="_sPow4KMnEeqSYOvrFd5BiQ" target="_y5X2QKMtEeqSYOvrFd5BiQ" lineColor="0" lineWidth="1">
+    <styles xmi:type="notation:ArrowStyle" xmi:id="_y5cuwaMtEeqSYOvrFd5BiQ"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_y5cuwqMtEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_y5cuw6MtEeqSYOvrFd5BiQ" points="[-21, -18, 593, 537]$[-614, -555, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_6ZxFlqMtEeqSYOvrFd5BiQ" type="NoteAttachment" source="_yUnLEKMnEeqSYOvrFd5BiQ" target="_6ZxFkKMtEeqSYOvrFd5BiQ" lineColor="0" lineWidth="1">
+    <styles xmi:type="notation:ArrowStyle" xmi:id="_6ZxFl6MtEeqSYOvrFd5BiQ"/>
+    <styles xmi:type="notation:LineTypeStyle" xmi:id="_6ZxFmKMtEeqSYOvrFd5BiQ"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6ZxFmaMtEeqSYOvrFd5BiQ" points="[-19, -18, 595, 585]$[-614, -603, 0, 0]"/>
+  </edges>
+</umlnotation:UMLDiagram>

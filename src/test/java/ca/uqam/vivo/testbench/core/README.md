@@ -1,1 +1,0 @@
-Contains test cases for classical VIVO 1.11.1 with **no** i18n language extention

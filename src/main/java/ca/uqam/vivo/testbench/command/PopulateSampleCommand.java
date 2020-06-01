@@ -1,5 +1,7 @@
 package ca.uqam.vivo.testbench.command;
 
+import java.io.IOException;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -9,8 +11,9 @@ public class PopulateSampleCommand {
     private static final Log log = LogFactory.getLog(PopulateSampleCommand.class);
 
 
-    public static void main(String[] args) {
-        SampleGraphUtil.getInstance().load();
+    public static void main(String[] args) throws IOException {
+    	Boolean i18m = true;
+        SampleGraphUtil.getInstance().load(i18m);
         System.out.println("Populate done!");
     }
 
