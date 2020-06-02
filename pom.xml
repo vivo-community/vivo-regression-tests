@@ -47,6 +47,7 @@ https://www.baeldung.com/maven-integration-test
 		<testsuites.dir>C:\UQAM-DEV\GIT\vivo-regression-tests\src\main\resources\testsuites</testsuites.dir>
 	</properties>
 	<build>
+		<testSourceDirectory>src</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -55,7 +56,7 @@ https://www.baeldung.com/maven-integration-test
 				<executions>
 					<execution>
 						<goals>
-							<goal>exec</goal>
+							<goal>java</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -75,6 +76,35 @@ https://www.baeldung.com/maven-integration-test
 		</plugins>
 
 	</build>
+	<profiles>
+		<profile>
+			<id>ResearchOverviewToPersonTest</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<xml.file>ResearchOverviewToPerson-testSuite.xml</xml.file>
+			</properties>
+		</profile>
+		<profile>
+			<id>HeadOfFacultyTest</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<xml.file>HeadOfFaculty-testSuite.xml</xml.file>
+			</properties>
+		</profile>
+		<profile>
+			<id>EmailAddressTest</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<xml.file>EmailAddress-testSuite.xml</xml.file>
+			</properties>
+		</profile>
+	</profiles>
 	<dependencies>
 		<dependency>
 			<groupId>org.testng</groupId>
