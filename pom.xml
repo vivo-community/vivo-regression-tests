@@ -71,6 +71,7 @@ https://www.baeldung.com/maven-integration-test
 					<suiteXmlFiles>
 						<file>${testsuites.dir}/${xml.file}</file>
 					</suiteXmlFiles>
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 		</plugins>
