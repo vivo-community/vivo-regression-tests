@@ -1,11 +1,12 @@
 <settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+
     <profiles>
         <profile>
             <id>defaults</id>
             <properties>
                 <app-name>vivo_orig</app-name>
-				<vivo-dir>YOUR_NON_I18N_VIVO_HOME_DIRECTORY</vivo-dir>
+				<vivo-dir>YOUR_NON_I18N_VIVO_HOME_DIRECTORY/vivo_orig/home</vivo-dir>
 				<tomcat-dir>YOUR_HOME_TOMCAT_DIRECTORY</tomcat-dir>
                 <default-theme>wilma</default-theme>
             </properties>

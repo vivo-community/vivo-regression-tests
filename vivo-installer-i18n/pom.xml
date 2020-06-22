@@ -1,22 +1,38 @@
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.vivoweb.regressiontest</groupId>
-    <artifactId>vivo-installer</artifactId>
-    <version>1.11.1</version>
+    <groupId>org.vivoweb</groupId>
+    <artifactId>vivo-installer-i18n</artifactId>
+    <version>1.11.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>VIVO original Installer for regression test</name>
+    <name>VIVO Installer for i18n</name>
+    <developers>
+        <developer>
+            <name>Michel Héon PhD</name>
+            <email>contact@cotechnoe.com</email>
+            <organization>Cotechnoe</organization>
+            <organizationUrl>https://cotechnoe.com/</organizationUrl>
+        </developer>
+    </developers>
+    <organization>
+        <name>Université du Québec à Montréal (QC) Canada</name>
+        <url>https://uqam.ca</url>
+    </organization>
 
     <properties>
         <vitro-version>${project.version}</vitro-version>
         <maven-site-plugin.skip>true</maven-site-plugin.skip>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.test.skip>true</maven.test.skip>
     </properties>
+    <modules>
+        <module>home</module>
+        <module>webapp_dep</module>
+        <module>webapp</module>
+    </modules>
 
     <build>
         <plugins>
@@ -103,11 +119,6 @@
         </pluginManagement>
     </build>
 
-    <modules>
-        <module>home</module>
-        <module>webapp</module>
-    </modules>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -134,7 +145,9 @@
         <profile>
             <id>skip-install</id>
             <activation>
-                <property><name>!vivo-dir</name></property>
+                <property>
+                    <name>!vivo-dir</name>
+                </property>
             </activation>
             <build>
                 <plugins>
@@ -179,10 +192,13 @@
                     </plugin>
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                        <skipTests>true</skipTests>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>test</id>
-                                <phase/>
+                                <phase />
                             </execution>
                         </executions>
                     </plugin>
@@ -191,7 +207,7 @@
                         <executions>
                             <execution>
                                 <id>default-war</id>
-                                <phase/>
+                                <phase />
                             </execution>
                         </executions>
                     </plugin>
@@ -201,7 +217,9 @@
         <profile>
             <id>install</id>
             <activation>
-                <property><name>vivo-dir</name></property>
+                <property>
+                    <name>vivo-dir</name>
+                </property>
             </activation>
             <build>
                 <plugins>
@@ -218,7 +236,9 @@
                                     <rules>
                                         <requireProperty>
                                             <property>app-name</property>
-                                            <message>You must provide an application name (app-name)</message>
+                                            <message>You must provide an
+                                                application name
+                                                (app-name)</message>
                                         </requireProperty>
                                     </rules>
                                 </configuration>
@@ -250,10 +270,9 @@
         </plugins>
     </reporting>
 
-    <!--
-        Add a custom repository, which is actually just a simple GitHub project
-        in order to distribute some dependencies that aren't part of Maven central
-    -->
+    <!-- Add a custom repository, which is actually just a simple GitHub 
+        project in order to distribute some dependencies that aren't part of Maven 
+        central -->
     <repositories>
         <repository>
             <id>vivo-dependencies</id>

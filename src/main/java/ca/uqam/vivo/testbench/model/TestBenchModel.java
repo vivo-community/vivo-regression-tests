@@ -1,6 +1,9 @@
 package ca.uqam.vivo.testbench.model;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -20,9 +23,21 @@ public abstract class TestBenchModel {
 	protected String getUsrURI(String name) {
 		String value = "";
 		if (LoadI18N){
-			value=tbConstant.VIVO_SAMPLE_INDIVIDUAL_BASE_URI_I18N+name;
+			value=tbConstant.VIVO_SAMPLE_INDIVIDUAL_BASE_URI_I18N+"/"+name;
 		} else {
-			value=tbConstant.VIVO_SAMPLE_INDIVIDUAL_BASE_URI_ORIG+name;			
+			value=tbConstant.VIVO_SAMPLE_INDIVIDUAL_BASE_URI_ORIG+"/"+name;			
+		}
+		return value;
+	}
+	protected String getUsrDisplay(String name) throws UnsupportedEncodingException {
+		String value = "";
+		if (LoadI18N){
+			String q;
+			value=tbConstant.VIVO_SAMPLE_INDIVIDUAL_BASE_URI_I18N+"?uri="+
+					URLEncoder.encode(getUsrURI(name), StandardCharsets.UTF_8.toString());
+		} else {
+			value=tbConstant.VIVO_SAMPLE_INDIVIDUAL_BASE_URI_ORIG+"?uri="+
+					URLEncoder.encode(getUsrURI(name), StandardCharsets.UTF_8.toString());
 		}
 		return value;
 	}

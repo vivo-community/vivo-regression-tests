@@ -1,29 +1,41 @@
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.vivoweb.regressiontest</groupId>
+    <groupId>org.vivoweb</groupId>
     <artifactId>vivo-installer-vivo</artifactId>
-    <version>1.11.1</version>
+    <version>1.11.2-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <parent>
-        <groupId>org.vivoweb.regressiontest</groupId>
-        <artifactId>vivo-installer</artifactId>
-        <version>1.11.1</version>
+        <groupId>org.vivoweb</groupId>
+        <artifactId>vivo-installer-i18n</artifactId>
+        <version>1.11.2-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
 
-    <name>VIVO Install Web App for regression test</name>
+    <name>VIVO Install Web App for i18n</name>
+    <developers>
+        <developer>
+            <name>Michel Héon PhD</name>
+            <email>contact@cotechnoe.com</email>
+            <organization>Cotechnoe</organization>
+            <organizationUrl>https://cotechnoe.com/</organizationUrl>
+        </developer>
+    </developers>
+    <organization>
+        <name>Université du Québec à Montréal (QC) Canada</name>
+        <url>https://uqam.ca</url>
+    </organization>
 
     <profiles>
         <profile>
             <id>package</id>
             <activation>
-                <property><name>app-name</name></property>
+                <property>
+                    <name>app-name</name>
+                </property>
             </activation>
             <build>
                 <finalName>${app-name}</finalName>
@@ -45,16 +57,16 @@
                                     <type>war</type>
                                 </overlay>
                                 <!-- Overlays for multilingual support -->
-                                <!-- overlay>
-                                    <groupId>org.vivoweb</groupId>
-                                    <artifactId>vitro-languages-webapp</artifactId>
-                                    <type>war</type>
-                                </overlay>
-                                <overlay>
-                                    <groupId>org.vivoweb</groupId>
-                                    <artifactId>vivo-languages-webapp</artifactId>
-                                    <type>war</type>
-                                </overlay -->
+                                <!-- <overlay> -->
+                                <!-- <groupId>org.vivoweb</groupId> -->
+                                <!-- <artifactId>vitro-languages-webapp-fr_CA</artifactId> -->
+                                <!-- <type>war</type> -->
+                                <!-- </overlay> -->
+                                <!-- <overlay> -->
+                                <!-- <groupId>org.vivoweb</groupId> -->
+                                <!-- <artifactId>vivo-languages-webapp-fr_CA</artifactId> -->
+                                <!-- <type>war</type> -->
+                                <!-- </overlay> -->
                             </overlays>
                             <webResources>
                                 <resource>
@@ -70,7 +82,9 @@
         <profile>
             <id>install</id>
             <activation>
-                <property><name>tomcat-dir</name></property>
+                <property>
+                    <name>tomcat-dir</name>
+                </property>
             </activation>
             <build>
                 <plugins>
@@ -85,7 +99,8 @@
                                 </goals>
                                 <configuration>
                                     <target>
-                                        <delete dir="${tomcat-dir}/webapps/${project.build.finalName}" />
+                                        <delete
+                                            dir="${tomcat-dir}/webapps/${project.build.finalName}" />
                                     </target>
                                 </configuration>
                             </execution>
@@ -126,7 +141,7 @@
             <plugin>
                 <artifactId>maven-install-plugin</artifactId>
                 <configuration>
-                    <skip>true</skip>
+                    <skip>false</skip>
                 </configuration>
             </plugin>
             <plugin>
@@ -153,19 +168,90 @@
             <type>war</type>
         </dependency>
         <!-- Dependencies for multilingual support -->
-        <!-- dependency>
+        <dependency>
             <groupId>org.vivoweb</groupId>
-            <artifactId>vitro-languages-webapp</artifactId>
-            <version>[2.0.0,2.1.0)</version>
+            <artifactId>vitro-languages-webapp-core</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>org.vivoweb</groupId>
-            <artifactId>vivo-languages-webapp</artifactId>
-            <version>[2.0.0,2.1.0)</version>
+            <artifactId>vivo-languages-webapp-core</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
             <type>war</type>
-        </dependency -->
-
+        </dependency>
+        <dependency>
+            <groupId>org.vivoweb</groupId>
+            <artifactId>vitro-languages-webapp-en_US</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.vivoweb</groupId>
+            <artifactId>vivo-languages-webapp-en_US</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.vivoweb</groupId>
+            <artifactId>vitro-languages-webapp-en_CA</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.vivoweb</groupId>
+            <artifactId>vivo-languages-webapp-en_CA</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.vivoweb</groupId>
+            <artifactId>vitro-languages-webapp-fr_CA</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.vivoweb</groupId>
+            <artifactId>vivo-languages-webapp-fr_CA</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.vivoweb</groupId>
+            <artifactId>vitro-languages-webapp-es</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.vivoweb</groupId>
+            <artifactId>vivo-languages-webapp-es</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.vivoweb</groupId>
+            <artifactId>vitro-languages-webapp-de_DE</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.vivoweb</groupId>
+            <artifactId>vivo-languages-webapp-de_DE</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.vivoweb</groupId>
+            <artifactId>vitro-languages-webapp-pt_BR</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.vivoweb</groupId>
+            <artifactId>vivo-languages-webapp-pt_BR</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -179,4 +265,18 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.vivoweb</groupId>
+                <artifactId>vivo-webapp</artifactId>
+                <version>1.11.2-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.vivoweb</groupId>
+                <artifactId>vivo-home</artifactId>
+                <version>1.11.2-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

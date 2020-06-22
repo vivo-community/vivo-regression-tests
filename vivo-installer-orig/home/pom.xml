@@ -17,7 +17,7 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <name>VIVO Install Home  for regression test</name>
+    <name>VIVO Non-i18n Install Home  for regression test</name>
 
     <properties>
         <default-theme>wilma</default-theme>

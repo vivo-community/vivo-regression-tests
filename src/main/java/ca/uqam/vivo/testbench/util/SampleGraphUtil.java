@@ -130,6 +130,7 @@ public class SampleGraphUtil {
 //            System.exit(0);
         } catch (Exception e) {
             HttpException err = (org.apache.jena.atlas.web.HttpException)e;
+            log.error("Problem at :"+sparqlUpdateEndpointUrl+ " Maybe check the VIVO password.");            
             log.error(err.getResponse());
             throw e;
         }

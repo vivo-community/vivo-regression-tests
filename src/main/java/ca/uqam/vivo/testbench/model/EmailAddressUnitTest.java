@@ -29,13 +29,16 @@ public class EmailAddressUnitTest  extends TestBenchModel {
     private String usrURI ;
     private String predicatToTestURI = "http://www.w3.org/2006/vcard/ns#email";
     protected boolean isI18nInstance = false;
+	private String usrDISPLAY;
 
     @BeforeClass
     public void setUpBeforeClass() throws Exception {
         try {
             log.info("Setup before Class");
             initSelenium(isI18nInstance);
-            usrURI=this.getUsrURI("n6870");
+            String id = "n6870";
+            usrURI=this.getUsrURI(id);
+            usrDISPLAY = this.getUsrDisplay(id);
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
@@ -89,10 +92,11 @@ public class EmailAddressUnitTest  extends TestBenchModel {
     private void phase2() throws InterruptedException, IOException {
         log.info("Phase 2 Email validation");
         String emailToTest = "peter.japer@someemail.org";
-        /*  Equivalent to
+    	try {
+		/*  Equivalent to
          *         driver.findElement(By.linkText("Peters, Jasper I")).click();
          */
-        driver.get(usrURI);
+        driver.get(usrDISPLAY);
         // 4 | click | xpath= data-range =  http://www.w3.org/2006/vcard/ns#Work (Primary email Adress)
         driver.findElement(By.xpath("//*[@data-range='http://www.w3.org/2006/vcard/ns#Work']")).click();;
         // 5 | click | id=emailAddress | 
@@ -102,6 +106,12 @@ public class EmailAddressUnitTest  extends TestBenchModel {
         driver.findElement(By.id("emailAddress")).sendKeys(emailToTest);
         // 7 | click | id=submit | 
         driver.findElement(By.id("submit")).click();
+		} catch (Exception e) {
+			log.error("Problem with :"+emailToTest+" at " + usrURI +" at display uri "+usrDISPLAY);
+			log.error("Problem with :"+emailToTest+" at " + usrURI);
+			throw e;
+		}
+
         String returnEmail = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, predicatToTestURI, isI18nInstance);
         assertNotNull(returnEmail);
         assertEquals(emailToTest, returnEmail);
