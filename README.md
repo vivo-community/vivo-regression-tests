@@ -1,6 +1,8 @@
 # vivo-regression-tests - release 2020-04-30
 vivo-regression-tests is a Selenium test bench for VIVO with testNG
 
+[![Build Status](https://travis-ci.com/vivo-community/vivo-regression-tests.png?branch=master)](https://travis-ci.com/vivo-community/vivo-regression-tests)
+
 # Prerequisite
 
 The following prerequisites are necessary for the test bench to function properly:
