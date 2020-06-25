@@ -71,7 +71,7 @@ https://www.baeldung.com/maven-integration-test
 					<suiteXmlFiles>
 						<file>${testsuites.dir}/${xml.file}</file>
 					</suiteXmlFiles>
-					<skipTests>false</skipTests>
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -110,7 +110,6 @@ https://www.baeldung.com/maven-integration-test
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<scope>test</scope>
 			<version>6.14.3</version>
 		</dependency>
 		<dependency>
@@ -141,37 +140,31 @@ https://www.baeldung.com/maven-integration-test
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<scope>test</scope>
 			<version>${selenium.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-firefox-driver</artifactId>
-			<scope>test</scope>
 			<version>${selenium.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>htmlunit-driver</artifactId>
-			<scope>test</scope>
 			<version>${selenium.htmlunit.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
-			<scope>test</scope>
 			<version>${selenium.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<scope>test</scope>
 			<version>${junit.jupiter.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<scope>test</scope>
 			<version>${junit.version}</version>
 		</dependency>
 	</dependencies>

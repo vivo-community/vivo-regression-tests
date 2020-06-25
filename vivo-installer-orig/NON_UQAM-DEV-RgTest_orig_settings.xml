@@ -6,8 +6,8 @@
             <id>defaults</id>
             <properties>
                 <app-name>vivo_orig</app-name>
-				<vivo-dir>YOUR_NON_I18N_VIVO_HOME_DIRECTORY/vivo_orig/home</vivo-dir>
-				<tomcat-dir>YOUR_HOME_TOMCAT_DIRECTORY</tomcat-dir>
+				<vivo-dir>/opt/tomcat/vivo_orig/home</vivo-dir>
+				<tomcat-dir>/opt/tomcat</tomcat-dir>
                 <default-theme>wilma</default-theme>
             </properties>
         </profile>
