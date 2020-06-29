@@ -1,0 +1,24 @@
+os: linux
+language: java
+dist: trusty
+sudo: false
+
+jdk:
+  - openjdk8
+  - openjdk11
+
+env:
+  # Give Maven 1GB of memory to work with
+  - MAVEN_OPTS=-Xmx1024M
+
+cache:
+  directories:
+  - .autoconf
+  - $HOME/.m2
+
+install:
+  - true
+
+script:
+  - "mvn clean install -Dmaven.test.skip=false"
+
