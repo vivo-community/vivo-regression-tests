@@ -1,4 +1,4 @@
-package ca.uqam.vivo.testbench.model;
+package ca.uqam.vivo.testbench.i18n.test;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
@@ -15,6 +15,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import ca.uqam.vivo.testbench.model.TestBenchModel;
 import ca.uqam.vivo.testbench.util.SampleGraphUtil;
 
 public class ContentComparisonTest extends TestBenchModel {

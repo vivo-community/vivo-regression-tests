@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--xtools2_universal_type_manager-->
-<!--Rational Software Architect Designer 9.7.0.2-->
+<!--Rational Software Architect Designer 9.7.0-->
 <?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
 <?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Default="http:///schemas/Default/_fNm3AAqoEd6-N_NOT9vsCA/2" xmlns:SketchNotation="http://www.ibm.com/ccl/soa/sketch/notation/1.0.0/" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xsi:schemaLocation="http:///schemas/Default/_fNm3AAqoEd6-N_NOT9vsCA/2 pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default? http://www.eclipse.org/uml2/schemas/Standard/1 pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w">
@@ -1265,38 +1265,10 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Collaboration" xmi:id="_MibYYKQQEeqsfZw-jdC1ug" name="Collaboration1">
       <ownedBehavior xmi:type="uml:Activity" xmi:id="_MjCcYKQQEeqsfZw-jdC1ug" name="InteractionOverview1">
-        <eAnnotations xmi:id="_Mj7NMKQQEeqsfZw-jdC1ug" source="uml2.diagrams">
-          <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_Mj7NMaQQEeqsfZw-jdC1ug" type="InteractionOverview" element="_MjCcYKQQEeqsfZw-jdC1ug" name="CreateTestCaseProcess" measurementUnit="Himetric">
-            <children xmi:type="umlnotation:UMLShape" xmi:id="_Mj7NMqQQEeqsfZw-jdC1ug" type="InteractionOverviewFrame" element="_MjCcYKQQEeqsfZw-jdC1ug" fontName="Segoe UI" fontHeight="8" fillColor="16250871" transparency="0" lineColor="12632258" lineWidth="1" showStereotype="Label">
-              <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_Mj7NM6QQEeqsfZw-jdC1ug" type="InteractionOverviewCompartment" verticalAlignment="false"/>
-              <children xmi:type="notation:BasicDecorationNode" xmi:id="_Mj7NNKQQEeqsfZw-jdC1ug" type="Name"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mj7NNaQQEeqsfZw-jdC1ug" x="793" y="793"/>
-            </children>
-          </contents>
-        </eAnnotations>
+        <eAnnotations xmi:id="_Mj7NMKQQEeqsfZw-jdC1ug" source="uml2.diagrams"/>
         <ownedUseCase xmi:id="_iMCEcKQYEeqsfZw-jdC1ug" name="UseCase1">
           <ownedBehavior xmi:type="uml:Activity" xmi:id="_rSy0oKQYEeqsfZw-jdC1ug" name="Activity1">
-            <eAnnotations xmi:id="_rS8loKQYEeqsfZw-jdC1ug" source="uml2.diagrams">
-              <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_rS8loaQYEeqsfZw-jdC1ug" type="Activity" element="_rSy0oKQYEeqsfZw-jdC1ug" name="ActivityDiagram1" measurementUnit="Himetric">
-                <children xmi:type="umlnotation:UMLFrame" xmi:id="_rS8loqQYEeqsfZw-jdC1ug" type="Activity Frame" element="_rSy0oKQYEeqsfZw-jdC1ug" fontName="Segoe UI" fontHeight="8" fillColor="16250871" transparency="0" lineColor="12632258" lineWidth="1" showStereotype="Label">
-                  <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_rS8lo6QYEeqsfZw-jdC1ug" type="ActivityCompartment">
-                    <children xmi:type="umlnotation:UMLShape" xmi:id="_sjTaQKQYEeqsfZw-jdC1ug" element="_si_4QKQYEeqsfZw-jdC1ug" fontName="Segoe UI" fontHeight="8" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
-                      <children xmi:type="notation:DecorationNode" xmi:id="_sjTaQqQYEeqsfZw-jdC1ug" type="ImageCompartment">
-                        <layoutConstraint xmi:type="notation:Size" xmi:id="_sjTaQ6QYEeqsfZw-jdC1ug" width="1320" height="1320"/>
-                      </children>
-                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_sjckMKQYEeqsfZw-jdC1ug" type="Stereotype"/>
-                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_sjckMaQYEeqsfZw-jdC1ug" type="InPartitions"/>
-                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_sjckMqQYEeqsfZw-jdC1ug" type="Name"/>
-                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_sjckM6QYEeqsfZw-jdC1ug" type="Parent"/>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sjTaQaQYEeqsfZw-jdC1ug" x="2853" y="1162"/>
-                    </children>
-                  </children>
-                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_rS8lpKQYEeqsfZw-jdC1ug" type="Name"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rS8lpaQYEeqsfZw-jdC1ug" x="793" y="793"/>
-                </children>
-                <styles xmi:type="notation:BooleanValueStyle" xmi:id="_rS8lpqQYEeqsfZw-jdC1ug" name="support_hide_pins"/>
-              </contents>
-            </eAnnotations>
+            <eAnnotations xmi:id="_rS8loKQYEeqsfZw-jdC1ug" source="uml2.diagrams"/>
             <node xmi:type="uml:CreateObjectAction" xmi:id="_si_4QKQYEeqsfZw-jdC1ug" name="CreateObjectAction" classifier="_iMCEcKQYEeqsfZw-jdC1ug">
               <result xmi:id="_sjJpQKQYEeqsfZw-jdC1ug" type="_iMCEcKQYEeqsfZw-jdC1ug">
                 <eAnnotations xmi:id="_sjJpQaQYEeqsfZw-jdC1ug" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -1309,16 +1281,7 @@
       </ownedBehavior>
     </packagedElement>
     <packagedElement xmi:type="uml:Activity" xmi:id="_vcWD8KQYEeqsfZw-jdC1ug" name="Create Test Case Process">
-      <eAnnotations xmi:id="_vcWD8aQYEeqsfZw-jdC1ug" source="uml2.diagrams">
-        <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_vcWD8qQYEeqsfZw-jdC1ug" type="Activity" element="_vcWD8KQYEeqsfZw-jdC1ug" name="CreateTestCaseProcess" measurementUnit="Himetric">
-          <children xmi:type="umlnotation:UMLFrame" xmi:id="_vcWD86QYEeqsfZw-jdC1ug" type="Activity Frame" element="_vcWD8KQYEeqsfZw-jdC1ug" fontName="Segoe UI" fontHeight="8" fillColor="16250871" transparency="0" lineColor="12632258" lineWidth="1" showStereotype="Label">
-            <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_vcWD9KQYEeqsfZw-jdC1ug" type="ActivityCompartment"/>
-            <children xmi:type="notation:BasicDecorationNode" xmi:id="_vcWD9aQYEeqsfZw-jdC1ug" type="Name"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vcWD9qQYEeqsfZw-jdC1ug" x="793" y="793"/>
-          </children>
-          <styles xmi:type="notation:BooleanValueStyle" xmi:id="_vcWD96QYEeqsfZw-jdC1ug" name="support_hide_pins"/>
-        </contents>
-      </eAnnotations>
+      <eAnnotations xmi:id="_vcWD8aQYEeqsfZw-jdC1ug" source="uml2.diagrams"/>
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_BucVwKQuEeqsfZw-jdC1ug" name="Edit/compile/execute Java code"/>
     <packagedElement xmi:type="uml:Component" xmi:id="_JCLpIKQuEeqsfZw-jdC1ug" name="."/>
