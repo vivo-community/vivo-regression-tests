@@ -96,6 +96,11 @@ public class SeleniumHelper {
   
         return single_instance; 
     }
+    public static void unAllocate() 
+    { 
+    	single_instance = null;
+    }
+
 
     public void login() {
         driver.get(vivoUrl);

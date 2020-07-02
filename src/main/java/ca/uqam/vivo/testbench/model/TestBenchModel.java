@@ -52,5 +52,13 @@ public abstract class TestBenchModel {
         vars = new HashMap<String, Object>();
         tbConstant = TestBenchConstant.getInstance();
 	}
+	protected void stopSelenium() throws IOException{
+        js = null;
+        vars =  null;
+        tbConstant = null;
+        driver.close();
+        driver = null;
+		SeleniumHelper.unAllocate();;
+	}
 	
 }
