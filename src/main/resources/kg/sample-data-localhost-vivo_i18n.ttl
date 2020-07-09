@@ -1,6 +1,6 @@
-# baseURI: http://localhost:8080/vivo/vivo-sample_fr-localhost
+# baseURI: http://localhost:8080/vivo_i18n/vivo-sample_fr-localhost
 
-@prefix : <http://localhost:8080/vivo/vivo-sample_fr-localhost#> .
+@prefix : <http://localhost:8080/vivo_i18n/vivo-sample_fr-localhost#> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix geo: <http://aims.fao.org/aos/geopolitical.owl#> .

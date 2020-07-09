@@ -57,6 +57,7 @@ public abstract class TestBenchModel {
         vars =  null;
         tbConstant = null;
         driver.close();
+//		driver.quit();
         driver = null;
 		SeleniumHelper.unAllocate();;
 	}

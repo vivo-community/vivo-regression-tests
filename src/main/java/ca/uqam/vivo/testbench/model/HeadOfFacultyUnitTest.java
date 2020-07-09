@@ -49,7 +49,7 @@ public abstract class HeadOfFacultyUnitTest extends TestBenchModel {
     public void tearDownAfterClass() throws Exception {
         log.info("Teardown after Class");
         driver.quit();
-        sh.quit();
+        sh.unAllocate();
     }
     @Test(dependsOnMethods={"phase4"})
     private void phase5() throws InterruptedException {

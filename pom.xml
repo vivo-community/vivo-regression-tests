@@ -44,7 +44,8 @@ https://www.baeldung.com/maven-integration-test
 		<maven.verifier.version>1.1</maven.verifier.version>
 		<maven.clean.version>3.0.0</maven.clean.version>
 		<maven.build.helper.version>3.0.0</maven.build.helper.version>
-		<testsuites.dir>C:\UQAM-DEV\GIT\vivo-regression-tests\src\main\resources\testsuites</testsuites.dir>
+		<testsuites.dir>${project.basedir}/src/main/resources/testsuites</testsuites.dir>
+		<skipTests.value>true</skipTests.value>
 	</properties>
 	<build>
 		<testSourceDirectory>src</testSourceDirectory>
@@ -71,7 +72,7 @@ https://www.baeldung.com/maven-integration-test
 					<suiteXmlFiles>
 						<file>${testsuites.dir}/${xml.file}</file>
 					</suiteXmlFiles>
-					<skipTests>true</skipTests>
+					<skipTests>${skipTests.value}</skipTests>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -79,12 +80,23 @@ https://www.baeldung.com/maven-integration-test
 	</build>
 	<profiles>
 		<profile>
+			<id>ContentComparisonTest</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<xml.file>ContentComparison-testSuite.xml</xml.file>
+				<skipTests.value>false</skipTests.value>
+			</properties>
+		</profile>
+		<profile>
 			<id>ResearchOverviewToPersonTest</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
 				<xml.file>ResearchOverviewToPerson-testSuite.xml</xml.file>
+				<skipTests.value>false</skipTests.value>
 			</properties>
 		</profile>
 		<profile>
@@ -94,6 +106,7 @@ https://www.baeldung.com/maven-integration-test
 			</activation>
 			<properties>
 				<xml.file>HeadOfFaculty-testSuite.xml</xml.file>
+				<skipTests.value>false</skipTests.value>
 			</properties>
 		</profile>
 		<profile>
@@ -103,6 +116,7 @@ https://www.baeldung.com/maven-integration-test
 			</activation>
 			<properties>
 				<xml.file>EmailAddress-testSuite.xml</xml.file>
+				<skipTests.value>false</skipTests.value>
 			</properties>
 		</profile>
 	</profiles>

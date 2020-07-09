@@ -126,7 +126,7 @@ public abstract class ResearchOverviewToPersonUnitTest  extends TestBenchModel  
     public void tearDownAfterClass() throws Exception {
         log.info("Teardown after Class");
         driver.quit();
-        sh.quit();
+        sh.unAllocate();
     }
     protected String query() {
         String queryStr = "DESCRIBE"  + " <"+ usrURI +">";

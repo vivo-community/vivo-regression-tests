@@ -1,19 +1,21 @@
 package ca.uqam.vivo.testbench.testrunner;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.testng.TestNG;
 import org.testng.xml.XmlSuite;
 
 public class MainTestRunner {
+    private static final Log log = LogFactory.getLog(MainTestRunner.class);
 	public void run(String suite) {
+		log.info("running: "+suite);
 		List<String> file = new ArrayList<String>();
         file.add(getClass().getClassLoader().getResource(suite).getPath());
         TestNG testNG = new TestNG();
@@ -34,7 +36,7 @@ public class MainTestRunner {
 				runner.run("testsuites/"+aKey+"-testSuite.xml");
 			}
 		}
-		System.out.print("Done!");
+        log.info("Done!");
 		System.exit(0);
 	}
 
