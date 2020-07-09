@@ -117,11 +117,11 @@ public class ContentComparisonTest extends TestBenchModel {
 				data = data_orig;
 			}
 			driver.get(usrDISPLAY);
-			driver.findElement(By.xpath("//*[@groupname=\""+groupName+"\"]")).click();;
-			List<WebElement> results = driver.findElementsByXPath("//*[@title]");
+			driver.findElement(By.xpath("//*[@groupname=\""+groupName+"\"]")).click(); // find for groupName in page and click on it 
+			List<WebElement> results = driver.findElementsByXPath("//*[@title]");	// Retrieve the title ...
 			for (Iterator iterator = results.iterator(); iterator.hasNext();) {
 				WebElement webElement = (WebElement) iterator.next();
-				String text = webElement.getText();
+				String text = webElement.getText(); // ... and retrieve title attribute
 				if (text != null && !text.isEmpty() ) {
 					String value = webElement.getAttribute("title")+" ->" + text +"<- ";
 					String key =  String.valueOf(webElement.getLocation().getX())+"-"+String.valueOf(webElement.getLocation().getY());
