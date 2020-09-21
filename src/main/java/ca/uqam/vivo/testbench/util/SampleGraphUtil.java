@@ -112,14 +112,12 @@ public class SampleGraphUtil {
     }
     public void delete(boolean LoadI18N) throws IOException {
     	fillVariablesFronConstants(LoadI18N);
-        String DELETE = "\n"
-                + "DELETE {  GRAPH ?g { ?s ?p ?o } }\n "
-                + "    where {  GRAPH  ?g {\n"
-                + "        ?s ?p ?o . \n"
-                + "        FILTER(regex(str(?s), \""+sampleIndividualBaseURI+"\") \n"
-                + "             || regex(str(?p), \""+sampleIndividualBaseURI+"\") \n"
-                + "             || regex(str(?o), \""+sampleIndividualBaseURI+"\") ) \n"
-                + "     }}";
+    	String DELETE = "\n"
+      + "DELETE {  GRAPH  " + graphURI + "  { ?s ?p ?o } }\n "
+      + "    where {  GRAPH " + graphURI + "  {\n"
+      + "        ?s ?p ?o . \n"
+      + "     }}";
+
         log.debug(sparqlUpdateEndpointUrl + " " +DELETE);
         UpdateRequest request = UpdateFactory.create(DELETE);
         UpdateProcessor processor = UpdateExecutionFactory.createRemoteForm(request, sparqlUpdateEndpointUrl);
