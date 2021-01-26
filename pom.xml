@@ -44,10 +44,18 @@ https://www.baeldung.com/maven-integration-test
 		<maven.verifier.version>1.1</maven.verifier.version>
 		<maven.clean.version>3.0.0</maven.clean.version>
 		<maven.build.helper.version>3.0.0</maven.build.helper.version>
-		<testsuites.dir>C:\UQAM-DEV\GIT\vivo-regression-tests\src\main\resources\testsuites</testsuites.dir>
+		<testsuites.dir>${project.basedir}/src/main/resources/testsuites</testsuites.dir>
 	</properties>
 	<build>
 		<testSourceDirectory>src</testSourceDirectory>
+
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
