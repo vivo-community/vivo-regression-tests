@@ -1,0 +1,1 @@
+This directory contains files useful to UQMA-DEV in order to simplify the compilation process of vivo_i18n and vivo_orig.
