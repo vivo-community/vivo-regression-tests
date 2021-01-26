@@ -1,9 +1,0 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-
-<suite name="TestNG Vivo regression tests-suite">
-    <suite-files>
-        <suite-file path="./vivo-1.11.2-i18n-testSuite.xml" />
-        <suite-file path="./vivo-1.11.1-Non-i18n-testSuite.xml" />
-    </suite-files>
-</suite>
-
