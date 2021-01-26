@@ -39,11 +39,17 @@ public class SampleGraphUtil {
     private static String sparqlUpdateEndpointUrl;
     private static String sparqlQueryEndpointUrl ;
     private static String sampleFileName ;
+    private static String sampleFileName_FR_CA ;
+    private static String sampleFileName_FR_FR ;
+    private static String sampleFileName_EN_US ;
+    private static String sampleFileName_EN_CA ;
+    private static String sampleFileName_DE_DE ;
     private static SampleGraphUtil single_instance;
     private static String graphURI;
     private Properties systemProp;
 	private static TestBenchConstant tbConstant;
 	private static String sampleIndividualBaseURI;
+	private static ArrayList<String> samplesFN = new ArrayList<String>();
     public Properties getSystemProp() {
         return systemProp;
     }
@@ -67,7 +73,16 @@ public class SampleGraphUtil {
     	load(false);
     }
     public void load(boolean LoadI18N) throws IOException {
-    	fillVariablesFronConstants(LoadI18N);
+    	fillVariablesFromConstants(LoadI18N);
+    	samplesFN.forEach((name)-> {
+			try {
+				loadFile(name);
+			} catch (FileNotFoundException e) {
+		        log.debug(e.fillInStackTrace());
+			}
+		});
+    }
+    private void loadFile(String name) throws FileNotFoundException {
         resUrl 	= getClass().getClassLoader().getResource(sampleFileName);
         if (resUrl==null || resUrl.toString().isEmpty()) throw new FileNotFoundException(sampleFileName);
         String query = "LOAD <"+resUrl.toString()+"> into graph "+graphURI;
@@ -79,10 +94,10 @@ public class SampleGraphUtil {
         log.debug("Loading : "+sampleFileName);
         processor.execute();
         log.debug("load done ");
-
-    }
-    private static void fillVariablesFronConstants(boolean LoadI18N) throws IOException{
+	}
+	private static void fillVariablesFromConstants(boolean LoadI18N) throws IOException{
     	tbConstant = TestBenchConstant.getInstance();
+    	
     	if (LoadI18N){
             userName				= tbConstant.VIVO_ROOT_LOGIN_I18N;
             password				= tbConstant.VIVO_ROOT_PASSWD_I18N;
@@ -90,8 +105,18 @@ public class SampleGraphUtil {
             sparqlQueryEndpointUrl	= tbConstant.VIVO_SPARQL_QUERY_ENDPOINT_URL_I18N;
             graphURI 				= "<"+tbConstant.VIVO_SAMPLE_GRAPH_URI_I18N+">";
             sampleFileName			= tbConstant.VIVO_SAMPLE_FILENAME_I18N;
+            sampleFileName_FR_CA	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_FR_CA;
+            sampleFileName_FR_FR	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_FR_FR;
+            sampleFileName_EN_US	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_EN_US;
+            sampleFileName_EN_CA	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_EN_CA;
+            sampleFileName_DE_DE	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_DE_DE;
+            samplesFN.add(sampleFileName);
+            samplesFN.add(sampleFileName_FR_CA);
+            samplesFN.add(sampleFileName_FR_FR);
+            samplesFN.add(sampleFileName_EN_US);
+            samplesFN.add(sampleFileName_EN_CA);
+            samplesFN.add(sampleFileName_DE_DE);
             sampleIndividualBaseURI = tbConstant.VIVO_SAMPLE_INDIVIDUAL_BASE_URI_I18N;
-
     	} else {
             userName				= tbConstant.VIVO_ROOT_LOGIN_ORIG;
             password				= tbConstant.VIVO_ROOT_PASSWD_ORIG;
@@ -100,10 +125,11 @@ public class SampleGraphUtil {
             graphURI 				= "<"+tbConstant.VIVO_SAMPLE_GRAPH_URI_ORIG+">";
             sampleFileName			= tbConstant.VIVO_SAMPLE_FILENAME_ORIG;
             sampleIndividualBaseURI = tbConstant.VIVO_SAMPLE_INDIVIDUAL_BASE_URI_ORIG;
+            samplesFN.add(sampleFileName);
     	}   	
     }
     public void clear(boolean LoadI18N) throws IOException {
-    	fillVariablesFronConstants(LoadI18N);
+    	fillVariablesFromConstants(LoadI18N);
         UpdateRequest request = UpdateFactory.create("CLEAR GRAPH "+graphURI ) ;
         UpdateProcessor processor = UpdateExecutionFactory.createRemoteForm(request, sparqlUpdateEndpointUrl);
         ((UpdateProcessRemoteBase)processor).addParam("email", userName);
@@ -111,7 +137,7 @@ public class SampleGraphUtil {
         processor.execute();
     }
     public void delete(boolean LoadI18N) throws IOException {
-    	fillVariablesFronConstants(LoadI18N);
+    	fillVariablesFromConstants(LoadI18N);
     	String DELETE = "\n"
       + "DELETE {  GRAPH  " + graphURI + "  { ?s ?p ?o } }\n "
       + "    where {  GRAPH " + graphURI + "  {\n"
@@ -134,7 +160,7 @@ public class SampleGraphUtil {
         }
     }
     public static String getValueFromTripleStore( String queryStr, String usrURI, String predicatToTestURI, boolean LoadI18N) throws IOException {
-    	fillVariablesFronConstants(LoadI18N);
+    	fillVariablesFromConstants(LoadI18N);
         String roValue = null;
         // la construction de la requête
         Query query = QueryFactory.create(queryStr);
@@ -171,7 +197,7 @@ public class SampleGraphUtil {
         return roValue;
     }
     public static List<Literal> getValuesFromTripleStore( String queryStr, String usrURI, String predicatToTestURI, boolean LoadI18N) throws IOException {
-    	fillVariablesFronConstants(LoadI18N);
+    	fillVariablesFromConstants(LoadI18N);
         List<Literal> stringList = new ArrayList<>();
         // la construction de la requête
         Query query = QueryFactory.create(queryStr);

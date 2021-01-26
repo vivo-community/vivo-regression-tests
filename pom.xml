@@ -36,7 +36,7 @@ https://www.baeldung.com/maven-integration-test
 		<junit.platform.version>1.0.0-M4</junit.platform.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<!-- <maven-site-plugin.skip>true</maven-site-plugin.skip> -->
+		<maven-site-plugin.skip>false</maven-site-plugin.skip>
 		<maven.resources.version>3.0.2</maven.resources.version>
 		<maven.compiler.version>3.8.0</maven.compiler.version>
 		<maven.surefire.version>2.22.0</maven.surefire.version>
@@ -44,10 +44,17 @@ https://www.baeldung.com/maven-integration-test
 		<maven.verifier.version>1.1</maven.verifier.version>
 		<maven.clean.version>3.0.0</maven.clean.version>
 		<maven.build.helper.version>3.0.0</maven.build.helper.version>
-		<testsuites.dir>C:\UQAM-DEV\GIT\vivo-regression-tests\src\main\resources\testsuites</testsuites.dir>
+		<testsuites.dir>${basedir}/src/main/resources/testsuites</testsuites.dir>
+		<skipTests.value>true</skipTests.value>
 	</properties>
 	<build>
 		<testSourceDirectory>src</testSourceDirectory>
+		<testResources>
+			<testResource>
+				<directory>${basedir}/src/main/resources/testsuites</directory>
+			</testResource>
+		</testResources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -71,7 +78,7 @@ https://www.baeldung.com/maven-integration-test
 					<suiteXmlFiles>
 						<file>${testsuites.dir}/${xml.file}</file>
 					</suiteXmlFiles>
-					<skipTests>true</skipTests>
+ 					<skipTests>${skipTests.value}</skipTests> 
 				</configuration>
 			</plugin>
 		</plugins>
@@ -103,7 +110,9 @@ https://www.baeldung.com/maven-integration-test
 			</activation>
 			<properties>
 				<xml.file>EmailAddress-testSuite.xml</xml.file>
+                <skipTests.value>false</skipTests.value>
 			</properties>
+			
 		</profile>
 	</profiles>
 	<dependencies>

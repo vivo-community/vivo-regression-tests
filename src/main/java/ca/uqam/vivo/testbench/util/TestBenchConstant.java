@@ -38,6 +38,11 @@ public class TestBenchConstant {
 	private static final String VIVO_SPARQL_UPDATE_ENDPOINT_URL_KEY_I18N	= "vivo.i18n.sparqlUpdateEndpointUrl";
 	private static final String VIVO_SPARQL_QUERY_ENDPOINT_URL_KEY_I18N 	= "vivo.i18n.sparqlQueryEndpointUrl";
 	private static final String VIVO_SAMPLE_FILENAME_KEY_I18N 				= "vivo.i18n.sampleFileName";
+	private static final String VIVO_SAMPLE_FILENAME_KEY_I18N_fr_CA 		= "vivo.i18n.fr_CA.sampleFileName";
+	private static final String VIVO_SAMPLE_FILENAME_KEY_I18N_fr_FR 		= "vivo.i18n.fr_FR.sampleFileName";
+	private static final String VIVO_SAMPLE_FILENAME_KEY_I18N_en_US 		= "vivo.i18n.en_US.sampleFileName";
+	private static final String VIVO_SAMPLE_FILENAME_KEY_I18N_en_CA 		= "vivo.i18n.en_CA.sampleFileName";
+	private static final String VIVO_SAMPLE_FILENAME_KEY_I18N_de_DE 		= "vivo.i18n.de_DE.sampleFileName";
 	private static final String VIVO_SAMPLE_GRAPH_URI_KEY_I18N 				= "vivo.i18n.sample.graphURI";
 	private static final String VIVO_SAMPLE_INDIVIDUAL_BASE_URI_KEY_I18N 	= "vivo.i18n.sample.baseIndividualURI";
 	private static final String VIVO_URL_BASE_KEY_I18N 						= "vivo.i18n.url.base";
@@ -51,6 +56,11 @@ public class TestBenchConstant {
 	public static String VIVO_SPARQL_UPDATE_ENDPOINT_URL_I18N;
 	public static String VIVO_SPARQL_QUERY_ENDPOINT_URL_I18N;
 	public static String VIVO_SAMPLE_FILENAME_I18N;
+	public static String VIVO_SAMPLE_FILENAME_I18N_FR_CA;
+	public static String VIVO_SAMPLE_FILENAME_I18N_FR_FR;
+	public static String VIVO_SAMPLE_FILENAME_I18N_EN_US;
+	public static String VIVO_SAMPLE_FILENAME_I18N_EN_CA;
+	public static String VIVO_SAMPLE_FILENAME_I18N_DE_DE;
 	public static String VIVO_SAMPLE_GRAPH_URI_I18N;
 	public static String VIVO_URL_BASE_I18N;
 	public static String VIVO_SOLR_URL_BASE;
@@ -83,6 +93,7 @@ public class TestBenchConstant {
 	public static String VIVO_SAMPLE_INDIVIDUAL_BASE_URI_ORIG;
 
 	private Properties systemProp;
+
 	private TestBenchConstant() throws IOException {
         FileInputStream propFile = new FileInputStream(getClass().getClassLoader().getResource("runtime.properties").getPath());
         systemProp = new Properties(System.getProperties());
@@ -94,6 +105,11 @@ public class TestBenchConstant {
         VIVO_SPARQL_UPDATE_ENDPOINT_URL_I18N	= systemProp.getProperty(VIVO_SPARQL_UPDATE_ENDPOINT_URL_KEY_I18N);
         VIVO_SPARQL_QUERY_ENDPOINT_URL_I18N		= systemProp.getProperty(VIVO_SPARQL_QUERY_ENDPOINT_URL_KEY_I18N);
         VIVO_SAMPLE_FILENAME_I18N				= systemProp.getProperty(VIVO_SAMPLE_FILENAME_KEY_I18N);
+        VIVO_SAMPLE_FILENAME_I18N_FR_CA			= systemProp.getProperty(VIVO_SAMPLE_FILENAME_KEY_I18N_fr_CA);
+        VIVO_SAMPLE_FILENAME_I18N_FR_FR			= systemProp.getProperty(VIVO_SAMPLE_FILENAME_KEY_I18N_fr_FR);
+        VIVO_SAMPLE_FILENAME_I18N_EN_US			= systemProp.getProperty(VIVO_SAMPLE_FILENAME_KEY_I18N_en_US);
+        VIVO_SAMPLE_FILENAME_I18N_EN_CA			= systemProp.getProperty(VIVO_SAMPLE_FILENAME_KEY_I18N_en_CA);
+        VIVO_SAMPLE_FILENAME_I18N_DE_DE			= systemProp.getProperty(VIVO_SAMPLE_FILENAME_KEY_I18N_de_DE);
         VIVO_SAMPLE_GRAPH_URI_I18N				= systemProp.getProperty(VIVO_SAMPLE_GRAPH_URI_KEY_I18N);
         VIVO_URL_BASE_I18N						= systemProp.getProperty(VIVO_URL_BASE_KEY_I18N);
         VIVO_SOLR_URL_BASE						= systemProp.getProperty(VIVO_SOLR_URL_BASE_KEY_I18N);

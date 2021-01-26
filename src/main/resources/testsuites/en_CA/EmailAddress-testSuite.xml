@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="VIVO Edit emailAddress UnitTest" verbose="1" thread-count="3"
+    parallel="false" preserve-order="true">
+    <test name="en_CA" thread-count="3" parallel="false"
+        preserve-order="true">
+        <!-- First way to call unit tests -->
+        <classes>
+            <class
+                name="ca.uqam.vivo.testbench.en_CA.test.EmailAddressUnitTest_en_CA" />
+        </classes>
+    </test>
+</suite>
+
