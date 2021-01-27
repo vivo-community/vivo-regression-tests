@@ -1,6 +1,5 @@
 package ca.uqam.vivo.testbench.util;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -32,21 +31,19 @@ import org.apache.jena.update.UpdateProcessor;
 import org.apache.jena.update.UpdateRequest;
 
 public class SampleGraphUtil {
-    public static String SAMPLE_DATA="sample.sampleFileName";
-    public static String SAMPLE_DATA_I18N="sample.sampleFileName.i18n";
-    public static boolean SAMPLE_LOAD_I18N=false;
-    public static String SAMPLE_GRAPH_IRI="sample.graphURI";
     private static final Log log = LogFactory.getLog(SampleGraphUtil.class);
     private static String userName;
     private static String password;
-    private Update udateStr;
+    private static Update udateStr;
+    private static URL resUrl;
     private static String sparqlUpdateEndpointUrl;
     private static String sparqlQueryEndpointUrl ;
-    private static String sampleFileName ;
     private static SampleGraphUtil single_instance;
-    private URL resUrl;
-    private String graphURI;
+    private static String graphURI;
     private Properties systemProp;
+	private static TestBenchConstant tbConstant;
+	private static String sampleIndividualBaseURI;
+	private static ArrayList<String> samplesFN = new ArrayList<String>();
     public Properties getSystemProp() {
         return systemProp;
     }
@@ -62,66 +59,103 @@ public class SampleGraphUtil {
         return single_instance; 
     } 
     private SampleGraphUtil() throws IOException{
-        FileInputStream propFile = new FileInputStream(getClass().getClassLoader().getResource("runtime.properties").getPath());
-        systemProp = new Properties(System.getProperties());
-        systemProp.load(propFile);
-        userName=systemProp.getProperty("vivo.rootlogin");
-        password=systemProp.getProperty("vivo.password");
-        sparqlUpdateEndpointUrl=systemProp.getProperty("vivo.sparqlUpdateEndpointUrl");
-        sparqlQueryEndpointUrl=systemProp.getProperty("vivo.sparqlQueryEndpointUrl");
-        graphURI = "<"+systemProp.getProperty(SAMPLE_GRAPH_IRI)+">";
-        if (SAMPLE_LOAD_I18N){
-            sampleFileName=systemProp.getProperty(SAMPLE_DATA_I18N);
-        } else {
-            sampleFileName=systemProp.getProperty(SAMPLE_DATA);
-        }
-        resUrl = getClass().getClassLoader().getResource(sampleFileName);
-        if (resUrl==null || resUrl.toString().isEmpty()) throw new FileNotFoundException(sampleFileName);
     }
-
-    public void load() {
+    public void loadWihI18nProfile() throws IOException{
+    	load(true);
+    }
+    public void loadWihOriginalProfile() throws IOException{
+    	load(false);
+    }
+    public void load(boolean LoadI18N) throws IOException {
+    	fillVariablesFromConstants(LoadI18N);
+    	samplesFN.forEach((name)-> {
+			try {
+				loadFile(name);
+			} catch (FileNotFoundException e) {
+		        log.error(name + " " +e.getMessage());
+			}
+		});
+    }
+    private void loadFile(String name) throws FileNotFoundException {
+        resUrl 	= getClass().getClassLoader().getResource(name);
+        if (resUrl==null || resUrl.toString().isEmpty()) throw new FileNotFoundException(name);
         String query = "LOAD <"+resUrl.toString()+"> into graph "+graphURI;
         UpdateRequest request = UpdateFactory.create(query) ;
-        log.debug("running SPARQL : "+query);
+        log.info("running SPARQL : "+query + " ON " + sparqlUpdateEndpointUrl);
         UpdateProcessor processor = UpdateExecutionFactory.createRemoteForm(request, sparqlUpdateEndpointUrl);
         ((UpdateProcessRemoteBase)processor).addParam("email", userName);
         ((UpdateProcessRemoteBase)processor).addParam("password", password) ;
-        log.info("Loading : "+sampleFileName);
+        log.debug("Loading : "+name);
         processor.execute();
         log.debug("load done ");
-
+	}
+	private static void fillVariablesFromConstants(boolean LoadI18N) throws IOException{
+    	tbConstant = TestBenchConstant.getInstance();
+    	
+    	if (LoadI18N){
+            userName				= tbConstant.VIVO_ROOT_LOGIN_I18N;
+            password				= tbConstant.VIVO_ROOT_PASSWD_I18N;
+            sparqlUpdateEndpointUrl	= tbConstant.VIVO_SPARQL_UPDATE_ENDPOINT_URL_I18N;
+            sparqlQueryEndpointUrl	= tbConstant.VIVO_SPARQL_QUERY_ENDPOINT_URL_I18N;
+            graphURI 				= "<"+tbConstant.VIVO_SAMPLE_GRAPH_URI_I18N+">";
+            String sampleFileName			= tbConstant.VIVO_SAMPLE_FILENAME_I18N;
+            String sampleFileName_FR_CA	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_FR_CA;
+            String sampleFileName_FR_FR	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_FR_FR;
+            String sampleFileName_EN_US	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_EN_US;
+            String sampleFileName_EN_CA	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_EN_CA;
+            String sampleFileName_DE_DE	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_DE_DE;
+            samplesFN.clear();
+            samplesFN.add(sampleFileName);
+            samplesFN.add(sampleFileName_FR_CA);
+            samplesFN.add(sampleFileName_FR_FR);
+            samplesFN.add(sampleFileName_EN_US);
+            samplesFN.add(sampleFileName_EN_CA);
+            samplesFN.add(sampleFileName_DE_DE);
+            sampleIndividualBaseURI = tbConstant.VIVO_SAMPLE_INDIVIDUAL_BASE_URI_I18N;
+    	} else {
+            userName				= tbConstant.VIVO_ROOT_LOGIN_ORIG;
+            password				= tbConstant.VIVO_ROOT_PASSWD_ORIG;
+            sparqlUpdateEndpointUrl	= tbConstant.VIVO_SPARQL_UPDATE_ENDPOINT_URL_ORIG;
+            sparqlQueryEndpointUrl	= tbConstant.VIVO_SPARQL_QUERY_ENDPOINT_URL_ORIG;
+            graphURI 				= "<"+tbConstant.VIVO_SAMPLE_GRAPH_URI_ORIG+">";
+            String sampleFileName	= tbConstant.VIVO_SAMPLE_FILENAME_ORIG;
+            sampleIndividualBaseURI = tbConstant.VIVO_SAMPLE_INDIVIDUAL_BASE_URI_ORIG;
+            samplesFN.clear();
+            samplesFN.add(sampleFileName);
+    	}   	
     }
-    public void clear() {
+    public void clear(boolean LoadI18N) throws IOException {
+    	fillVariablesFromConstants(LoadI18N);
         UpdateRequest request = UpdateFactory.create("CLEAR GRAPH "+graphURI ) ;
         UpdateProcessor processor = UpdateExecutionFactory.createRemoteForm(request, sparqlUpdateEndpointUrl);
         ((UpdateProcessRemoteBase)processor).addParam("email", userName);
         ((UpdateProcessRemoteBase)processor).addParam("password", password) ;
         processor.execute();
     }
-    public void delete() {
-        String DELETE = "\n"
-                + "DELETE {  GRAPH ?g { ?s ?p ?o } }\n "
-                + "    where {  GRAPH  ?g {\n"
-                + "        ?s ?p ?o . \n"
-                + "        FILTER(regex(str(?s), \"http://localhost:8080/vivo/individual/\") \n"
-                + "             || regex(str(?p), \"http://localhost:8080/vivo/individual/\") \n"
-                + "             || regex(str(?o), \"http://localhost:8080/vivo/individual/\") ) \n"
-                + "     }}";
-        log.debug(DELETE);
+    public void delete(boolean LoadI18N) throws IOException {
+    	fillVariablesFromConstants(LoadI18N);
+    	String DELETE = "\n"
+      + "DELETE {  GRAPH  " + graphURI + "  { ?s ?p ?o } }\n "
+      + "    where {  GRAPH " + graphURI + "  {\n"
+      + "        ?s ?p ?o . \n"
+      + "     }}";
+
+        log.debug(sparqlUpdateEndpointUrl + " " +DELETE);
         UpdateRequest request = UpdateFactory.create(DELETE);
         UpdateProcessor processor = UpdateExecutionFactory.createRemoteForm(request, sparqlUpdateEndpointUrl);
         ((UpdateProcessRemoteBase)processor).addParam("email", userName);
         ((UpdateProcessRemoteBase)processor).addParam("password", password) ;
         try {
             processor.execute();      
-//            System.exit(0);
         } catch (Exception e) {
             HttpException err = (org.apache.jena.atlas.web.HttpException)e;
+            log.error("Problem at :"+sparqlUpdateEndpointUrl+ " Maybe check the VIVO password.");            
             log.error(err.getResponse());
             throw e;
         }
     }
-    public static String getValueFromTripleStore( String queryStr, String usrURI, String predicatToTestURI ){
+    public static String getValueFromTripleStore( String queryStr, String usrURI, String predicatToTestURI, boolean LoadI18N) throws IOException {
+    	fillVariablesFromConstants(LoadI18N);
         String roValue = null;
         // la construction de la requête
         Query query = QueryFactory.create(queryStr);
@@ -157,7 +191,8 @@ public class SampleGraphUtil {
         }
         return roValue;
     }
-    public static List<Literal> getValuesFromTripleStore( String queryStr, String usrURI, String predicatToTestURI ){
+    public static List<Literal> getValuesFromTripleStore( String queryStr, String usrURI, String predicatToTestURI, boolean LoadI18N) throws IOException {
+    	fillVariablesFromConstants(LoadI18N);
         List<Literal> stringList = new ArrayList<>();
         // la construction de la requête
         Query query = QueryFactory.create(queryStr);
@@ -233,12 +268,25 @@ public class SampleGraphUtil {
                 + "PREFIX scires:   <http://vivoweb.org/ontology/scientific-research#> \n"
                 + "PREFIX vann:     <http://purl.org/vocab/vann/> \n";
                }
-/*
+    
+@Override
+	public String toString() {
+		return "SampleGraphUtil [tbConstant=" + tbConstant + "]";
+	}
+	/*
  * Mostly used for testing the class
  */
     public static void main(String[] args) {
         SampleGraphUtil lg = SampleGraphUtil.getInstance();
-        lg.load();
+        try {
+        	boolean i18n=true;
+			lg.load(i18n);		
+			lg.delete(i18n);
+		} catch (IOException e) {
+			log.error(lg.toString());
+			e.printStackTrace();
+			System.exit(1);
+		}
         System.out.println("Done!");
     }
 

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.vivoweb</groupId>
+        <artifactId>vivo-installer-i18n</artifactId>
+        <version>1.11.2-SNAPSHOT</version>
+    </parent>
+    <groupId>org.vivoweb</groupId>
+    <artifactId>webapp_dep</artifactId>
+    <version>1.11.2-SNAPSHOT</version>
+    <name>VIVO WebApp Install dependencies for i18n</name>
+    <url>http://maven.apache.org</url>
+    <developers>
+        <developer>
+            <name>Michel Héon PhD</name>
+            <email>contact@cotechnoe.com</email>
+            <organization>Cotechnoe</organization>
+            <organizationUrl>https://cotechnoe.com/</organizationUrl>
+        </developer>
+    </developers>
+    <organization>
+        <name>Université du Québec à Montréal (QC) Canada</name>
+        <url>https://uqam.ca</url>
+    </organization>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <packaging>pom</packaging>
+    <modules>
+        <!-- Faire attention au nom des répertoires, ils doivent correspondre 
+            à l'emplacement de l'extraction du Vitro project et VIVO Project Pay attention 
+            to the name of the directories, they must correspond to the extraction location 
+            of the Vitro project and VIVO Project. -->
+        <module>../../../Vitro/api</module>
+        <module>../../../Vitro/dependencies</module>
+        <module>../../../Vitro/webapp</module>
+        <module>../../../Vitro-languages/core/webapp</module>
+        <module>../../../Vitro-languages/fr_CA/webapp</module>
+        <module>../../../Vitro-languages/en_US/webapp</module>
+        <module>../../../Vitro-languages/en_CA/webapp</module>
+        <module>../../../Vitro-languages/de_DE/webapp</module>
+        <module>../../../Vitro-languages/es/webapp</module>
+        <module>../../../Vitro-languages/pt_BR/webapp</module>
+        <module>../../../VIVO/api</module>
+        <module>../../../VIVO/webapp</module>
+        <module>../../../VIVO-languages/core/webapp</module>
+        <module>../../../VIVO-languages/fr_CA/webapp</module>
+        <module>../../../VIVO-languages/en_CA/webapp</module>
+        <module>../../../VIVO-languages/en_US/webapp</module>
+        <module>../../../VIVO-languages/de_DE/webapp</module>
+        <module>../../../VIVO-languages/es/webapp</module>
+        <module>../../../VIVO-languages/pt_BR/webapp</module>
+    </modules>
+</project>

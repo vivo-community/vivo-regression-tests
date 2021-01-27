@@ -1,36 +1,27 @@
-# vivo-regression-tests - release 2020-04-30
-vivo-regression-tests is a Selenium test bench for VIVO with testNG
+# vivo-regression-tests - release 2021-
+For UQAM-DEV Environment: For UQAM-DEV Environment: https://wiki.uqam.ca/display/VIVOPUB/4%29+vivo-regression-test%3A+a+Test+Bench+Tool++for+the+Continuous+Evaluation+of+VIVO%27s+Development
 
-# Prerequisite
 
-The following prerequisites are necessary for the test bench to function properly:
+## Setup
 
-- Installation of Firefox
-- Configure `src/main/resources/runtime.properties` with appropriate credential of commands and `/src/test/resources/runtime.properties` for Tests
-  (see also `runtime.properties_example`)
-- Configure `log4j.properties` in respective directory for logging parametrization
-- Vivo must be clean of sample data (The loading of the test data is assumed by each testcase.)
-- see also  [ReleaseNote.md](ReleaseNote.md)  for more information
-
-# Context
-
-- In this release, the test cases concern the non-i18n version (VIVO-1.11.1) and the i18n version for the en_US
-- The VIVO Instance is currently running and available at http://localhost:8080/vivo.
-
-# RUN
-
-## For VIVO-1.11.1 - non-i18n
-
-In the root directory, run the command
+- rename `example.settings.xml` to `settings.xml` and Update the `settings.xml` based on the usernames/passwords for your local VIVO installations and the appropriate Selenium driver for your platform.
+- in `./src/main/resources` rename `example.runtime.properties` to `runtime.properties` and `example.log4j.properties` to `log4j.properties`
+- The list of tests is available under: ./src/main/resources/testsuites/
+- Make sure that the password for `http://localhost:8080/vivo_orig is` correctly assigned. The first call to this instance requires the password `rootPasswd`. It is not necessary to do this procedure for `http://localhost:8080/vivo_i18n`.
+## Build
 
 ```
-mvn clean verify -Pcore_Test
-```
-
-## Run with VIVO with i18n setup
-
-In the root directory, run the command
+mvn clean install -s settings.xml
 
 ```
-mvn clean verify -Pen_US_Test
+
+## Run
+### For all languages
 ```
+mvn -s settings.xml clean test -Dxml.file=EmailAddress-testSuite.xml -DskipTests.value=false
+```
+### For specific language (eg.: fr_CA)
+```
+mvn -s settings.xml clean test -Dxml.file=fr_CA/EmailAddress-testSuite.xml -DskipTests.value=false
+```
+
