@@ -38,12 +38,12 @@ public class SampleGraphUtil {
     private static URL resUrl;
     private static String sparqlUpdateEndpointUrl;
     private static String sparqlQueryEndpointUrl ;
-    private static String sampleFileName ;
-    private static String sampleFileName_FR_CA ;
-    private static String sampleFileName_FR_FR ;
-    private static String sampleFileName_EN_US ;
-    private static String sampleFileName_EN_CA ;
-    private static String sampleFileName_DE_DE ;
+//    private static String sampleFileName ;
+//    private static String sampleFileName_FR_CA ;
+//    private static String sampleFileName_FR_FR ;
+//    private static String sampleFileName_EN_US ;
+//    private static String sampleFileName_EN_CA ;
+//    private static String sampleFileName_DE_DE ;
     private static SampleGraphUtil single_instance;
     private static String graphURI;
     private Properties systemProp;
@@ -78,20 +78,20 @@ public class SampleGraphUtil {
 			try {
 				loadFile(name);
 			} catch (FileNotFoundException e) {
-		        log.debug(e.fillInStackTrace());
+		        log.error(name + " " +e.getMessage());
 			}
 		});
     }
     private void loadFile(String name) throws FileNotFoundException {
-        resUrl 	= getClass().getClassLoader().getResource(sampleFileName);
-        if (resUrl==null || resUrl.toString().isEmpty()) throw new FileNotFoundException(sampleFileName);
+        resUrl 	= getClass().getClassLoader().getResource(name);
+        if (resUrl==null || resUrl.toString().isEmpty()) throw new FileNotFoundException(name);
         String query = "LOAD <"+resUrl.toString()+"> into graph "+graphURI;
         UpdateRequest request = UpdateFactory.create(query) ;
         log.info("running SPARQL : "+query + " ON " + sparqlUpdateEndpointUrl);
         UpdateProcessor processor = UpdateExecutionFactory.createRemoteForm(request, sparqlUpdateEndpointUrl);
         ((UpdateProcessRemoteBase)processor).addParam("email", userName);
         ((UpdateProcessRemoteBase)processor).addParam("password", password) ;
-        log.debug("Loading : "+sampleFileName);
+        log.debug("Loading : "+name);
         processor.execute();
         log.debug("load done ");
 	}
@@ -104,12 +104,13 @@ public class SampleGraphUtil {
             sparqlUpdateEndpointUrl	= tbConstant.VIVO_SPARQL_UPDATE_ENDPOINT_URL_I18N;
             sparqlQueryEndpointUrl	= tbConstant.VIVO_SPARQL_QUERY_ENDPOINT_URL_I18N;
             graphURI 				= "<"+tbConstant.VIVO_SAMPLE_GRAPH_URI_I18N+">";
-            sampleFileName			= tbConstant.VIVO_SAMPLE_FILENAME_I18N;
-            sampleFileName_FR_CA	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_FR_CA;
-            sampleFileName_FR_FR	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_FR_FR;
-            sampleFileName_EN_US	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_EN_US;
-            sampleFileName_EN_CA	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_EN_CA;
-            sampleFileName_DE_DE	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_DE_DE;
+            String sampleFileName			= tbConstant.VIVO_SAMPLE_FILENAME_I18N;
+            String sampleFileName_FR_CA	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_FR_CA;
+            String sampleFileName_FR_FR	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_FR_FR;
+            String sampleFileName_EN_US	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_EN_US;
+            String sampleFileName_EN_CA	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_EN_CA;
+            String sampleFileName_DE_DE	= tbConstant.VIVO_SAMPLE_FILENAME_I18N_DE_DE;
+            samplesFN.clear();
             samplesFN.add(sampleFileName);
             samplesFN.add(sampleFileName_FR_CA);
             samplesFN.add(sampleFileName_FR_FR);
@@ -123,8 +124,9 @@ public class SampleGraphUtil {
             sparqlUpdateEndpointUrl	= tbConstant.VIVO_SPARQL_UPDATE_ENDPOINT_URL_ORIG;
             sparqlQueryEndpointUrl	= tbConstant.VIVO_SPARQL_QUERY_ENDPOINT_URL_ORIG;
             graphURI 				= "<"+tbConstant.VIVO_SAMPLE_GRAPH_URI_ORIG+">";
-            sampleFileName			= tbConstant.VIVO_SAMPLE_FILENAME_ORIG;
+            String sampleFileName	= tbConstant.VIVO_SAMPLE_FILENAME_ORIG;
             sampleIndividualBaseURI = tbConstant.VIVO_SAMPLE_INDIVIDUAL_BASE_URI_ORIG;
+            samplesFN.clear();
             samplesFN.add(sampleFileName);
     	}   	
     }

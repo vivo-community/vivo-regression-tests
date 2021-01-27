@@ -2,19 +2,11 @@
 
 <suite name="VIVO Edit HeadOfFaculty UnitTest" verbose="1" thread-count="3"
     parallel="false" preserve-order="true">
-    <test name="en_US" thread-count="3" parallel="false"
-        preserve-order="true">
-        <!-- First way to call unit tests -->
-        <classes>
-            <class
-                name="ca.uqam.vivo.testbench.fr_CA.test.HeadOfFacultyUnitTest_fr_CA" />
-            <class
-                name="ca.uqam.vivo.testbench.en_CA.test.HeadOfFacultyUnitTest_en_CA" />
-            <class
-                name="ca.uqam.vivo.testbench.en_US.test.HeadOfFacultyUnitTest_en_US" />
-            <class
-                name="ca.uqam.vivo.testbench.orig.test.HeadOfFacultyUnitTest_orig" />
-        </classes>
-    </test>
+    <suite-files>
+        <suite-file path="./orig/HeadOfFaculty-testSuite.xml" />
+        <suite-file path="./fr_CA/HeadOfFaculty-testSuite.xml" />
+        <suite-file path="./en_CA/HeadOfFaculty-testSuite.xml" />
+        <suite-file path="./en_US/HeadOfFaculty-testSuite.xml" />
+    </suite-files>
 </suite>
 
