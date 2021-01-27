@@ -20,7 +20,7 @@ https://www.baeldung.com/maven-integration-test
 		<developer>
 			<name>Michel Héon</name>
 			<email>heon.michel@uqam.ca</email>
-			<organization>Université du Québec à Montréal ()UQAM)</organization>
+			<organization>Université du Québec à Montréal(UQAM)</organization>
 			<organizationUrl>https://uqam.ca</organizationUrl>
 		</developer>
 	</developers>
@@ -44,7 +44,7 @@ https://www.baeldung.com/maven-integration-test
 		<maven.verifier.version>1.1</maven.verifier.version>
 		<maven.clean.version>3.0.0</maven.clean.version>
 		<maven.build.helper.version>3.0.0</maven.build.helper.version>
-		<testsuites.dir>${basedir}/src/main/resources/testsuites</testsuites.dir>
+		<testsuites.dir>${project.basedir}/src/main/resources/testsuites</testsuites.dir>
 		<skipTests.value>true</skipTests.value>
 	</properties>
 	<build>
@@ -76,13 +76,20 @@ https://www.baeldung.com/maven-integration-test
 				<version>${maven.surefire.version}</version>
 				<configuration>
 					<suiteXmlFiles>
-						<file>${testsuites.dir}/${xml.file}</file>
+						<suiteXmlFile>${testsuites.dir}/${xml.file}</suiteXmlFile>
 					</suiteXmlFiles>
- 					<skipTests>${skipTests.value}</skipTests> 
+					<skipTests>${skipTests.value}</skipTests>
+					<systemPropertyVariables>
+						<!-- Setup this variables in settings.xml -->
+						<vivo.i18n.rootlogin>${vivo.i18n.rootlogin}</vivo.i18n.rootlogin>
+						<vivo.i18n.password>${vivo.i18n.password}</vivo.i18n.password>
+						<vivo.orig.rootlogin>${vivo.orig.rootlogin}</vivo.orig.rootlogin>
+						<vivo.orig.password>${vivo.orig.password}</vivo.orig.password>
+						<selenium.driver.location>${selenium.driver.location}</selenium.driver.location>
+					</systemPropertyVariables>
 				</configuration>
 			</plugin>
 		</plugins>
-
 	</build>
 	<profiles>
 		<profile>
@@ -92,6 +99,7 @@ https://www.baeldung.com/maven-integration-test
 			</activation>
 			<properties>
 				<xml.file>ResearchOverviewToPerson-testSuite.xml</xml.file>
+				<skipTests.value>false</skipTests.value>
 			</properties>
 		</profile>
 		<profile>
@@ -101,6 +109,7 @@ https://www.baeldung.com/maven-integration-test
 			</activation>
 			<properties>
 				<xml.file>HeadOfFaculty-testSuite.xml</xml.file>
+				<skipTests.value>false</skipTests.value>
 			</properties>
 		</profile>
 		<profile>
@@ -110,9 +119,8 @@ https://www.baeldung.com/maven-integration-test
 			</activation>
 			<properties>
 				<xml.file>EmailAddress-testSuite.xml</xml.file>
-                <skipTests.value>false</skipTests.value>
+				<skipTests.value>false</skipTests.value>
 			</properties>
-			
 		</profile>
 	</profiles>
 	<dependencies>

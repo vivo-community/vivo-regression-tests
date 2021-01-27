@@ -1,0 +1,30 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+
+	<profiles>
+		<profile>
+			<id>local-properties</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<vivo.i18n.rootlogin>your-local-value</vivo.i18n.rootlogin>
+				<vivo.i18n.password>your-local-value</vivo.i18n.password>
+				<vivo.orig.rootlogin>your-local-value</vivo.orig.rootlogin>
+				<vivo.i18n.password>your-local-value</vivo.i18n.password>
+                <!-- Set provided driver from `./lib/` directory based on your platform: 
+                    Linux or Windows -->
+                <selenium.driver.location>
+                    ./lib/geckodriver-v0.26.0-linux/geckodriver
+                    <!-- ... or for Windows -->
+                    <!-- ./lib/geckodriver-v0.26.0-win64/geckodriver.exe -->
+                </selenium.driver.location>
+			</properties>
+		</profile>
+	</profiles>
+
+	<activeProfiles>
+<!--        <activeProfile>EmailAddressTest</activeProfile> -->
+	</activeProfiles>
+</settings>

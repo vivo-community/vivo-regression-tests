@@ -38,12 +38,6 @@ public class SampleGraphUtil {
     private static URL resUrl;
     private static String sparqlUpdateEndpointUrl;
     private static String sparqlQueryEndpointUrl ;
-//    private static String sampleFileName ;
-//    private static String sampleFileName_FR_CA ;
-//    private static String sampleFileName_FR_FR ;
-//    private static String sampleFileName_EN_US ;
-//    private static String sampleFileName_EN_CA ;
-//    private static String sampleFileName_DE_DE ;
     private static SampleGraphUtil single_instance;
     private static String graphURI;
     private Properties systemProp;
@@ -153,7 +147,6 @@ public class SampleGraphUtil {
         ((UpdateProcessRemoteBase)processor).addParam("password", password) ;
         try {
             processor.execute();      
-//            System.exit(0);
         } catch (Exception e) {
             HttpException err = (org.apache.jena.atlas.web.HttpException)e;
             log.error("Problem at :"+sparqlUpdateEndpointUrl+ " Maybe check the VIVO password.");            

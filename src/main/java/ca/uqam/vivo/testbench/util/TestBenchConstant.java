@@ -95,7 +95,16 @@ public class TestBenchConstant {
 	private Properties systemProp;
 
 	private TestBenchConstant() throws IOException {
-        FileInputStream propFile = new FileInputStream(getClass().getClassLoader().getResource("runtime.properties").getPath());
+		FileInputStream propFile=null;
+		String propFN = null;
+		try {
+			propFN = getClass().getClassLoader().getResource("runtime.properties").getPath();
+	        propFile = new FileInputStream(propFN);
+			
+		} catch (java.lang.NullPointerException e) {
+			log.fatal("Please, set up file runtime.properties file");
+			throw e;
+		}
         systemProp = new Properties(System.getProperties());
         systemProp.load(propFile);
         SELENIUM_DRIVER							= systemProp.getProperty(SELENIUM_DRIVER_KEY);

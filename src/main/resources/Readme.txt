@@ -1,0 +1,1 @@
+Make sure to correctly configure the contents of the example.runtime.properties file and rename it runtime.properties.
