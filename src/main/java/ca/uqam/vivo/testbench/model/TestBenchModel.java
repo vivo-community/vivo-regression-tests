@@ -19,6 +19,8 @@ public abstract class TestBenchModel {
     protected HashMap<String, Object> vars;
     private TestBenchConstant tbConstant;
     private boolean LoadI18N;
+    protected boolean isI18nInstance = true;
+
 
     protected String getUsrURI(String name) {
         String value = "";
