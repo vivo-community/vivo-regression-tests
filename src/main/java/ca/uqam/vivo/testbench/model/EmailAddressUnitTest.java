@@ -29,7 +29,7 @@ public class EmailAddressUnitTest  extends TestBenchModel {
     private String usrURI ;
     private String predicatToTestURI = "http://www.w3.org/2006/vcard/ns#email";
     protected boolean isI18nInstance = false;
-	private String usrDISPLAY;
+    private String usrDISPLAY;
 
     @BeforeClass
     public void setUpBeforeClass() throws Exception {
@@ -94,25 +94,25 @@ public class EmailAddressUnitTest  extends TestBenchModel {
     private void phase2() throws InterruptedException, IOException {
         log.info("Phase 2 Email validation");
         String emailToTest = "peters.jasper@someemail.org";
-    	try {
-		/*  Equivalent to
-         *         driver.findElement(By.linkText("Peters, Jasper I")).click();
-         */
-        driver.get(usrDISPLAY);
-        // 4 | click | xpath= data-range =  http://www.w3.org/2006/vcard/ns#Work (Primary email Adress)
-        driver.findElement(By.xpath("//*[@data-range='http://www.w3.org/2006/vcard/ns#Work']")).click();;
-        // 5 | click | id=emailAddress | 
-        driver.findElement(By.id("emailAddress")).click();
-        // 6 | type | id=emailAddress | peters.jasper@someemail.org
-        log.info("adding "+emailToTest);
-        driver.findElement(By.id("emailAddress")).sendKeys(emailToTest);
-        // 7 | click | id=submit | 
-        driver.findElement(By.id("submit")).click();
-		} catch (Exception e) {
-			log.error("Problem with :"+emailToTest+" at " + usrURI +" at display uri "+usrDISPLAY);
-			log.error("Problem with :"+emailToTest+" at " + usrURI);
-			throw e;
-		}
+        try {
+            /*  Equivalent to
+             *         driver.findElement(By.linkText("Peters, Jasper I")).click();
+             */
+            driver.get(usrDISPLAY);
+            // 4 | click | xpath= data-range =  http://www.w3.org/2006/vcard/ns#Work (Primary email Adress)
+            driver.findElement(By.xpath("//*[@data-range='http://www.w3.org/2006/vcard/ns#Work']")).click();;
+            // 5 | click | id=emailAddress | 
+            driver.findElement(By.id("emailAddress")).click();
+            // 6 | type | id=emailAddress | peters.jasper@someemail.org
+            log.info("adding "+emailToTest);
+            driver.findElement(By.id("emailAddress")).sendKeys(emailToTest);
+            // 7 | click | id=submit | 
+            driver.findElement(By.id("submit")).click();
+        } catch (Exception e) {
+            log.error("Problem with :"+emailToTest+" at " + usrURI +" at display uri "+usrDISPLAY);
+            log.error("Problem with :"+emailToTest+" at " + usrURI);
+            throw e;
+        }
 
         String returnEmail = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, predicatToTestURI, isI18nInstance);
         assertNotNull(returnEmail);
