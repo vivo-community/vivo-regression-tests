@@ -41,9 +41,9 @@ public class SampleGraphUtil {
     private static SampleGraphUtil single_instance;
     private static String graphURI;
     private Properties systemProp;
-	private static TestBenchConstant tbConstant;
-	private static String sampleIndividualBaseURI;
-	private static ArrayList<String> samplesFN = new ArrayList<String>();
+    private static TestBenchConstant tbConstant;
+    private static String sampleIndividualBaseURI;
+    private static ArrayList<String> samplesFN = new ArrayList<String>();
     public Properties getSystemProp() {
         return systemProp;
     }
@@ -55,26 +55,26 @@ public class SampleGraphUtil {
             } catch (IOException e) {
                 e.printStackTrace();
             } 
-  
+
         return single_instance; 
     } 
     private SampleGraphUtil() throws IOException{
     }
     public void loadWihI18nProfile() throws IOException{
-    	load(true);
+        load(true);
     }
     public void loadWihOriginalProfile() throws IOException{
-    	load(false);
+        load(false);
     }
     public void load(boolean LoadI18N) throws IOException {
-    	fillVariablesFromConstants(LoadI18N);
-    	samplesFN.forEach((name)-> {
-			try {
-				loadFile(name);
-			} catch (FileNotFoundException e) {
-		        log.error(name + " " +e.getMessage());
-			}
-		});
+        fillVariablesFromConstants(LoadI18N);
+        samplesFN.forEach((name)-> {
+            try {
+                loadFile(name);
+            } catch (FileNotFoundException e) {
+                log.error(name + " " +e.getMessage());
+            }
+        });
     }
     private void loadFile(String name) throws FileNotFoundException {
         resUrl 	= getClass().getClassLoader().getResource(name);
@@ -88,11 +88,11 @@ public class SampleGraphUtil {
         log.debug("Loading : "+name);
         processor.execute();
         log.debug("load done ");
-	}
-	private static void fillVariablesFromConstants(boolean LoadI18N) throws IOException{
-    	tbConstant = TestBenchConstant.getInstance();
-    	
-    	if (LoadI18N){
+    }
+    private static void fillVariablesFromConstants(boolean LoadI18N) throws IOException{
+        tbConstant = TestBenchConstant.getInstance();
+
+        if (LoadI18N){
             userName				= tbConstant.VIVO_ROOT_LOGIN_I18N;
             password				= tbConstant.VIVO_ROOT_PASSWD_I18N;
             sparqlUpdateEndpointUrl	= tbConstant.VIVO_SPARQL_UPDATE_ENDPOINT_URL_I18N;
@@ -112,7 +112,7 @@ public class SampleGraphUtil {
             samplesFN.add(sampleFileName_EN_CA);
             samplesFN.add(sampleFileName_DE_DE);
             sampleIndividualBaseURI = tbConstant.VIVO_SAMPLE_INDIVIDUAL_BASE_URI_I18N;
-    	} else {
+        } else {
             userName				= tbConstant.VIVO_ROOT_LOGIN_ORIG;
             password				= tbConstant.VIVO_ROOT_PASSWD_ORIG;
             sparqlUpdateEndpointUrl	= tbConstant.VIVO_SPARQL_UPDATE_ENDPOINT_URL_ORIG;
@@ -122,10 +122,10 @@ public class SampleGraphUtil {
             sampleIndividualBaseURI = tbConstant.VIVO_SAMPLE_INDIVIDUAL_BASE_URI_ORIG;
             samplesFN.clear();
             samplesFN.add(sampleFileName);
-    	}   	
+        }   	
     }
     public void clear(boolean LoadI18N) throws IOException {
-    	fillVariablesFromConstants(LoadI18N);
+        fillVariablesFromConstants(LoadI18N);
         UpdateRequest request = UpdateFactory.create("CLEAR GRAPH "+graphURI ) ;
         UpdateProcessor processor = UpdateExecutionFactory.createRemoteForm(request, sparqlUpdateEndpointUrl);
         ((UpdateProcessRemoteBase)processor).addParam("email", userName);
@@ -133,12 +133,12 @@ public class SampleGraphUtil {
         processor.execute();
     }
     public void delete(boolean LoadI18N) throws IOException {
-    	fillVariablesFromConstants(LoadI18N);
-    	String DELETE = "\n"
-      + "DELETE {  GRAPH  " + graphURI + "  { ?s ?p ?o } }\n "
-      + "    where {  GRAPH " + graphURI + "  {\n"
-      + "        ?s ?p ?o . \n"
-      + "     }}";
+        fillVariablesFromConstants(LoadI18N);
+        String DELETE = "\n"
+                + "DELETE {  GRAPH  " + graphURI + "  { ?s ?p ?o } }\n "
+                + "    where {  GRAPH " + graphURI + "  {\n"
+                + "        ?s ?p ?o . \n"
+                + "     }}";
 
         log.debug(sparqlUpdateEndpointUrl + " " +DELETE);
         UpdateRequest request = UpdateFactory.create(DELETE);
@@ -155,7 +155,7 @@ public class SampleGraphUtil {
         }
     }
     public static String getValueFromTripleStore( String queryStr, String usrURI, String predicatToTestURI, boolean LoadI18N) throws IOException {
-    	fillVariablesFromConstants(LoadI18N);
+        fillVariablesFromConstants(LoadI18N);
         String roValue = null;
         // la construction de la requête
         Query query = QueryFactory.create(queryStr);
@@ -192,7 +192,7 @@ public class SampleGraphUtil {
         return roValue;
     }
     public static List<Literal> getValuesFromTripleStore( String queryStr, String usrURI, String predicatToTestURI, boolean LoadI18N) throws IOException {
-    	fillVariablesFromConstants(LoadI18N);
+        fillVariablesFromConstants(LoadI18N);
         List<Literal> stringList = new ArrayList<>();
         // la construction de la requête
         Query query = QueryFactory.create(queryStr);
@@ -218,8 +218,8 @@ public class SampleGraphUtil {
                     /*
                      * Unescape HTML 4 from the value before converted to UTF-8 (Usefull for latin languages)
                      */
-//                    String value = new String(StringEscapeUtils.unescapeHtml4(                     
-//                            stmt.getObject().asLiteral().getLexicalForm()).getBytes(), StandardCharsets.UTF_8);
+                    //                    String value = new String(StringEscapeUtils.unescapeHtml4(                     
+                    //                            stmt.getObject().asLiteral().getLexicalForm()).getBytes(), StandardCharsets.UTF_8);
                     stringList.add(stmt.getObject().asLiteral());                   
                 }
                 log.info("return value is: "+stringList);
@@ -267,28 +267,27 @@ public class SampleGraphUtil {
                 + "PREFIX core:     <http://vivoweb.org/ontology/core#> \n"
                 + "PREFIX scires:   <http://vivoweb.org/ontology/scientific-research#> \n"
                 + "PREFIX vann:     <http://purl.org/vocab/vann/> \n";
-               }
-    
-@Override
-	public String toString() {
-		return "SampleGraphUtil [tbConstant=" + tbConstant + "]";
-	}
-	/*
- * Mostly used for testing the class
- */
+    }
+
+    @Override
+    public String toString() {
+        return "SampleGraphUtil [tbConstant=" + tbConstant + "]";
+    }
+    /*
+     * Mostly used for testing the class
+     */
     public static void main(String[] args) {
         SampleGraphUtil lg = SampleGraphUtil.getInstance();
         try {
-        	boolean i18n=true;
-			lg.load(i18n);		
-			lg.delete(i18n);
-		} catch (IOException e) {
-			log.error(lg.toString());
-			e.printStackTrace();
-			System.exit(1);
-		}
+            boolean i18n=true;
+            lg.load(i18n);		
+            lg.delete(i18n);
+        } catch (IOException e) {
+            log.error(lg.toString());
+            e.printStackTrace();
+            System.exit(1);
+        }
         System.out.println("Done!");
     }
 
 }
-    

@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="VIVO Edit HeadOfFaculty UnitTest" verbose="1" thread-count="3"
+    parallel="false" preserve-order="true">
+    <test name="i18n" thread-count="3" parallel="false"
+        preserve-order="true">
+        <!-- First way to call unit tests -->
+        <classes>
+            <class
+                name="ca.uqam.vivo.testbench.i18n.test.UserMenuUnitTest_i18n" />
+        </classes>
+    </test>
+</suite>
+
