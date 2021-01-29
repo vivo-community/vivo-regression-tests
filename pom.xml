@@ -28,7 +28,7 @@ https://www.baeldung.com/maven-integration-test
         <vitro-version>${project.version}</vitro-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <selenium.version>3.141.59</selenium.version>
         <selenium.htmlunit.version>2.33.2</selenium.htmlunit.version>
         <junit.jupiter.version>5.0.0-M4</junit.jupiter.version>
