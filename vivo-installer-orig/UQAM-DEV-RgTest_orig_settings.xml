@@ -6,7 +6,7 @@
             <id>defaults</id>
             <properties>
                 <app-name>vivo_orig</app-name>
-                <vivo-dir>/home/heon/00-PROJECT-i18n-sprint12/UQAM-DEV-tbcfe/vivo/home</vivo-dir>
+                <vivo-dir>/home/heon/00-PROJECT-i18n-sprint12/UQAM-DEV-tbcfe/vivo_orig/home</vivo-dir>
                 <tomcat-dir>/home/heon/00-PROJECT-i18n-sprint12/UQAM-DEV-tbcfe/apache-tomcat-8.5.11</tomcat-dir>
                 <default-theme>wilma</default-theme>
             </properties>

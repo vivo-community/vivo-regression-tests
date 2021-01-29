@@ -93,6 +93,16 @@ https://www.baeldung.com/maven-integration-test
     </build>
     <profiles>
         <profile>
+            <id>UserMenuTest</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <xml.file>UserMenu-testSuite.xml</xml.file>
+                <skipTests.value>false</skipTests.value>
+            </properties>
+        </profile>
+        <profile>
             <id>ResearchOverviewToPersonTest</id>
             <activation>
                 <activeByDefault>false</activeByDefault>

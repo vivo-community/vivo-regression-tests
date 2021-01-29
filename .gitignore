@@ -1,3 +1,5 @@
+/.settings/
+/.vscode/
 /.build/
 /deploy.properties
 /build.properties
@@ -83,3 +85,4 @@ local.properties
 # Typically, this file would be tracked if it contains build/dependency configurations:
 # .project
 #/settings.xml
+/settings.xml
