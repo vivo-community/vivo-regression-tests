@@ -42,7 +42,7 @@ public abstract class ResearchOverviewToPersonUnitTest  extends TestBenchModel  
     protected static String textToVerify = "NO-TEXT";
     protected String roURI = "http://vivoweb.org/ontology/core#researchOverview";
     protected boolean isI18nInstance = false;
- 
+
     @BeforeClass
     public void setUpBeforeClass() throws Exception {
         try {
@@ -56,73 +56,73 @@ public abstract class ResearchOverviewToPersonUnitTest  extends TestBenchModel  
     }
 
     @Test()
-	protected void phase1() throws InterruptedException {
-	    this.textToVerify=new String(textToVerify.getBytes(), StandardCharsets.UTF_8);
-	    log.info("Phase 1 Login");
-	    sh.login();
-	    log.info("Phase 1 Login done");
-	}
+    protected void phase1() throws InterruptedException {
+        this.textToVerify=new String(textToVerify.getBytes(), StandardCharsets.UTF_8);
+        log.info("Phase 1 Login");
+        sh.login();
+        log.info("Phase 1 Login done");
+    }
 
-	@Test(dataProvider = "dp", dependsOnMethods={"phase1"})
-	    protected void phase2(String lang, String textToVerify) throws InterruptedException {      
-	        log.info("Phase 2 New entry");
-	        this.textToVerify=textToVerify;
-	        sh.selectLanguage(lang);
-	        driver.get(usrURI);
-	        driver.findElement(By.cssSelector(".nonSelectedGroupTab:nth-child(20)")).click();
-	        driver.findElement(By.cssSelector(".nonSelectedGroupTab:nth-child(4)")).click();
-	        driver.findElement(By.cssSelector(".nonSelectedGroupTab:nth-child(6)")).click();
-	        try {
-	            driver.findElement(By.cssSelector(".add-researchOverview > .add-individual")).click();
-	        } catch (Exception e) {
-	            driver.findElement(By.cssSelector(".edit-researchOverview > .edit-individual")).click();
-	        }
-	        driver.switchTo().frame(0);
-	        driver.findElement(By.cssSelector("html")).click();
-	        {
-	            WebElement element = driver.findElement(By.id("tinymce"));
-	            js.executeScript("if(arguments[0].contentEditable === 'true') {arguments[0].innerText = '"+textToVerify+"'}", element);
-	        }
-	        driver.switchTo().defaultContent();
-	        driver.findElement(By.cssSelector(".editForm")).click();
-	        driver.findElement(By.id("submit")).click();
-	//        js.executeScript("window.scrollTo(0,803)");       
-	        AssertJUnit.assertNotNull(driver);
-	        log.info("Phase 2 New entry done");
-	    }
+    @Test(dataProvider = "dp", dependsOnMethods={"phase1"})
+    protected void phase2(String lang, String textToVerify) throws InterruptedException {      
+        log.info("Phase 2 New entry");
+        this.textToVerify=textToVerify;
+        sh.selectLanguage(lang);
+        driver.get(usrURI);
+        driver.findElement(By.cssSelector(".nonSelectedGroupTab:nth-child(20)")).click();
+        driver.findElement(By.cssSelector(".nonSelectedGroupTab:nth-child(4)")).click();
+        driver.findElement(By.cssSelector(".nonSelectedGroupTab:nth-child(6)")).click();
+        try {
+            driver.findElement(By.cssSelector(".add-researchOverview > .add-individual")).click();
+        } catch (Exception e) {
+            driver.findElement(By.cssSelector(".edit-researchOverview > .edit-individual")).click();
+        }
+        driver.switchTo().frame(0);
+        driver.findElement(By.cssSelector("html")).click();
+        {
+            WebElement element = driver.findElement(By.id("tinymce"));
+            js.executeScript("if(arguments[0].contentEditable === 'true') {arguments[0].innerText = '"+textToVerify+"'}", element);
+        }
+        driver.switchTo().defaultContent();
+        driver.findElement(By.cssSelector(".editForm")).click();
+        driver.findElement(By.id("submit")).click();
+        //        js.executeScript("window.scrollTo(0,803)");       
+        AssertJUnit.assertNotNull(driver);
+        log.info("Phase 2 New entry done");
+    }
 
-	@Test(dependsOnMethods={"phase2"})
-	protected void phase3() throws IOException {
-	    log.info("Phase 3 Content validation");
-	    String roValue = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, roURI, isI18nInstance);
-	    log.info("Exected value = ["+textToVerify+"]; Actual value = ["+roValue+"]");
-	    AssertJUnit.assertEquals(roValue, textToVerify);
-	    log.info("Phase 3 Content validation done");
-	}
+    @Test(dependsOnMethods={"phase2"})
+    protected void phase3() throws IOException {
+        log.info("Phase 3 Content validation");
+        String roValue = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, roURI, isI18nInstance);
+        log.info("Exected value = ["+textToVerify+"]; Actual value = ["+roValue+"]");
+        AssertJUnit.assertEquals(roValue, textToVerify);
+        log.info("Phase 3 Content validation done");
+    }
 
-	/*
-	 * The signature guarantees compatibility with the successors of the class.
-	 */
-	@Test(dataProvider = "dp",dependsOnMethods={"phase3"})
-	protected void phase4(String lang, String textToVerify) throws InterruptedException, IOException {
-	      log.info("Phase 4 check delete");
-	      // 3 | click | css=.delete-researchOverview > .delete-individual | 
-	      driver.findElement(By.cssSelector(".delete-researchOverview > .delete-individual")).click();
-	      // 4 | click | id=submit | 
-	      driver.findElement(By.id("submit")).click();
-	      String roValue = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, roURI, isI18nInstance);
-	      assertNull(roValue,"There is a returned value for ("+usrURI+") ("+roURI+") at isI18nInstance="+isI18nInstance);
-	      log.info("Phase 4 Check delete done");
-	}
+    /*
+     * The signature guarantees compatibility with the successors of the class.
+     */
+    @Test(dataProvider = "dp",dependsOnMethods={"phase3"})
+    protected void phase4(String lang, String textToVerify) throws InterruptedException, IOException {
+        log.info("Phase 4 check delete");
+        // 3 | click | css=.delete-researchOverview > .delete-individual | 
+        driver.findElement(By.cssSelector(".delete-researchOverview > .delete-individual")).click();
+        // 4 | click | id=submit | 
+        driver.findElement(By.id("submit")).click();
+        String roValue = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, roURI, isI18nInstance);
+        assertNull(roValue,"There is a returned value for ("+usrURI+") ("+roURI+") at isI18nInstance="+isI18nInstance);
+        log.info("Phase 4 Check delete done");
+    }
 
-	@Test(dependsOnMethods={"phase4"})
-	protected void phase5() throws InterruptedException {
-	    log.info("Phase 5 login out");
-	    sh.logout();
-	    log.info("Phase 5 logout");
-	}
+    @Test(dependsOnMethods={"phase4"})
+    protected void phase5() throws InterruptedException {
+        log.info("Phase 5 login out");
+        sh.logout();
+        log.info("Phase 5 logout");
+    }
 
-	@AfterClass
+    @AfterClass
     public void tearDownAfterClass() throws Exception {
         log.info("Teardown after Class");
         driver.quit();
@@ -134,9 +134,9 @@ public abstract class ResearchOverviewToPersonUnitTest  extends TestBenchModel  
     }
     @DataProvider
     public Object[][] dp() {
-      return new Object[][] {
-        new Object[] {"en_US", "Add new research overview" },
-      };
+        return new Object[][] {
+            new Object[] {"en_US", "Add new research overview" },
+        };
     }
 
 }

@@ -42,15 +42,15 @@ public class ResearchOverviewToPersonUnitTest_i18n extends ResearchOverviewToPer
 
     @DataProvider
     public Object[][] dp() {
-      return new Object[][] {
-        new Object[] { "fr_CA", "Voici un nouvel aperçu de la recherche" },
-        new Object[] { "en_CA", "This is a new research overview" },
-        new Object[] { "en_US", "This is a new research overview" },
-      };
+        return new Object[][] {
+            new Object[] { "fr_CA", "Voici un nouvel aperçu de la recherche" },
+            new Object[] { "en_CA", "This is a new research overview" },
+            new Object[] { "en_US", "This is a new research overview" },
+        };
     }
 
     @Test(dependsOnMethods={"phase2"})
-	protected void phase3() throws IOException {
+    protected void phase3() throws IOException {
         log.info("Phase 3 Content validation");
         List<Literal> literals = SampleGraphUtil.getValuesFromTripleStore(query(), usrURI, roURI, isI18nInstance);
         String lang = null;
@@ -79,7 +79,7 @@ public class ResearchOverviewToPersonUnitTest_i18n extends ResearchOverviewToPer
         }
         log.info("Phase 3 Content validation done");
     }
-    
+
     @Test(dependsOnMethods={"phase4"})
     protected void phase5() throws InterruptedException {
         super.phase5();

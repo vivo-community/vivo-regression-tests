@@ -29,7 +29,7 @@ public class EmailAddressUnitTest  extends TestBenchModel {
     private String usrURI ;
     private String predicatToTestURI = "http://www.w3.org/2006/vcard/ns#email";
     protected boolean isI18nInstance = false;
-	private String usrDISPLAY;
+    private String usrDISPLAY;
 
     @BeforeClass
     public void setUpBeforeClass() throws Exception {
@@ -72,15 +72,17 @@ public class EmailAddressUnitTest  extends TestBenchModel {
     @Test(dependsOnMethods={"phase2"})
     private void phase3() throws IOException {
         log.info("Phase 3 Email modification validation");
-        String emailToTest = "japer@someemail.org";
+        String emailToTest = "jasper@someemail.org";
         // 8 | click | css=#primary-email .edit-individual | 
         driver.findElement(By.cssSelector("#primary-email .edit-individual")).click();
         // 9 | click | id=emailAddress | 
         driver.findElement(By.id("emailAddress")).click();
         //        driver.findElement(By.id("emailAddress")).sendKeys(Keys.CONTROL,"a",Keys.DELETE);
-        // 10 | type | id=emailAddress | peter.japer@someemail.com
+        // 10 | type | id=emailAddress | peters.jasper@someemail.com
         log.info("replacing the actual address by: "+emailToTest);
-        driver.findElement(By.id("emailAddress")).sendKeys(Keys.CONTROL,"a",Keys.DELETE,emailToTest);
+        driver.findElement(By.id("emailAddress")).sendKeys(Keys.CONTROL,"a");
+        driver.findElement(By.id("emailAddress")).sendKeys(Keys.DELETE);
+        driver.findElement(By.id("emailAddress")).sendKeys(emailToTest);
         // 11 | click | id=submit | 
         driver.findElement(By.id("submit")).click();
         String returnEmail = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, predicatToTestURI, isI18nInstance);
@@ -91,26 +93,26 @@ public class EmailAddressUnitTest  extends TestBenchModel {
     @Test(dependsOnMethods={"phase1"})
     private void phase2() throws InterruptedException, IOException {
         log.info("Phase 2 Email validation");
-        String emailToTest = "peter.japer@someemail.org";
-    	try {
-		/*  Equivalent to
-         *         driver.findElement(By.linkText("Peters, Jasper I")).click();
-         */
-        driver.get(usrDISPLAY);
-        // 4 | click | xpath= data-range =  http://www.w3.org/2006/vcard/ns#Work (Primary email Adress)
-        driver.findElement(By.xpath("//*[@data-range='http://www.w3.org/2006/vcard/ns#Work']")).click();;
-        // 5 | click | id=emailAddress | 
-        driver.findElement(By.id("emailAddress")).click();
-        // 6 | type | id=emailAddress | peter.japer@someemail.org
-        log.info("adding "+emailToTest);
-        driver.findElement(By.id("emailAddress")).sendKeys(emailToTest);
-        // 7 | click | id=submit | 
-        driver.findElement(By.id("submit")).click();
-		} catch (Exception e) {
-			log.error("Problem with :"+emailToTest+" at " + usrURI +" at display uri "+usrDISPLAY);
-			log.error("Problem with :"+emailToTest+" at " + usrURI);
-			throw e;
-		}
+        String emailToTest = "peters.jasper@someemail.org";
+        try {
+            /*  Equivalent to
+             *         driver.findElement(By.linkText("Peters, Jasper I")).click();
+             */
+            driver.get(usrDISPLAY);
+            // 4 | click | xpath= data-range =  http://www.w3.org/2006/vcard/ns#Work (Primary email Adress)
+            driver.findElement(By.xpath("//*[@data-range='http://www.w3.org/2006/vcard/ns#Work']")).click();;
+            // 5 | click | id=emailAddress | 
+            driver.findElement(By.id("emailAddress")).click();
+            // 6 | type | id=emailAddress | peters.jasper@someemail.org
+            log.info("adding "+emailToTest);
+            driver.findElement(By.id("emailAddress")).sendKeys(emailToTest);
+            // 7 | click | id=submit | 
+            driver.findElement(By.id("submit")).click();
+        } catch (Exception e) {
+            log.error("Problem with :"+emailToTest+" at " + usrURI +" at display uri "+usrDISPLAY);
+            log.error("Problem with :"+emailToTest+" at " + usrURI);
+            throw e;
+        }
 
         String returnEmail = SampleGraphUtil.getValueFromTripleStore(query(), usrURI, predicatToTestURI, isI18nInstance);
         assertNotNull(returnEmail);
