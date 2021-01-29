@@ -54,6 +54,11 @@ public abstract class TestBenchModel {
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
         tbConstant = TestBenchConstant.getInstance();
+<<<<<<< HEAD
     }
 
+=======
+	}
+	
+>>>>>>> 1eebe18e9a788b1f5349fd0c80151e57756eaeec
 }

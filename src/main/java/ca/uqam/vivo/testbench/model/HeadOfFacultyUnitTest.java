@@ -32,6 +32,7 @@ public abstract class HeadOfFacultyUnitTest extends TestBenchModel {
     private static final Log log = LogFactory.getLog(HeadOfFacultyUnitTest.class);
     protected String usrURI = null; 
     private String predicatToTestURI = "http://www.w3.org/2000/01/rdf-schema#label";
+    protected boolean isI18nInstance = false;
 
     @BeforeClass
     public void setUpBeforeClass() throws Exception {
